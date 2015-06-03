@@ -1,11 +1,15 @@
 *KERNELINFO.md*
 
 # My Linux kernel configuration
+
 This kernel config is specifically written for MY hardware, don't use on your.
+However you can try to make your own changes.
 ============
 
 ```
-make menuconfig
+make mrproper #cleans all useless files
+cp ../config .config
+make menuconfig #do your edits
 make -jX
 make modules_install
 make headers_install
