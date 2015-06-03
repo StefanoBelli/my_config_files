@@ -3,7 +3,9 @@
 # My Linux kernel configuration
 
 This kernel config is specifically written for MY hardware, don't use on your.
+
 However you can try to make your own changes.
+
 ============
 
 ```
