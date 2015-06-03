@@ -1,9 +1,9 @@
 *KERNELINFO.md*
 
 # My Linux kernel configuration
-=============== 
 This kernel config is specifically written for MY hardware, don't use on 
-your unless it is equals to my.
+your.
+============
 
 ```
 make menuconfig
@@ -31,12 +31,13 @@ more...
  - Probably more...
 
 (enabled:core)
--*SONIX JPEG Camera support modularized*
--*UVC support modularized*
--*Wireless Card: Atheros ath9k, wext driver enabled*
--*Ethernet Card: Atheros atl1e, fast ethernet, AR816x/AR817x, enabled*
--*HD Audio: (ALSA: jack plugging detecting, Realtek HD Audio enabled*
--*CPU: Generic x86_64*
--*TUN/TAP device should not be enabled! (VPN connections such as OpenVPN will not work without /dev/net/tun support!)*
--*more*
+
+- *SONIX JPEG Camera support modularized*
+- *UVC support modularized*
+- *Wireless Card: Atheros ath9k, wext driver enabled*
+- *Ethernet Card: Atheros atl1e, fast ethernet, AR816x/AR817x, enabled*
+- *HD Audio: (ALSA: jack plugging detecting, Realtek HD Audio enabled*
+- *CPU: Generic x86_64*
+- *TUN/TAP device should not be enabled! (VPN connections such as OpenVPN will not work without /dev/net/tun support!)*
+- *more*
 
