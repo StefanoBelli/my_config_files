@@ -1,8 +1,7 @@
 *KERNELINFO.md*
 
 # My Linux kernel configuration
-This kernel config is specifically written for MY hardware, don't use on 
-your.
+This kernel config is specifically written for MY hardware, don't use on your.
 ============
 
 ```
