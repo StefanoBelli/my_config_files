@@ -15,4 +15,5 @@ I can say that this repo is for a backup-like purpose... If you want take my con
 # Repo changes
 
   - Birth of the repo... [03/06/2015][DD/MM/YYYY]
-
+  - Added linux config, i3, scripts, nanorc, zshrc, pacman... 
+[03/06/2015]
