@@ -8,15 +8,23 @@ However you can try to make your own changes.
 
 ============
 
+First of all, decompress config.gz
+
+- un-gzip config.gz
+
+```
+gzip -d config.gz
+```
+
 ```
 make mrproper #cleans all useless files
-cp ../config .config
-make menuconfig #do your edits
-make -jX
-make modules_install
-make headers_install
-cp arch/x86_64/boot/bzImage /boot/vmlinuz-x.y.z
-*bootloader update*
+cp ../my_config_files/linux_kernel_config/config .config
+make menuconfig #do your changes
+make -jX # where X is the number of CPUs to use (Suggested: 2)
+make modules_install # installs modules in /lib/modules, need to be root
+make headers_install #installs kernel headers
+cp arch/x86_64/boot/bzImage /boot/vmlinuz-kernel #copies the compressed kernel image in /boot, renaming it as vmlinux-kernel
+*bootloader update* #after that you need to update your bootloader [GRUB, LILO, SYSLINUX, etc...]
 ```
 
 
