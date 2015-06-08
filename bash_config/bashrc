@@ -1,0 +1,42 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+alias ls='ls --color=auto'
+PS1='[\u@\h \W]\$ '
+
+#
+# Code by user: stefanozzz123 
+#
+
+
+
+#
+# PREDEF_EDITOR values:
+# vim = "vim"
+# nano = "nano"
+# vi = "vi"
+#
+
+PREDEF_EDITOR="vim"
+export EDITOR=$PREDEF_EDITOR
+
+
+# ~/.bin <= path
+export PATH=~/.bin:$PATH
+export PATH=~/Development/Bash/linuxCleaner-tools:$PATH
+export PATH=/home/stefanozzz123/.bin/lcleaner_gtk:/home/stefanozzz123/Development/Bash/linuxCleaner-tools:/home/stefanozzz123/.bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl
+
+#Opening banner function
+showBanner(){
+	echo "Welcome back, $USER"
+	screenfetch
+        echo ""
+}
+showBanner
+
+#Launch Xorg 
+alias x=startx
