@@ -1,0 +1,9 @@
+#
+# .bashrc <= config file
+# for bash shell
+# user= root
+#
+
+#Code by 0wn3r
+
+export EDITOR="vim"
