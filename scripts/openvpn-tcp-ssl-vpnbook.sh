@@ -4,6 +4,7 @@
 #
 #For Europe/TCP/443-SSL
 
+FILE_PID="/var/run/ovpn.pid"
 FILE_OVPN="vpnbook-euro1-tcp443.ovpn"
 FILE_DIR="/home/stefanozzz123/Documenti/vpnbook"
 
@@ -21,7 +22,7 @@ else
 	echo ""
 fi
 printf "\033[33m * \033[0mLaunching OpenVPN...\n"
-sudo openvpn --config $FILE_OVPN
+sudo openvpn --config $FILE_OVPN --writepid $FILE_PID
 clear
 printf "\033[34m * \033[0mBye bye!\n"
 sleep 1
