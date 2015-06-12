@@ -5,7 +5,7 @@ export TERM="xterm-256color"
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="bullet-train"
+ZSH_THEME="clean"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -20,7 +20,7 @@ ZSH_THEME="bullet-train"
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 ENABLE_CORRECTION="true"
@@ -167,6 +167,8 @@ alias yrtrmall="yaourt -Rsn "
 alias yrtsearch="yaourt -Ss "
 alias yrtupgall="yaourt -Syuua"
 alias yrtupg="yaourt -Syu"
+#Check External IP 
+alias wanip="curl ipecho.net/plain"
 #OpenVPN
 alias ovpn-tcp-ssl="/home/stefanozzz123/.ovpninittcpssl.sh"
 #
