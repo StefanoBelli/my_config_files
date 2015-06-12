@@ -29,8 +29,8 @@ cp arch/x86_64/boot/bzImage /boot/vmlinuz-kernel #copies the compressed kernel i
 
 
  - 64 bit kernel config
- - LZO compression
- - No ramdisk support
+ - LZO compression (Less compression but faster decompression)
+ - No ramdisk support (Bootup improvements) 
  - default Governor: performance
  - default Input/Output: deadline
  - Buffer Overflow Vulnerability Detector: regular
@@ -39,8 +39,8 @@ cp arch/x86_64/boot/bzImage /boot/vmlinuz-kernel #copies the compressed kernel i
  - .config.gz in /proc filesystem access enabled
  - Minimum debug level
  - Virtualization support (Modularized for Intel, no support for AMD) 
- - Ext4, Ext3, Ext2 support modularized, no support for btrfs, xfs, jfs, 
-more...
+ - Ext3, Ext2 support modularized 
+ - Btrfs, XFS, Ext4 Filesystems enabled (kernel core) 
  - Probably more...
 
 (enabled:core)
@@ -51,6 +51,5 @@ more...
 - *Ethernet Card: Atheros atl1e, fast ethernet, AR816x/AR817x, enabled*
 - *HD Audio: (ALSA: jack plugging detecting, Realtek HD Audio enabled*
 - *CPU: Generic x86_64*
-- *TUN/TAP device should not be enabled! (VPN connections such as OpenVPN will not work without /dev/net/tun support!)*
 - *more*
 
