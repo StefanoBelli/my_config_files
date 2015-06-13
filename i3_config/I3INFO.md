@@ -3,16 +3,19 @@
 #This is my i3 DE configuraton#
 ===============
 
+*Credits for image: wallpaperswide.com*
+
     *Find*
     
     - I3Status : *i3status/i3status.conf*
     - I3Config : *i3/config*
+    - Image    : *i3/intelcpu.jpg*
 
     *Use*
 
     - I3Status : ```# cp i3status.conf /etc/i3status.conf```
     - I3Config : ```$ cp config $HOME/.i3/config```
-
+    - Image    : Copy as above, keep its name as intelcpu.jpg 
 
     *I3Status will search for following PID*
 
@@ -37,8 +40,6 @@
     - Blue
     - Yellow
 
-    *Uses TextSymbols*
-    
     *Pre-setted keybindings*
 
     - Firefox
@@ -56,7 +57,8 @@
     - Screenshots (scrot)
     - VirtualBox
 
-    *Wallpapers with feh*
+    *Wallpapers with feh: to change image, edit argument of --bg-scale in feh with your image path (Background image)*
+
     *GIMP Auto-floating mode*
 
     *EDIT kblayout variable to your country code: (predef: it) such as - en, fr, de, es*
