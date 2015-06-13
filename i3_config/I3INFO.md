@@ -57,8 +57,12 @@
    - VirtualBox
 
    *Wallpapers with feh: to change image, edit argument of --bg-scale in feh with your image path (Background image)*
+   
    *GIMP Auto-floating mode*
+   
    *EDIT kblayout variable to your country code: (predef: it) such as - en, fr, de, es*
+   
    *No startup application*
+   
    *For beginners: read both config, I added some comments that may help you to make changes :)*
 
