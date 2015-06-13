@@ -31,6 +31,7 @@
    - PIDs 
    - BATTERY (/sys/class/power_supply/BAT1 = replace 1 with yours, read config)
    - TIME 
+ 
    All mixed with great text symbols :P
 
  
@@ -54,6 +55,7 @@
    - Power-off and reboot keybindings
    - Screenshots (scrot)
    - VirtualBox
+
    *Wallpapers with feh: to change image, edit argument of --bg-scale in feh with your image path (Background image)*
    *GIMP Auto-floating mode*
    *EDIT kblayout variable to your country code: (predef: it) such as - en, fr, de, es*
