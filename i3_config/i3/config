@@ -204,6 +204,9 @@ bindsym Mod1+Shift+v exec --no-startup-id virtualbox
 #Firefox
 bindsym Mod4+Shift+f exec --no-startup-id firefox
 
+#GIMP 
+bindsym Mod1+Shift+p exec --no-startup-id gimp
+
 #Spotify
 bindsym Mod4+Shift+m exec --no-startup-id spotify
 
@@ -226,7 +229,7 @@ bindsym Mod4+Shift+a exec --no-startup-id android-studio
 #bindsym Mod4+Shift+n exec --no-startup-id nautilus
 
 #Thunar
-bindsym Mod4+Shift+n exec --no-startup-id thunar
+bindsym Mod4+Shift+n exec --no-startup-id dbus-launch thunar
 
 #Mousepad
 bindsym Mod4+Shift+t exec --no-startup-id mousepad
