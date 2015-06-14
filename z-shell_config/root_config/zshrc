@@ -13,7 +13,7 @@ SAVEHIST=50
 ##
 
 ONLINEFROM="$(date +%H:%M) on $(date +%d/%m/%y)"
-rootTerminalBanner(){
+rootBanner(){
 	clear
 	printf "You are now \033[31m$USER\n\033[0m\033[32mEnjoy...\033[0m While you \033[31mcan do it!\033[0m :P\n\n"
 	printf "Machine's \033[33mHostname\033[0m: "; cat /etc/hostname
@@ -45,7 +45,8 @@ alias pacsearch="pacman -Ss "
 alias paclsearch="pacman -Qs "
 alias pacdetail="pacman -Si "
 alias pacldetail="pacman -Qi "
-alias pacupg="sudo pacman -Syu" 
+alias pacupg="pacman -Syu" 
+alias pacsync="pacman -Sy"
 ##Yaourt
 alias yrtget="yaourt -S "
 alias yrtrm="yaourt -R "
@@ -54,7 +55,10 @@ alias yrtsearch="yaourt -Ss "
 alias yrtupgall="yaourt -Syuua"
 #OpenVPN
 alias ovpn-tcp-ssl="/home/stefanozzz123/.ovpninittcpssl.sh"
+#ExtIP
+alias wanip="curl ipecho.net/plain"
 #
-rootTerminalBanner
+rootBanner
 printf "\033[32m *\033[0m Aliases are \033[32mloaded\033[0m\n"
-printf "\033[32m *\033[0m Terminal is \033[32mready\033[0m\n"
+printf "\033[32m *\033[0m \033[32mready\033[0m\n"
+
