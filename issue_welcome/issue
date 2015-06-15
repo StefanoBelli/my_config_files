@@ -1,0 +1,18 @@
+
+Great to see you :)
+
+**A sheep is saying**                                                    
+Welcome to Arch Linux, login shell: \l
++----------------------+
+|Time: \t              
+|Date: \d              
++----------------------+
+
+System Information
+******************************
++==> Architecture: \m        
++==> Linux kernel: \r        
++==> Hostname: \n            
++==> Connected users: \u     
+******************************
+
