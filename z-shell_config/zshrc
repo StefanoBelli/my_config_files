@@ -126,8 +126,6 @@ clear
 STARTDATE="$(date +%H:%M) on $(date +%d/%m/%y)"
 terminalBanner(){
 	clear 
-	figlet ArchLinux
-	printf "\033[34mA simple and lightweight Linux distribuition\033[0m." 
 	printf "\n\n\033[32mHello\033[0m: $USER"
 	printf "\nMachine's \033[33mhostname\033[0m: "; cat /etc/hostname
 	printf "Running \033[33mShell\033[0m: $SHELL\n"
