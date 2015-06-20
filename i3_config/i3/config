@@ -255,6 +255,12 @@ bindsym Mod1+Shift+e exec --no-startup-id gksu grub-customizer
 #Your Program
 #bindsym Mod1+Shift+z exec --no-startup-id your_program_exec
 
+##Keybindings to control volume##
+bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
+bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
+bindsym XF86AudioMute exec amixer -q set Master toggle
+
+
 ###########~~~~END OF KEYBINDINGS~~~~################
 
 #No automatic startup
