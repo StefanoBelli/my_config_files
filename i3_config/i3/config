@@ -252,6 +252,15 @@ bindsym Mod1+Shift+w exec --no-startup-id gksu gparted
 #GRUB Customizer
 bindsym Mod1+Shift+e exec --no-startup-id gksu grub-customizer
 
+#Shotwell
+bindsym Mod4+Shift+z exec --no-startup-id shotwell
+
+#HP Print
+bindsym Mod4+Shift+i exec --no-startup-id hp-print
+
+#HP Scan
+bindsym Mod4+Shift+h  exec --no-startup-id hp-scan
+
 #Your Program
 #bindsym Mod1+Shift+z exec --no-startup-id your_program_exec
 
