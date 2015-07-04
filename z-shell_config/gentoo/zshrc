@@ -82,6 +82,7 @@ PROMPT="%{$fg_bold[red]%}(%m)%{$reset_color%} %{$fg_bold[green]%}%n%{$reset_colo
 #Right prompt
 RPROMPT="%{$bg[yellow]%}%{$fg_bold[black]%}{return: %?}%{$reset_color%} %{$bg[blue]%}%{$fg_bold[yellow]%}[%l]%{$reset_color%}"
 
+alias esync="sudo emerge --sync "
 alias eupg="sudo emerge --ask --verbose --update --deep --with-bdeps=y --newuse @world"
 alias eget="sudo emerge --ask --verbose "
 alias edel="sudo emerge --unmerge "

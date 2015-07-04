@@ -15,4 +15,4 @@ alias ecleandep="sudo emerge --depclean && sudo revdep-rebuild || echo 'Somethin
 alias makeconf="vim /etc/portage/make.conf"
 alias zshconf="vim /root/.zshrc"
 alias wanip="curl ipecho.net/plain"
-
+alias esync="emerge --sync"
