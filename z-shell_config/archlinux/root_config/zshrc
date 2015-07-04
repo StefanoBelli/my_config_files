@@ -1,0 +1,61 @@
+#Load prompt
+autoload -U promptinit
+promptinit
+prompt elite2
+#Right prompt showing %h: call events
+RPROMPT="{return: %?}"
+##Syntax Hightlighting
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#Command history
+HISTFILE=~/.histfile
+HISTSIZE=50
+SAVEHIST=50
+##
+
+ONLINEFROM="$(date +%H:%M) on $(date +%d/%m/%y)"
+rootBanner(){
+	clear
+	printf "You are now \033[31m$USER\n\033[0m\033[32mEnjoy...\033[0m While you \033[31mcan do it!\033[0m :P\n\n"
+	printf "Machine's \033[33mHostname\033[0m: "; cat /etc/hostname
+	printf "Running \033[33mKernel\033[0m: $(uname -s -r)\nRunning \033[33mShell\033[0m: $SHELL\n\n"
+	printf "\033[34m * \033[0mShell online from: \033[34m$ONLINEFROM\033[0m\n"
+}
+##
+
+#Aliases
+##systemd
+alias sdenable="systemctl enable "
+alias sdrestart="systemctl restart "
+alias sddisable="systemctl disable "
+alias sdstart="systemctl start "
+alias sdstop="systemctl stop "
+alias sdstatus="systemctl status "
+alias bootime="systemd-analyze time"
+alias bootblame="systemd-analyze blame"
+##Pacman
+alias pacget="pacman -S "
+alias pacrm="pacman -R "
+alias pacrmall="pacman -Rsn "
+alias pacdbopt="pacman-db-upgrade; pacman-optimize"
+alias pacrmwdep="pacman -Rsndd "
+alias pacclean="pacman -Scc "
+alias pacsearch="pacman -Ss "
+alias paclsearch="pacman -Qs "
+alias pacdetail="pacman -Si "
+alias pacldetail="pacman -Qi "
+alias pacupg="pacman -Syu" 
+alias pacsync="pacman -Sy"
+##Yaourt
+alias yrtget="yaourt -S "
+alias yrtrm="yaourt -R "
+alias yrtrmall="yaourt -Rsn "
+alias yrtsearch="yaourt -Ss "
+alias yrtupgall="yaourt -Syuua"
+#OpenVPN
+alias ovpn-tcp-ssl="/home/stefanozzz123/.ovpninittcpssl.sh"
+#ExtIP
+alias wanip="curl ipecho.net/plain"
+#
+rootBanner
+printf "\033[32m *\033[0m \033[32mReady\033[0m\n"
+

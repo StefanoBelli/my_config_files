@@ -1,0 +1,179 @@
+# Path to your oh-my-zsh installation.
+export ZSH=/home/stefanozzz123/.oh-my-zsh
+export TERM="xterm-256color"
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to "random", it'll load a random theme each
+# time that oh-my-zsh is loaded.
+ZSH_THEME="clean"
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+HIST_STAMPS="dd/mm/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git)
+
+# User configuration
+
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
+# export MANPATH="/usr/local/man:$MANPATH"
+
+source $ZSH/oh-my-zsh.sh
+
+# You may need to manually set your language environment
+export LANG=it_IT.UTF-8
+
+# Preferred editor for local and remote sessions
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='nano'
+fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/dsa_id"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+#Bullet Train theme
+BULLETTRAIN_PROMPT_CHAR="\$"
+BULLETTRAIN_EXIT_SHOW="true"
+BULLETTRAIN_TIME_BG="white"
+BULLETTRAIN_IS_SSH_CLIENT="true"
+BULLETTRAIN_CONTEXT_SHOW="true"
+BULLETTRAIN_CONTEXT_BG="green"
+BULLETTRAIN_CONTEXT_FG="black"
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=50
+SAVEHIST=50
+setopt appendhistory autocd beep nomatch
+unsetopt extendedglob
+bindkey -e
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename '/home/stefanozzz123/.zshrc'
+zstyle ':completion:*' menu select
+setopt completealiases
+
+autoload -U compinit
+compinit
+# End of lines added by compinstall
+export EDITOR="vim"
+[[ -n "${key[PageUp]}"   ]]  && bindkey  "${key[PageUp]}"    history-beginning-search-backward
+[[ -n "${key[PageDown]}" ]]  && bindkey  "${key[PageDown]}"  history-beginning-search-forward
+
+##Prompt Configuration##
+autoload -U promptinit
+promptinit
+
+#Right prompt showing
+#        [cmd counter](pts/tty shell){program exiting code} #
+RPROMPT="[%h](%l){return: %?}"
+
+##Syntax Hightlighting
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+
+##Small banner
+#         <Hour:Minutes>      <Day/Month/Year> #
+STARTDATE="$(date +%H:%M) on $(date +%d/%m/%y)"
+terminalBanner(){
+	clear
+	printf "\033[32mHello\033[0m: $USER"
+	printf "\nMachine's \033[33mhostname\033[0m: "; cat /etc/hostname
+	printf "Running \033[33mShell\033[0m: $SHELL\n"
+	printf "Running \033[33mKernel\033[0m: $(uname -s -r)\n\n"
+	printf "\033[34m *\033[0m Shell online from: \033[34m$STARTDATE\033[0m\n"
+}
+##
+
+#Aliases
+##systemd
+alias sdenable="sudo systemctl enable "
+alias sdrestart="sudo systemctl restart "
+alias sddisable="sudo systemctl disable "
+alias sdstart="sudo systemctl start "
+alias sdstop="sudo systemctl stop "
+alias sdstatus="sudo systemctl status "
+alias bootime="systemd-analyze time"
+alias bootblame="systemd-analyze blame"
+##Pacman
+alias pacsync="sudo pacman -Sy"
+alias pacget="sudo pacman -S "
+alias pacrm="sudo pacman -R "
+alias pacrmall="sudo pacman -Rsn "
+alias pacdbopt="sudo pacman-db-upgrade; sudo pacman-optimize"
+alias pacrmwdep="sudo pacman -Rsndd "
+alias pacclean="sudo pacman -Scc "
+alias pacsearch="pacman -Ss "
+alias paclsearch="pacman -Qs "
+alias pacdetail="pacman -Si "
+alias pacldetail="pacman -Qi "
+alias pacupg="sudo pacman -Syu" 
+##Yaourt
+alias yrtget="yaourt -S "
+alias yrtrm="yaourt -R "
+alias yrtrmall="yaourt -Rsn "
+alias yrtsearch="yaourt -Ss "
+alias yrtupgall="yaourt -Syuua"
+alias yrtupg="yaourt -Syu"
+#Check External IP 
+alias wanip="curl ipecho.net/plain"
+#OpenVPN
+alias ovpn-tcp-ssl="/home/stefanozzz123/.ovpninittcpssl.sh"
+#
+terminalBanner
+printf "\033[32m *\033[0m \033[32mReady\033[0m\n"
+
+#minecraft()
+#{
+#	printf "\033[32m*\033[0m Launching Minecraft...\n"
+#	java -jar /home/stefanozzz123/.bin/minecraft.jar
+#	clear
+#	printf "\n\033[34m*\033[0m Bye!\n"
+#}
