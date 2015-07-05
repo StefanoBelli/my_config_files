@@ -1,6 +1,21 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/home/stefanozzz123/.oh-my-zsh
 
+#HISTFILE
+HISTFILE=$HOME/.zsh_hist
+HISTSIZE=50
+SAVEHIST=30
+setopt appendhistory autocd beep nomatch
+unsetopt extendedglob
+bindkey -e
+# End of lines configured by zsh-newuser-install
+# # The following lines were added by compinstall
+zstyle :compinstall filename '/home/stefanozzz123/.zshrc'
+zstyle ':completion:*' menu select
+setopt completealiases
+#
+autoload -U compinit
+compinit
 # Uncomment the following line to use case-sensitive completion.
 CASE_SENSITIVE="true"
 
@@ -78,8 +93,7 @@ export ARCHFLAGS="-O2 -pipe -march=native -mtune=native"
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 #Left prompt
-PROMPT="%{$fg_bold[red]%}(%m)%{$reset_color%} %{$fg_bold[green]%}%n%{$reset_color%} on %{$fg_bold[blue]%}%~%{$reset_color%} %{$fg_bold[yellow]%}➜ %{$reset_color%}"
-#Right prompt
+PROMPT="%{$fg_bold[red]%}(%m)%{$reset_color%} %{$fg_bold[green]%}%n%{$reset_color%} on %{$fg_bold[blue]%}%~%{$reset_color%} %{$fg_bold[yellow]%}➜ %{$reset_color%} "
 RPROMPT="%{$bg[yellow]%}%{$fg_bold[black]%}{return: %?}%{$reset_color%} %{$bg[blue]%}%{$fg_bold[yellow]%}[%l]%{$reset_color%}"
 
 alias esync="sudo emerge --sync "
@@ -94,6 +108,10 @@ alias zshconf="vim $HOME/.zshrc"
 alias awcfg="vim $HOME/.config/awesome/rc.lua"
 alias awthmcfg="sudo vim /usr/share/awesome/themes/default/theme.lua"
 alias wanip="curl ipecho.net/plain"
+alias rcadd="sudo rc-update add "
+alias rcdel="sudo rc-update del "
+alias rcshow="sudo rc-update -v show"
 
 #My GitHub repository
 mygithub="https://github.com/StefanoBelli"
+
