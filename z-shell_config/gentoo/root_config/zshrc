@@ -5,6 +5,21 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 PROMPT="(%m) %{$fg[red]%}%n %~ %#> "
 RPROMPT="{return: %?}[%l]"
 
+#HISTFILE
+HISTFILE=$HOME/.zsh_hist
+HISTSIZE=10
+SAVEHIST=5
+#setopt appendhistory autocd beep nomatch
+unsetopt extendedglob
+bindkey -e
+## End of lines configured by zsh-newuser-install
+## # The following lines were added by compinstall
+zstyle :compinstall filename '/home/stefanozzz123/.zshrc'
+zstyle ':completion:*' menu select
+setopt completealiases
+##
+autoload -U compinit
+compinit
 #aliases
 alias eget="emerge --ask --verbose "
 alias esearch="emerge --search "
@@ -16,3 +31,6 @@ alias makeconf="vim /etc/portage/make.conf"
 alias zshconf="vim /root/.zshrc"
 alias wanip="curl ipecho.net/plain"
 alias esync="emerge --sync"
+alias rcadd="rc-update add "
+alias rcdel="rc-update del "
+alias rcshow="rc-update -v show"
