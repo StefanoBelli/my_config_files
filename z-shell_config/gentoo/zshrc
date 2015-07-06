@@ -93,7 +93,8 @@ export ARCHFLAGS="-O2 -pipe -march=native -mtune=native"
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 #Left prompt
-PROMPT="%{$fg_bold[red]%}(%m)%{$reset_color%} %{$fg_bold[green]%}%n%{$reset_color%} on %{$fg_bold[blue]%}%~%{$reset_color%} %{$fg_bold[yellow]%}➜ %{$reset_color%} "
+PROMPT="%{$fg_bold[red]%}(%m)%{$reset_color%} %{$fg_bold[green]%}%n%{$reset_color%} on %{$fg_bold[blue]%}%~%{$reset_color%} %{$fg[green]%}%#%{$reset_color%} "
+
 RPROMPT="%{$bg[yellow]%}%{$fg_bold[black]%}{return: %?}%{$reset_color%} %{$bg[blue]%}%{$fg_bold[yellow]%}[%l]%{$reset_color%}"
 
 alias esync="sudo emerge --sync "
