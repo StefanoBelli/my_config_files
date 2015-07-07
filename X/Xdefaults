@@ -1,0 +1,20 @@
+! rxvt-unicode
+urxvt*loginShell:true
+urxvt*inheritPixmap: true
+urxvt*tintColor: white
+urxvt*transparent:true
+urxvt*shading:40
+URxvt.depth: 35
+urxvt*background:Black
+urxvt*foreground:Red
+urxvt*scrollBar:false
+urxvt*scrollBar_right:false
+urxvt*transpscrollbar:false
+urxvt*saveLines:1000
+URxvt.perl-ext-common: default,matcher
+URxvt.matcher.button: 1
+#URxvt*font: xft:Terminus:size=10
+URxvt*font: xft:Monaco:size=10:antialias=true
+URxvt.iconFile: /home/stefanozzz123/Immagini/Terminal-icon.png
+URxvt.colorUL: #4682B4
+
