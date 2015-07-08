@@ -1,20 +1,27 @@
 ! rxvt-unicode
 urxvt*loginShell:true
 urxvt*inheritPixmap: true
-urxvt*tintColor: white
+urxvt*tintColor: red
 urxvt*transparent:true
 urxvt*shading:40
-URxvt.depth: 35
-urxvt*background:Black
-urxvt*foreground:Red
+URxvt.depth: 50
+urxvt*background:Red
+urxvt*foreground:White
 urxvt*scrollBar:false
 urxvt*scrollBar_right:false
 urxvt*transpscrollbar:false
 urxvt*saveLines:1000
-URxvt.perl-ext-common: default,matcher
+URxvt.perl-ext-common: default,matcher,clipboard,url-select
 URxvt.matcher.button: 1
 #URxvt*font: xft:Terminus:size=10
 URxvt*font: xft:Monaco:size=10:antialias=true
 URxvt.iconFile: /home/stefanozzz123/Immagini/Terminal-icon.png
 URxvt.colorUL: #4682B4
+URxvt.iso14755: False
+URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.url-launcher: /usr/bin/firefox
+URxvt.keysym.Shift-Control-N: perl:url-select:select_next
+URxvt.url-select.launcher: /usr/bin/xdg-open
+URxvt.url-select.underline: true
 
