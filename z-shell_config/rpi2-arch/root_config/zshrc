@@ -1,0 +1,20 @@
+#Syntax Highlighting
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+#Prompt and right prompt
+PROMPT="(%m) %n %~ %#> "
+RPROMPT="{return: %?}[%l]"
+
+#HISTFILE
+HISTFILE=$HOME/.zsh_hist
+HISTSIZE=10
+SAVEHIST=5
+#setopt appendhistory autocd beep nomatch
+unsetopt extendedglob
+bindkey -e
+## End of lines configured by zsh-newuser-install
+
+##
+autoload -U compinit
+compinit
+
