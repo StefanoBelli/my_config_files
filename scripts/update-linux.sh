@@ -15,19 +15,16 @@ update-linux(){
 					 ("y")
 								printf "\033[32m*\033[0m Compiling source...\n"
 								make -j3
+								sudo make modules_install; sudo make headers_install
 								printf "\033[32m*\033[0m Copying kernel...\n"
 								sudo cp arch/x86/boot/bzImage /boot/vmlinuz-linux_git_build
 								printf "\033[32m*\033[0m Updating GRUB...\n"
-								sudo grub2-mkconfig -o /boot/grub/grub.cfg
+								sudo grub-mkconfig -o /boot/grub/grub.cfg
 								exit 0
 								break;;
 					 ("n")
 								printf "\033[31m*\033[0m Bye. "
 								exit 1;;
-					 (*)
-								echo "Non-valid choice..."
-								exit 2
-								break;;
 			esac
  }
 update-linux
