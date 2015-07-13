@@ -1,9 +1,9 @@
-#Load prompt
-autoload -U promptinit
-promptinit
-prompt elite2
+export TERM="xterm-256color"
+export EDITOR="vim"
+
 #Right prompt showing %h: call events
-RPROMPT="{return: %?}"
+PROMPT="%d %# > "
+RPROMPT="[%l]{return: %?}"
 ##Syntax Hightlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 #Command history
@@ -51,8 +51,6 @@ alias yrtrm="yaourt -R "
 alias yrtrmall="yaourt -Rsn "
 alias yrtsearch="yaourt -Ss "
 alias yrtupgall="yaourt -Syuua"
-#OpenVPN
-alias ovpn-tcp-ssl="/home/stefanozzz123/.ovpninittcpssl.sh"
 #ExtIP
 alias wanip="curl ipecho.net/plain"
 #
