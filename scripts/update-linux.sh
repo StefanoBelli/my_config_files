@@ -15,6 +15,9 @@ update-linux(){
 					 ("y")
 								printf "\033[32m*\033[0m Compiling source...\n"
 								make -j3
+								echo -n "Press any key to install modules, headers and update GRUB..."
+								read
+								echo "Don't leave... It will take a while..."
 								sudo make modules_install; sudo make headers_install
 								printf "\033[32m*\033[0m Copying kernel...\n"
 								sudo cp arch/x86/boot/bzImage /boot/vmlinuz-linux_git_build
@@ -24,7 +27,8 @@ update-linux(){
 								break;;
 					 ("n")
 								printf "\033[31m*\033[0m Bye. "
-								exit 1;;
+								break;;
 			esac
+		  exit 0
  }
 update-linux
