@@ -1,4 +1,3 @@
-colorscheme molokai
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
@@ -9,7 +8,7 @@ set backspace=indent,eol,start
 if has("vms")
   set nobackup		" do not keep a backup file, use versions instead
 else
-  set backup		" keep a backup file (restore to previous version)
+  set nobackup		" keep a backup file (restore to previous version)
   set undofile		" keep an undo file (undo changes after closing)
 endif
 set history=50		" keep 50 lines of command line history
