@@ -20,7 +20,7 @@ then
        exit 0
 else
        printf "\033[31m  * \033[0m Backup directory does not exists!!\nI will make it..."
-       mkdir /home/$USER/backup
+       mkdir $OUT_FILE_COMP_DIR
        exit 1
 fi
 exit 0
