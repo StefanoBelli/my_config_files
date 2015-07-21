@@ -176,6 +176,9 @@ bar {
 }
 
 set $browser firefox
+set $gui_editor leafpad
+set $videoplayer mplayer
+set $webcamsoftware guvcview
 
 #
 # User Code 
@@ -236,23 +239,20 @@ bindsym Mod4+Shift+a exec --no-startup-id android-studio
 #Thunar
 bindsym Mod4+Shift+n exec --no-startup-id dbus-launch thunar
 
-#Mousepad
-bindsym Mod4+Shift+t exec --no-startup-id mousepad
+#GUI Editor
+bindsym Mod4+Shift+t exec --no-startup-id $gui_editor
 
-#VLC
-bindsym Mod4+Shift+v exec --no-startup-id vlc
+#VidPlayer
+bindsym Mod4+Shift+v exec --no-startup-id $videoplayer
 
 #LibreOffice
 bindsym Mod4+Shift+b exec --no-startup-id libreoffice
 
 #GuvcView
-bindsym Mod4+Shift+w exec --no-startup-id guvcview
+bindsym Mod4+Shift+w exec --no-startup-id $webcamsoftware
 
 #GParted
 bindsym Mod1+Shift+w exec --no-startup-id gksu gparted
-
-#GRUB Customizer
-bindsym Mod1+Shift+e exec --no-startup-id gksu grub-customizer
 
 #Shotwell
 bindsym Mod4+Shift+z exec --no-startup-id shotwell
