@@ -1,5 +1,7 @@
 *I3INFo.md*
 
+*Tested with ArchLinux, not working with Gentoo...(w/ this config)*
+
 #This is my i3 DE configuraton#
 ===============
 

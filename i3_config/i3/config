@@ -175,6 +175,8 @@ bar {
 										
 }
 
+set $browser firefox
+
 #
 # User Code 
 # $mod+Shift+r = reload config
@@ -187,7 +189,7 @@ exec setxkbmap $kblayout
 
 #Set wallpaper
 #move your favourite wallpaper to $HOME/.i3 and replace intelcpu.jpg with its name :) 
-exec feh --bg-scale $HOME/.i3/linux_kernel.jpg
+exec feh --bg-scale $HOME/.i3/anarchy.jpg
 
 #DBUs
 exec dbus-launch
@@ -204,8 +206,8 @@ bindsym Mod1+Shift+r exec --no-startup-id reboot
 #VirtualBox
 bindsym Mod1+Shift+v exec --no-startup-id virtualbox
 
-#Firefox
-bindsym Mod4+Shift+f exec --no-startup-id firefox
+#Browser
+bindsym Mod4+Shift+f exec --no-startup-id $browser
 
 #GIMP 
 bindsym Mod1+Shift+p exec --no-startup-id gimp
