@@ -175,6 +175,7 @@ bar {
 										
 }
 
+set $wallpaper $HOME/.i3/newarchback.jpg
 set $browser firefox
 set $gui_editor leafpad
 set $videoplayer mplayer
@@ -192,7 +193,7 @@ exec setxkbmap $kblayout
 
 #Set wallpaper
 #move your favourite wallpaper to $HOME/.i3 and replace intelcpu.jpg with its name :) 
-exec feh --bg-scale $HOME/.i3/anarchy.jpg
+exec feh --bg-scale $wallpaper
 
 #DBUs
 exec dbus-launch
