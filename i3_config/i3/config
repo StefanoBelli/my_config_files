@@ -61,7 +61,7 @@ set $topbarfont Monaco
 set $bottombarfont Monaco
 #Fontsize
 set $mainfontsize 7
-set $topbarfontsize 7
+set $topbarfontsize 8
 set $bottombarfontsize 8
 #Poweroff, reboot
 set $poweroffcmd poweroff
