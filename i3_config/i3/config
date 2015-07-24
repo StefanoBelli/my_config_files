@@ -217,7 +217,7 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-	status_command i3status
+	status_command i3status -c /etc/i3status_top.conf
 	#User code
 	modifier Mod4
 	hidden_state show
@@ -241,13 +241,24 @@ bar {
 # (Bottom Statusbar)
 # [More Infos]
 
-#bar {
-#	status_command i3status -c /etc/i3status_bottom.conf
-#	workspace_button no
-#	position bottom
-#	hidden_state show
-#   font pango:$bottombarfont $bottombarfontsize 
-#}
+bar {
+	status_command i3status -c /etc/i3status_bottom.conf
+	position bottom
+	hidden_state show
+	font pango:$bottombarfont $bottombarfontsize 
+	id bottomBar
+	separator_symbol "♦"
+	workspace_buttons no
+	colors {
+		background #0000A0
+		separator #FFFF99
+		statusline #FFCC00
+		# <mode_workspace>|<border><backg.><text> 
+		# #active_workspace   #FFCC00 #FFCC00 #ffffff
+		#inactive_workspace #333333 #222222 #888888
+		focused_workspace #0000FF #FFCC00 #0000FF
+	}
+}
 
 #edit $kblayout at top with yours
 exec setxkbmap $kblayout 

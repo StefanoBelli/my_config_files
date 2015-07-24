@@ -1,5 +1,7 @@
 *I3INFo.md*
 
+**NOW THIS CONFIG REQUIRES 2 BARS... COPY AND PASTE THE i3status/ CONFIGURATIONS IN /etc WITH THEIR ORIGINAL NAME**
+
 *Tested with ArchLinux, not working with Gentoo...(w/ this config)*
 
 #This is my i3 DE configuraton#
