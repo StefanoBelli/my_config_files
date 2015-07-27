@@ -1,6 +1,5 @@
 #! /usr/bin/env python3 
 
-#Moduli ( solo il necessario ;) )
 from sys import exit
 from sys import argv
 from smtplib import SMTPAuthenticationError
@@ -10,7 +9,6 @@ from smtplib import SMTPServerDisconnected
 from smtplib import SMTPConnectError
 from ssl import SSLError
 
-#Variabili
 arg_counter = len(argv)
 smtp_server = ""
 get_arg_email = ""
@@ -20,7 +18,6 @@ get_arg_dest = ""
 get_mail_text = ""
 get_arg_port = ""
 
-#Verifica degli argomenti (len(argv)), si lo so avrei anche potuto aprire un try-except IndexError
 if arg_counter == 6:
         get_arg_email = argv[1]
         get_arg_passwd = argv[2]
@@ -32,7 +29,6 @@ else:
     print ("Usage: [mailsender.py] <email> <passwd> <serveraddr> <port_to_use> <destination>")
     exit(1)
 
-#Qui si scrive il corpo del messaggio
 try:
     get_mail_text = input("Email body: ")
     while get_mail_text == "" or get_mail_text == " ":
@@ -41,7 +37,6 @@ except KeyboardInterrupt:
     print("\n\033[33mUser exited (^C)\033[0m\n")
     exit(127)
 
-#Funzione che invia l'email
 def sendMyEmail(srv, srvport, serveraddr, my_email, my_passwd, recv, message):
     print ("\033[34m*\033[0m Server Address:\033[32m %s\033[0m " %serveraddr)
     print ("\033[34m*\033[0m Email:\033[32m %s \033[0m " %my_email)
@@ -54,8 +49,6 @@ def sendMyEmail(srv, srvport, serveraddr, my_email, my_passwd, recv, message):
     srv.quit()
     print ("\033[33m*\033[0m Ending the connection with the server...\n")
 
-#Blocco try-except (con piu' eccezioni)
-#per sendMyEmail(...)
 try:
     sendMyEmail(smtp_server, port_to_use, get_arg_serveraddr, get_arg_email, get_arg_passwd, get_arg_dest, get_mail_text)
 except SMTPAuthenticationError:
@@ -85,7 +78,6 @@ except KeyboardInterrupt:
     print("\n\033[33mUser exited (^C)\033[0m\n")
     exit(127)
 
-#Se tutto e' andato bene
 print("\033[32mSeems that all went good...\n\033[0m\033[33mExiting...\033[0m\n")
 exit(0)
 
