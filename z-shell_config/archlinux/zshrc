@@ -1,3 +1,4 @@
+#Begin of ZSH Configuration
 export ZSH="/home/stefanozzz123/.oh-my-zsh"
 export TERM="xterm-256color"
 
@@ -104,17 +105,42 @@ alias yrtupg="yaourt -Syu"
 alias wanip="curl ipecho.net/plain"
 #i3
 alias i3cfg="vim /home/stefanozzz123/.i3/config"
-alias i3scfg="sudo vim /etc/i3status.conf"
+alias i3stcfg="sudo vim /etc/i3status_top.conf"
+alias i3sbcfg="sudo vim /etc/i3status_bottom.conf"
+#RaspPi
+alias pissh="ssh 192.168.2.101 -p 22 -l "
 
 terminalBanner
 printf "\033[32m *\033[0m \033[32mReady\033[0m\n"
 
-#minecraft()
-#{
-#	printf "\033[32m*\033[0m Launching Minecraft...\n"
-#	java -jar /home/stefanozzz123/.bin/minecraft.jar
-#	clear
-#	printf "\n\033[34m*\033[0m Bye!\n"
-#}
-#
+minecraft()
+{
+	printf "\033[32m*\033[0m Launching Minecraft...\n"
+	java -jar /home/stefanozzz123/.bin/minecraft.jar
+	clear
+	printf "\n\033[34m*\033[0m Bye!\n"
+}
+
+scr()
+{
+		  if [[ $1 == "start" ]];
+		  then
+					 printf "\033[32m*\033[0m Starting auto mode.... HDMI1 should work now.\n"
+					 xrandr --auto
+					 if [[ $2 == "split" ]];
+					 then
+
+								xrandr --output HDMI1 --right-of LVDS1 & 
+					 elif [[ $2 == "" ]];
+					 then
+								echo ""
+					 fi
+		  fi
+		  if [[ $1 == "stop" ]];
+		  then
+					 printf "\033[31m*\033[0m Stopping output to HDMI1\n"
+					 xrandr --output HDMI1 --off
+		  fi
+}
+#End of ZSH configuration
 
