@@ -2,17 +2,11 @@
 export ZSH="/home/stefanozzz123/.oh-my-zsh"
 export TERM="xterm-256color"
 
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
-# export MANPATH="/usr/local/man:$MANPATH"
-
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
-export LANG=it_IT.UTF-8
-
 export EDITOR="vim" 
-
-export ARCHFLAGS="-O2 -pipe -march=native -mtune=native"
+export ARCHFLAGS="-O3 -pipe -march=native -mtune=native -Wall "
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
@@ -31,7 +25,7 @@ autoload -U compinit
 compinit
 # End of lines added by compinstall
 export EDITOR="vim"
-export PATH="/usr/lib/ccache/bin:/opt/bin:/usr/bin/eclipse:/usr/bin/sublime_text_2:/bin:/usr/bin"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/lib/ccache/bin:/opt/bin:/usr/bin/eclipse:/usr/bin/sublime_text_2:/bin:/usr/bin:${PATH}"
 export LDPATH="${LDPATH}"
 export MANPATH="${MANPATH}"
 export INFODIR="${INFODIR}"
@@ -51,8 +45,8 @@ PROMPT="%{$fg_bold[red]%}(%m)%{$reset_color%} %{$fg_bold[green]%}%n%{$reset_colo
 RPROMPT="%{$bg[yellow]%}%{$fg_bold[black]%}{return: %?}%{$reset_color%} %{$bg[blue]%}%{$fg_bold[yellow]%}[%l]%{$reset_color%}"
 
 ##Prompt Configuration##
-autoload -U promptinit
-promptinit
+#autoload -U promptinit
+#promptinit
 
 ##Syntax Hightlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -61,7 +55,8 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 ##Small banner
 #         <Hour:Minutes>      <Day/Month/Year> #
 STARTDATE="$(date +%H:%M) on $(date +%d/%m/%y)"
-terminalBanner(){
+banner(){
+	#Next: CPU, RAM, Distro release...
 	clear
 	printf "\033[32mHello\033[0m: $USER"
 	printf "\nMachine's \033[33mhostname\033[0m: "; cat /etc/hostname
@@ -110,8 +105,7 @@ alias i3sbcfg="sudo vim /etc/i3status_bottom.conf"
 #RaspPi
 alias pissh="ssh 192.168.2.101 -p 22 -l "
 
-terminalBanner
-printf "\033[32m *\033[0m \033[32mReady\033[0m\n"
+banner
 
 minecraft()
 {
