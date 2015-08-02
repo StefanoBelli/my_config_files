@@ -35,7 +35,7 @@ cp arch/x86_64/boot/bzImage /boot/vmlinuz-kernel #copies the compressed kernel i
  - default Input/Output: deadline
  - Buffer Overflow Vulnerability Detector: regular
  - 32-bit executable files support enabled
- - SELinux enabled (default), support for AppArmor enabled
+ - AppArmor enabled as default MAC (Mandatory Access Control), SELinux !!DISABLED!!
  - .config.gz in /proc filesystem access enabled
  - Minimum debug level
  - Virtualization support (Modularized for Intel, no support for AMD) 
