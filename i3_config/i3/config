@@ -49,20 +49,22 @@
 #Change this values
 set $kblayout it 
 set $mod Mod4
-set $wallpaper $HOME/.i3/newarchback.jpg
+set $wallpaper $HOME/.i3/arch_oxygen_wp.png
 set $browser firefox
 set $gui_editor leafpad
 set $mediaplayer mplayer
 set $webcamsoftware guvcview
 #Edit this value to change the window title font
-set $mainfont Monaco
+set $mainfont Hermit
 #Edit this value to change the i3bar(top, bottom)
-set $topbarfont Monaco
-set $bottombarfont Monaco
+set $topbarfont Hermit
+set $bottombarfont Hermit
+set $generalfont Hermit
 #Fontsize
 set $mainfontsize 7
-set $topbarfontsize 8
-set $bottombarfontsize 8
+set $topbarfontsize 7
+set $bottombarfontsize 7
+set $generalfontsize 7
 #Poweroff, reboot
 set $poweroffcmd poweroff
 set $rebootcmd reboot
@@ -77,7 +79,7 @@ font pango:$mainfont $mainfontsize
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono 8
+font pango:$generalfont $generalfontsize
 
 
  ########DO NOT EDIT########
@@ -227,13 +229,13 @@ bar {
 	separator_symbol "♦"
 	workspace_buttons yes
 	colors {
-		background #0000A0
-		separator #FFFF99
-		statusline #FFCC00
+		background #303030
+		separator #FFFFFF
+		statusline #00FFFF
 		# <mode_workspace>|<border><backg.><text> 
 		# #active_workspace   #FFCC00 #FFCC00 #ffffff
-		#inactive_workspace #333333 #222222 #888888
-		focused_workspace #0000FF #FFCC00 #0000FF
+		inactive_workspace #333333 #222222 #888888
+		focused_workspace #00FFFF #303030 #00FFFF
 	}									
 }
 
@@ -250,13 +252,9 @@ bar {
 	separator_symbol "♦"
 	workspace_buttons no
 	colors {
-		background #0000A0
-		separator #FFFF99
-		statusline #FFCC00
-		# <mode_workspace>|<border><backg.><text> 
-		# #active_workspace   #FFCC00 #FFCC00 #ffffff
-		#inactive_workspace #333333 #222222 #888888
-		focused_workspace #0000FF #FFCC00 #0000FF
+		background #303030
+		separator #FFFFFF
+		statusline #00FFFF
 	}
 }
 
@@ -306,8 +304,8 @@ bindsym Mod4+Shift+d exec --no-startup-id eclipse
 #Android Studio
 bindsym Mod4+Shift+a exec --no-startup-id android-studio
 
-#Nautilus
-#bindsym Mod4+Shift+n exec --no-startup-id nautilus
+#Atom Text Editor
+bindsym Mod1+Shift+n exec --no-startup-id atom   
 
 #Thunar
 bindsym Mod4+Shift+n exec --no-startup-id dbus-launch $filemanager
@@ -361,12 +359,12 @@ hide_edge_borders none
 for_window [class="gimp"] floating enable
 #for_window [class="your_program"] floating enable
 
-#Colors
+#Colors (WINDOW)
 #<client.mode>          <border> <backg> <txt>  <indicator> 
-client.focused           #FFCC00 #0000CC #FFCC00 #FFCC00
+client.focused           #00FFFF #303030 #00FFFF #00FFFF
 #client.focused_inactive  #780000 #5f676a #ffffff #000066
-client.unfocused         #0000CC #CCCC33 #0000CC #FF0000
-client.urgent            #FF0000 #FFCC00 #00FF00 #FF0000
+client.unfocused         #C0C0C0 #303030 #FFFFFF #00FFFF
+client.urgent            #FF0000 #CCFF33 #FF0000 #FF0000
 #client.placeholder       #000000 #0c0c0c #ffffff #000000
 
 #popup enabled in fullscreen
