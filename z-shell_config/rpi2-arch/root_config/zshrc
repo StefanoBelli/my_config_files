@@ -1,6 +1,3 @@
-#Syntax Highlighting
-source /usr/share/zsh/plugins/zsh-syntax-highlighting.zsh
-
 #Prompt and right prompt
 PROMPT="(%m) %n %~ %#> "
 RPROMPT="{return: %?}[%l]"
@@ -14,7 +11,7 @@ unsetopt extendedglob
 bindkey -e
 ## End of lines configured by zsh-newuser-install
 
-##
-autoload -U compinit
-compinit
+export EDITOR="vim"
+
+alias ovpnsrv="/usr/bin/openvpn --cd /etc/openvpn --config /etc/openvpn/server.conf --daemon openvpn@/etc/openvpn/server.conf --writepid /var/run/ovpn_srv.pid"
 
