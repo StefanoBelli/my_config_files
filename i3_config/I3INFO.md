@@ -7,8 +7,13 @@
 #This is my i3 DE configuraton#
 ===============
 
+Clean:
+
 ![i3 Screenshot](i3_screenshot.png)
-Format: ![Alt text](Image: screenshot)
+
+Dirty:
+
+![i3 dirty screenshot](i3_dirty_screenshot.png)
 
   *Find*
    
@@ -27,6 +32,15 @@ Format: ![Alt text](Image: screenshot)
    - SSHD : sshd.pid (/var/run)
    - HTTPD: httpd.pid (/var/run/httpd)
    - FTPD : ftpd.pid (/var/run)
+	- MOCP : pid ($HOME/.moc)
+
+	*I3Status will also check that some files exists*
+	- CUPS 
+	- Webcams : /dev/video0 (Linux-kernel devices)
+	- Pacman Package Manager Lock Database: db.lck 
+	- Printer : /dev/usb/lp0 (Linux-kernel devices)
+	- Audio device : /dev/audio (Linux-kernel devices)
+
    
    *I3Status "checks"*
    - Wireless / Ethernet
@@ -36,15 +50,30 @@ Format: ![Alt text](Image: screenshot)
    - PIDs 
    - BATTERY (/sys/class/power_supply/BAT1 = replace 1 with yours, read config)
    - TIME 
- 
+	- PATH
+	- Load
+	- IPv6
+
+	(2 bars)
+
    All mixed with great text symbols :P
 
  
    *Main colors for I3*
    
+	[Previously]
+
    - Blue
    - Yellow
-   
+
+	[Now]
+
+	- Grey
+	- Aquamarine 
+
+
+	**WARNING FOR KEYBINDINGS: I initialized some variables in i3 config file, you can choose many parameters**
+
    *Pre-setted keybindings*
    - Firefox
    - PopcornTime 
@@ -60,14 +89,8 @@ Format: ![Alt text](Image: screenshot)
    - Power-off and reboot keybindings
    - Screenshots (scrot)
    - VirtualBox
+	- Volume keys (XF86)
 
-   *Wallpapers with feh: to change image, edit argument of --bg-scale in feh with your image path (Background image)*
-   
-   *GIMP Auto-floating mode*
-   
-   *EDIT kblayout variable to your country code: (predef: it) such as - en, fr, de, es*
-   
-   *No startup application*
-   
-   *For beginners: read both config, I added some comments that may help you to make changes :)*
+	*GIMP Auto-floating mode*
+	*To change keyboard layout, change the variable in i3 config file*
 
