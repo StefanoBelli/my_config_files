@@ -7,7 +7,6 @@
 #This is my i3 DE configuraton#
 ===============
 
-*Credits for image: wallpaperswide.com*
 
   *Find*
    
