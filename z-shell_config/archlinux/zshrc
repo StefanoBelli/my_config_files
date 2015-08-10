@@ -103,7 +103,11 @@ alias i3cfg="vim /home/stefanozzz123/.i3/config"
 alias i3stcfg="sudo vim /etc/i3status_top.conf"
 alias i3sbcfg="sudo vim /etc/i3status_bottom.conf"
 #RaspPi
-alias pissh="ssh 192.168.2.101 -p 22 -l "
+alias pissh="ssh 192.168.2.110 -p 22 -l "
+alias piscan="ssh root@192.168.2.110 -p 22 scan "
+#OpenVPN to raspPi
+alias piovpnrem="sudo openvpn --config $HOME/Documenti/pivpnrem.ovpn --writepid /var/run/ovpn.pid"
+alias piovpnloc="sudo openvpn --config $HOME/Documenti/pivpn.ovpn --writepid /var/run/ovpn.pid"
 
 banner
 
@@ -136,5 +140,6 @@ scr()
 					 xrandr --output HDMI1 --off
 		  fi
 }
+
 #End of ZSH configuration
 
