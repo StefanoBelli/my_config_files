@@ -7,6 +7,8 @@
 #This is my i3 DE configuraton#
 ===============
 
+![i3 Screenshot](i3_screenshot.png)
+Format: ![Alt text](Image: screenshot)
 
   *Find*
    
