@@ -1,5 +1,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/home/stefanozzz123/.oh-my-zsh
+export TERM="xterm-256color"
 
 #HISTFILE
 HISTFILE=$HOME/.zsh_hist
@@ -17,7 +18,7 @@ setopt completealiases
 autoload -U compinit
 compinit
 # Uncomment the following line to use case-sensitive completion.
-CASE_SENSITIVE="true"
+CASE_SENSITIVE="false"
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
@@ -63,7 +64,6 @@ export INFODIR="${INFODIR}"
 export PAGER="less"
 export CONFIG_PROTECT="${CONFIG_PROTECT}"
 export CONFIG_PROTECT_MASK="${CONFIG_PROTECT_MASK}"
-export TERM="xterm-256color"
 export MANPATH="/usr/local/man:$MANPATH"
 
 #Oh my zsh script
@@ -75,7 +75,7 @@ source $ZSH/oh-my-zsh.sh
 export EDITOR="vim"
 
 # Compilation flags
-export ARCHFLAGS="-O2 -pipe -march=native -mtune=native"
+export ARCHFLAGS="-Wall -O3 -pipe -march=native -mtune=native"
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
@@ -92,6 +92,8 @@ export ARCHFLAGS="-O2 -pipe -march=native -mtune=native"
 #Syntax Highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+STARTDATE="$(date +%H:%M) on $(date +%d/%m/%y)"
+#banner here
 #Left prompt
 PROMPT="%{$fg_bold[red]%}(%m)%{$reset_color%} %{$fg_bold[green]%}%n%{$reset_color%} on %{$fg_bold[blue]%}%~%{$reset_color%} %{$fg[green]%}%#%{$reset_color%} "
 
@@ -116,3 +118,7 @@ alias rcshow="sudo rc-update -v show"
 #My GitHub repository
 mygithub="https://github.com/StefanoBelli"
 
+
+#minecraft()
+#scr()
+#
