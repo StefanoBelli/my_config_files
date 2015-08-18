@@ -18,7 +18,7 @@ setopt completealiases
 autoload -U compinit
 compinit
 # Uncomment the following line to use case-sensitive completion.
-CASE_SENSITIVE="false"
+#CASE_SENSITIVE="false"
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
@@ -57,7 +57,7 @@ HIST_STAMPS="dd/mm/yyyy"
 
 # User configuration
 
-export PATH="/usr/lib/ccache/bin:/opt/bin:/usr/bin/eclipse:/usr/bin/sublime_text_2:/bin:/usr/bin"
+export PATH="/usr/bin/telegram:/usr/lib/ccache/bin:/opt/bin:/usr/bin/eclipse:/usr/bin/sublime_text_2:/bin:/usr/bin"
 export LDPATH="${LDPATH}"
 export MANPATH="${MANPATH}"
 export INFODIR="${INFODIR}"
@@ -99,6 +99,16 @@ PROMPT="%{$fg_bold[red]%}(%m)%{$reset_color%} %{$fg_bold[green]%}%n%{$reset_colo
 
 RPROMPT="%{$bg[yellow]%}%{$fg_bold[black]%}{return: %?}%{$reset_color%} %{$bg[blue]%}%{$fg_bold[yellow]%}[%l]%{$reset_color%}"
 
+#systemd init system
+alias sdenable="sudo systemctl enable "
+alias sdrestart="sudo systemctl restart "
+alias sddisable="sudo systemctl disable "
+alias sdstart="sudo systemctl start "
+alias sdstop="sudo systemctl stop "
+alias sdstatus="sudo systemctl status "
+alias bootime="systemd-analyze time"
+alias bootblame="systemd-analyze blame"
+#Emerge - Portage interface
 alias esync="sudo emerge --sync "
 alias eupg="sudo emerge --ask --verbose --update --deep --with-bdeps=y --newuse @world"
 alias eget="sudo emerge --ask --verbose "
@@ -106,19 +116,70 @@ alias edel="sudo emerge --unmerge "
 alias ecleandep="sudo emerge --depclean && sudo revdep-rebuild || echo 'Something was wrong'"
 alias esearchdesc="emerge --searchdesc "
 alias esearch="emerge --search "
+#Make.conf link
 alias makeconf="sudo vim /etc/portage/make.conf"
+#ZSH
 alias zshconf="vim $HOME/.zshrc"
+#Awesome
 alias awcfg="vim $HOME/.config/awesome/rc.lua"
 alias awthmcfg="sudo vim /usr/share/awesome/themes/default/theme.lua"
+#External IP
 alias wanip="curl ipecho.net/plain"
+#OpenRC BSD-Style init system
 alias rcadd="sudo rc-update add "
 alias rcdel="sudo rc-update del "
 alias rcshow="sudo rc-update -v show"
+#RaspPi
+alias pissh="ssh 192.168.2.110 -p 22 -l "
+alias piscan="ssh root@192.168.2.110 -p 22 scan "
+#OpenVPN to raspPi
+alias piovpnrem="sudo openvpn --config $HOME/Documenti/pivpnrem.ovpn --writepid /var/run/ovpn.pid"
+alias piovpnloc="sudo openvpn --config $HOME/Documenti/pivpn.ovpn --writepid /var/run/ovpn.pid"
 
 #My GitHub repository
 mygithub="https://github.com/StefanoBelli"
 
+STARTDATE="$(date +%H:%M) on $(date +%d/%m/%y)"
+banner(){
+	#Next: CPU, RAM, Distro release...
+	clear
+	printf "\033[32mHello\033[0m: $USER"
+	printf "\nMachine's \033[33mhostname\033[0m: "; cat /etc/hostname
+	printf "Running \033[33mShell\033[0m: $SHELL\n"
+	printf "Running \033[33mKernel\033[0m: $(uname -s -r)\n\n"
+	printf "\033[34m *\033[0m Shell online from: \033[34m$STARTDATE\033[0m\n"
+}
 
-#minecraft()
-#scr()
-#
+minecraft()
+{
+	printf "\033[32m*\033[0m Launching Minecraft...\n"
+	java -jar /usr/bin/minecraft
+	clear
+	printf "\n\033[34m*\033[0m Bye!\n"
+}
+
+scr()
+{
+		  if [[ $1 == "start" ]];
+		  then
+					 printf "\033[32m*\033[0m Starting auto mode.... HDMI1 should work now.\n"
+					 xrandr --auto
+					 if [[ $2 == "split" ]];
+					 then
+
+								xrandr --output HDMI1 --right-of LVDS1 & 
+					 elif [[ $2 == "" ]];
+					 then
+								echo ""
+					 fi
+		  fi
+		  if [[ $1 == "stop" ]];
+		  then
+					 printf "\033[31m*\033[0m Stopping output to HDMI1\n"
+					 xrandr --output HDMI1 --off
+		  fi
+}
+
+banner
+
+#End of ZSH configuration

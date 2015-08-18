@@ -20,17 +20,42 @@ setopt completealiases
 ##
 autoload -U compinit
 compinit
+
 #aliases
-alias eget="emerge --ask --verbose "
-alias esearch="emerge --search "
-alias esearchdesc="emerge --searchdesc "
-alias exfupg="emerge --ask --verbose --deep --update --with-bdeps=y --newuse @world"
-alias edel="emerge --unmerge "
+
+#systemd init system
+alias sdenable="sudo systemctl enable "
+alias sdrestart="sudo systemctl restart "
+alias sddisable="sudo systemctl disable "
+alias sdstart="sudo systemctl start "
+alias sdstop="sudo systemctl stop "
+alias sdstatus="sudo systemctl status "
+alias bootime="systemd-analyze time"
+alias bootblame="systemd-analyze blame"
+#Emerge - Portage interface
+alias esync="sudo emerge --sync "
+alias eupg="sudo emerge --ask --verbose --update --deep --with-bdeps=y --newuse @world"
+alias eget="sudo emerge --ask --verbose "
+alias edel="sudo emerge --unmerge "
 alias ecleandep="sudo emerge --depclean && sudo revdep-rebuild || echo 'Something was wrong'"
-alias makeconf="vim /etc/portage/make.conf"
-alias zshconf="vim /root/.zshrc"
+alias esearchdesc="emerge --searchdesc "
+alias esearch="emerge --search "
+#Make.conf link
+alias makeconf="sudo vim /etc/portage/make.conf"
+#ZSH
+alias zshconf="vim $HOME/.zshrc"
+#Awesome
+alias awcfg="vim $HOME/.config/awesome/rc.lua"
+alias awthmcfg="sudo vim /usr/share/awesome/themes/default/theme.lua"
+#External IP
 alias wanip="curl ipecho.net/plain"
-alias esync="emerge --sync"
-alias rcadd="rc-update add "
-alias rcdel="rc-update del "
-alias rcshow="rc-update -v show"
+#OpenRC BSD-Style init system
+alias rcadd="sudo rc-update add "
+alias rcdel="sudo rc-update del "
+alias rcshow="sudo rc-update -v show"
+#RaspPi
+alias pissh="ssh 192.168.2.110 -p 22 -l "
+alias piscan="ssh root@192.168.2.110 -p 22 scan "
+#OpenVPN to raspPi
+alias piovpnrem="sudo openvpn --config $HOME/Documenti/pivpnrem.ovpn --writepid /var/run/ovpn.pid"
+alias piovpnloc="sudo openvpn --config $HOME/Documenti/pivpn.ovpn --writepid /var/run/ovpn.pid"
