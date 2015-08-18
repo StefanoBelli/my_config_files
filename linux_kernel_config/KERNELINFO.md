@@ -52,4 +52,6 @@ cp arch/x86_64/boot/bzImage /boot/vmlinuz-kernel #copies the compressed kernel i
 - *HD Audio: (ALSA: jack plugging detecting, Realtek HD Audio enabled*
 - *CPU: Generic x86_64*
 - *more*
+- *FUSE Filesystem*
+- *CIFS Filesystem*
 
