@@ -3,11 +3,10 @@
 # based on Johannes Winkelmann's theme Flower theme for slim
 
 # Messages (ie: shutdown)
-msg_color               #FFFFFF
+msg_color               #9933FF
 msg_font                Verdana:size=16:bold
 msg_shadow_xoffset 1
 msg_shadow_yoffset 1
-msg_shadow_color   #aaaaaa
 
 # Screen background style. Valid values: stretch, tile
 background_style        stretch
@@ -21,22 +20,18 @@ input_pass_x            146
 input_pass_y            111
 
 input_font          	Monospace:size=12
-input_color           #999999
+input_color          #9933FF
 input_shadow_xoffset 1
 input_shadow_yoffset 1 
-input_shadow_color   #666666
-
-
 
 # Welcome message
 welcome_font          	Verdana:size=20:bold
-welcome_color          	#666666
+welcome_color          	#9933FF
 welcome_x              	15
 welcome_y              	20
-welcome_msg             Welcome to %host
+welcome_msg             %host login
 welcome_shadow_xoffset 2
 welcome_shadow_yoffset 2
-welcome_shadow_color   #333333
 
 
 username_msg            Username:
@@ -46,7 +41,6 @@ username_x              38
 username_y              65
 username_shadow_xoffset 1
 username_shadow_yoffset 1
-username_shadow_color   #666666
 
 password_msg		Password:
 password_font     DejaVu Sans Mono:size=14:bold
