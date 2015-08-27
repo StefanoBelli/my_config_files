@@ -1,6 +1,7 @@
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
+colorscheme pablo
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -38,8 +39,11 @@ endif
 
 set showcmd
 set cursorline
-set tabstop=3
-set softtabstop=3
+set tabstop=2
+set softtabstop=2
+set noswapfile
+set nowb
+set wildmenu
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
@@ -87,3 +91,5 @@ if has('langmap') && exists('+langnoremap')
   " compatible).
   set langnoremap
 endif
+syntax on
+set number
