@@ -44,6 +44,8 @@ set softtabstop=2
 set noswapfile
 set nowb
 set wildmenu
+set modeline
+set ls=2
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
