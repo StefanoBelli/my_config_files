@@ -38,11 +38,7 @@ export MANPATH="/usr/local/man:$MANPATH"
 [[ -n "${key[PageUp]}"   ]]  && bindkey  "${key[PageUp]}"    history-beginning-search-backward
 [[ -n "${key[PageDown]}" ]]  && bindkey  "${key[PageDown]}"  history-beginning-search-forward
 
-#Left prompt
-PROMPT="%{$fg_bold[red]%}(%m)%{$reset_color%} %{$fg_bold[green]%}%n%{$reset_color%} on %{$fg_bold[blue]%}%~%{$reset_color%} %{$fg[green]%}%#%{$reset_color%} "
 
-#Right prompt
-RPROMPT="%{$bg[yellow]%}%{$fg_bold[black]%}{return: %?}%{$reset_color%} %{$bg[blue]%}%{$fg_bold[yellow]%}[%l]%{$reset_color%}"
 
 ##Prompt Configuration##
 #autoload -U promptinit
@@ -51,6 +47,10 @@ RPROMPT="%{$bg[yellow]%}%{$fg_bold[black]%}{return: %?}%{$reset_color%} %{$bg[bl
 ##Syntax Hightlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+PROMPT="%{$fg[yellow]%}[%T] %{$reset_color%}%{$fg_bold[red]%}(%m)%{$reset_color%} %{$fg_bold[green]%}%n%{$reset_color%} on %{$fg_bold[blue]%}%~%{$reset_color%} 
+%{$fg[green]%}%#%{$reset_color%} %{$fg_bold[cyan]%}➜%{$reset_color%} "
+
+RPROMPT="%{$bg[green]%}%{$fg_bold[blue]%}Jobs: %j%{$reset_color%}%{$reset_color%}%{$bg[yellow]%}%{$fg_bold[black]%}return: %?%{$reset_color%}%{$bg[blue]%}%{$fg_bold[yellow]%}%l%{$reset_color%}"
 
 ##Small banner
 #         <Hour:Minutes>      <Day/Month/Year> #
