@@ -3,7 +3,7 @@ export EDITOR="vim"
 
 #Right prompt showing %h: call events
 PROMPT="%d %# > "
-RPROMPT="[%l]{return: %?}"
+RPROMPT="(Jobs: %j){return: %?}[%l]"
 ##Syntax Hightlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 #Command history
