@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Name=Minecraft
+Comment=Launcher
+Exec=/home/stefanozzz123/.bin/minecraft
+Path=/home/stefanozzz123/.bin/
+Terminal=false
+Type=Application
+Categories=Games
