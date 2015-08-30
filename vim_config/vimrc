@@ -27,6 +27,18 @@ colorscheme pablo "pablo.vim color scheme
 filetype plugin indent on 
 autocmd FileType text setlocal textwidth=78
 
+"Language interpreter/compiler execution
+"C/GCC
+"Python/python - env 
+"Ruby/ruby 
+"C++/G++/GCC-C++
+"Shell/sh
+autocmd FileType c map cc :!/usr/bin/gcc % -Wall -O2 -pipe -march=native -mtune=native && ./a.out 
+autocmd FileType python map pyr :!/usr/bin/env python %
+autocmd FileType ruby map rbr :!/usr/bin/ruby %
+autocmd FileType cpp map cxx :!/usr/bin/g++ % -Wall -O2 -pipe -march=native -mtune=native && ./a.out 
+autocmd FileType sh map shr :!/bin/sh %
+
 if has('langmap') && exists('+langnoremap')
 				set langnoremap
 endif
@@ -35,5 +47,4 @@ endif
 if has('mouse')
 				set mouse=a
 endif
-
 "End of vim config file
