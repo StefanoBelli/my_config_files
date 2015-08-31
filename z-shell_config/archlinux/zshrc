@@ -53,17 +53,18 @@ PROMPT="%{$fg[yellow]%}[%T] %{$reset_color%}%{$fg_bold[red]%}(%m)%{$reset_color%
 RPROMPT="%{$bg[green]%}%{$fg_bold[blue]%}Jobs: %j%{$reset_color%}%{$reset_color%}%{$bg[yellow]%}%{$fg_bold[black]%}return: %?%{$reset_color%}%{$bg[blue]%}%{$fg_bold[yellow]%}%l%{$reset_color%}"
 
 ##Small banner
-#         <Hour:Minutes>      <Day/Month/Year> #
-STARTDATE="$(date +%H:%M) on $(date +%d/%m/%y)"
-banner(){
-	#Next: CPU, RAM, Distro release...
-	clear
-	printf "\033[32mHello\033[0m: $USER"
-	printf "\nMachine's \033[33mhostname\033[0m: "; cat /etc/hostname
-	printf "Running \033[33mShell\033[0m: $SHELL\n"
-	printf "Running \033[33mKernel\033[0m: $(uname -s -r)\n\n"
-	printf "\033[34m *\033[0m Shell online from: \033[34m$STARTDATE\033[0m\n"
+START_DATE=$(date +%H:%M:%S)
+banner()
+{
+   printf "Hi, \033[33m$(whoami)\033[0m\n"
+	 printf "Hostname, \033[32m$(cat /etc/hostname)\033[0m\n"
+   printf "OS: \033[31m$(uname -o -s -r)\033[0m\n"
+   printf "IPv4: \033[34m$(ifconfig | grep inet | grep 192 | awk '{ print $2 }')\033[0m\n"
+   printf "Shell: \033[35m$SHELL\033[0m\n"
+   printf "RAM Usage: \033[31m$(free -m | grep Mem | awk '{ print $3 }')MB\033[0m\n\n"
+   printf "New shell started on: \033[36m$START_DATE\033[0m\n\n"
 }
+
 ##
 
 #Aliases
