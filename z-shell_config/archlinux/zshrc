@@ -25,7 +25,7 @@ autoload -U compinit
 compinit
 # End of lines added by compinstall
 export EDITOR="vim"
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/lib/ccache/bin:/opt/bin:/usr/bin/eclipse:/usr/bin/sublime_text_2:/bin:/usr/bin:${PATH}"
+export PATH="/home/stefanozzz123/.bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/lib/ccache/bin:/opt/bin:/usr/bin/eclipse:/usr/bin/sublime_text_2:/bin:/usr/bin:${PATH}"
 export LDPATH="${LDPATH}"
 export MANPATH="${MANPATH}"
 export INFODIR="${INFODIR}"
@@ -48,7 +48,7 @@ export MANPATH="/usr/local/man:$MANPATH"
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 PROMPT="%{$fg[yellow]%}[%T] %{$reset_color%}%{$fg_bold[red]%}(%m)%{$reset_color%} %{$fg_bold[green]%}%n%{$reset_color%} on %{$fg_bold[blue]%}%~%{$reset_color%} 
-%{$fg[green]%}%#%{$reset_color%} %{$fg_bold[cyan]%}➜%{$reset_color%} "
+%{$fg[green]%}%#%{$reset_color%} %{$fg_bold[cyan]%}->%{$reset_color%} "
 
 RPROMPT="%{$bg[green]%}%{$fg_bold[blue]%}Jobs: %j%{$reset_color%}%{$reset_color%}%{$bg[yellow]%}%{$fg_bold[black]%}return: %?%{$reset_color%}%{$bg[blue]%}%{$fg_bold[yellow]%}%l%{$reset_color%}"
 
@@ -103,21 +103,17 @@ alias i3cfg="vim /home/stefanozzz123/.i3/config"
 alias i3stcfg="sudo vim /etc/i3status_top.conf"
 alias i3sbcfg="sudo vim /etc/i3status_bottom.conf"
 #RaspPi
-alias pissh="ssh 192.168.2.110 -p 22 -l "
-alias piscan="ssh root@192.168.2.110 -p 22 scan "
+alias pissh="ssh 192.168.2.100 -p 22 -l "
+alias piscan="ssh root@192.168.2.100 -p 22 scan "
 #OpenVPN to raspPi
 alias piovpnrem="sudo openvpn --config $HOME/Documenti/pivpnrem.ovpn --writepid /var/run/ovpn.pid"
 alias piovpnloc="sudo openvpn --config $HOME/Documenti/pivpn.ovpn --writepid /var/run/ovpn.pid"
+#NetworkManager GUI
+alias nmgui="nm-connection-editor"
+#TMux new
+alias tmuxnew="tmux new-session -c $HOME -n Main:Zsh -s "
 
 banner
-
-minecraft()
-{
-	printf "\033[32m*\033[0m Launching Minecraft...\n"
-	java -jar /home/stefanozzz123/.bin/minecraft.jar
-	clear
-	printf "\n\033[34m*\033[0m Bye!\n"
-}
 
 scr()
 {
