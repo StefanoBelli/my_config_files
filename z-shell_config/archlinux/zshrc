@@ -54,14 +54,43 @@ RPROMPT="%{$bg[green]%}%{$fg_bold[blue]%}Jobs: %j%{$reset_color%}%{$reset_color%
 
 ##Small banner
 START_DATE=$(date +%H:%M:%S)
+USERN=$(whoami)
+HOSTN_ZSH=$(cat /etc/hostname)
+HOSTN_OTHER=$HOSTNAME
+OS_INFO=$(uname -o -s -r)
+IP4=$(ifconfig | grep inet | grep 192 | awk '{ print $2 }')
+USING_SHELL=$SHELL
+RAM_USAGE="$(free -m | grep Mem | awk '{ print $3 }')MB/$(free -m | grep Mem | awk '{ print $2 }')MB"
+SWAP_USAGE="$(free -m | grep Swap | awk '{ print $3 }')MB/$(free -m | grep Swap | awk '{ print $2 }')MB"
+if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]];
+then
+				X_MSG_DISPLAY="Not running"
+				USING_DE="Not running"
+else
+				X_MSG_DISPLAY="Working & Running"
+				USING_DE=$XDG_SESSION_DESKTOP
+fi
+TERMTYPE=$TERM
+DISK_USAGE_ROOTFS="$(df -h / | grep % | grep /dev/sd | awk '{ print $3 }')/$(df -h / | grep % | grep /dev/sd | awk '{ print $2}')"
+CPU_INFO=$(lscpu | grep 'Model name:' | sed 's/Model name://')
+CPU_ARCH=$(lscpu | grep 'Architecture:' | sed 's/Architecture://')
+#CPU_MHZ=$(lscpu | grep 'CPU MHz:' | sed 's/CPU MHz//')
+
 banner()
 {
-   printf "Hi, \033[33m$(whoami)\033[0m\n"
-	 printf "Hostname, \033[32m$(cat /etc/hostname)\033[0m\n"
-   printf "OS: \033[31m$(uname -o -s -r)\033[0m\n"
-   printf "IPv4: \033[34m$(ifconfig | grep inet | grep 192 | awk '{ print $2 }')\033[0m\n"
-   printf "Shell: \033[35m$SHELL\033[0m\n"
-   printf "RAM Usage: \033[31m$(free -m | grep Mem | awk '{ print $3 }')MB\033[0m\n\n"
+   printf "Hi, \033[33m$USERN\033[0m\n"
+	 printf "Hostname, \033[32m$HOSTN_ZSH\033[0m\n"
+   printf "OS: \033[31m$OS_INFO\033[0m\n"
+   printf "IPv4: \033[34m$IP4\033[0m\n"
+   printf "Shell: \033[35m$USING_SHELL\033[0m\n"
+   printf "RAM Usage: \033[31m$RAM_USAGE\033[0m\n"
+	 printf "Swap Usage: \033[31m$SWAP_USAGE\033[0m\n"
+	 printf "Disk Usage: \033[31m$DISK_USAGE_ROOTFS\033[0m\n"
+	 printf "CPU: \033[32m$CPU_INFO\033[0m \n" 
+	 printf	"Architecture: \033[32m$CPU_ARCH\033[0m \n"
+	 printf "X: \033[36m$X_MSG_DISPLAY\033[0m\n"
+	 printf "Using DE: \033[33m$USING_DE\033[0m\n"
+	 printf "Terminal type: \033[35m$TERMTYPE\033[0m\n\n"
    printf "New shell started on: \033[36m$START_DATE\033[0m\n\n"
 }
 
