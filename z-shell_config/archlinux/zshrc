@@ -85,7 +85,7 @@ banner()
    printf "Shell: \033[35m$USING_SHELL\033[0m\n"
    printf "RAM Usage: \033[31m$RAM_USAGE\033[0m\n"
 	 printf "Swap Usage: \033[31m$SWAP_USAGE\033[0m\n"
-	 printf "Disk Usage: \033[31m$DISK_USAGE_ROOTFS\033[0m\n"
+	 printf "Disk Usage (/ fs): \033[31m$DISK_USAGE_ROOTFS\033[0m\n"
 	 printf "CPU: \033[32m$CPU_INFO\033[0m \n" 
 	 printf	"Architecture: \033[32m$CPU_ARCH\033[0m \n"
 	 printf "X: \033[36m$X_MSG_DISPLAY\033[0m\n"
