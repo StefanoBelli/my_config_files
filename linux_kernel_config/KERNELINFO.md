@@ -29,7 +29,7 @@ cp arch/x86_64/boot/bzImage /boot/vmlinuz-kernel #copies the compressed kernel i
 
 
  - 64 bit kernel config
- - LZO compression (Less compression but faster decompression)
+ - LZ4 compression (fast decompress algorithm)
  - No ramdisk support (Bootup improvements) 
  - default Governor: performance
  - default Input/Output: deadline
@@ -41,6 +41,8 @@ cp arch/x86_64/boot/bzImage /boot/vmlinuz-kernel #copies the compressed kernel i
  - Virtualization support (Modularized for Intel, no support for AMD) 
  - Ext3, Ext2 support modularized 
  - Btrfs, XFS, Ext4 Filesystems enabled (kernel core) 
+ - Enabled other btrfs+xfs features (such as Quota for XFS)
+ - UVC driver now works
  - Probably more...
 
 (enabled:core)
@@ -54,4 +56,8 @@ cp arch/x86_64/boot/bzImage /boot/vmlinuz-kernel #copies the compressed kernel i
 - *more*
 - *FUSE Filesystem*
 - *CIFS Filesystem*
+
+Other things... :)
+Tested with Linux 4.1.6
+Waiting for Linux 4.2.1 as Linux 4.2 doesn't work with my static IP address (other kernels works...)
 
