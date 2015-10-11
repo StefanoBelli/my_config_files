@@ -43,6 +43,7 @@ cp arch/x86_64/boot/bzImage /boot/vmlinuz-kernel #copies the compressed kernel i
  - Btrfs, XFS, Ext4 Filesystems enabled (kernel core) 
  - Enabled other btrfs+xfs features (such as Quota for XFS)
  - UVC driver now works
+ - cdc-acm integrated into kernel core features (/dev/ttyACM[n]), due to Arduino
  - Probably more...
 
 (enabled:core)
