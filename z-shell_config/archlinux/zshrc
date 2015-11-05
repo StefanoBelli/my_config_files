@@ -2,7 +2,10 @@
 export ZSH="/home/stefanozzz123/.oh-my-zsh"
 export TERM="xterm-256color"
 
-source $ZSH/oh-my-zsh.sh
+source $ZSH/oh-my-zsh.sh #a plugin...
+
+GITHUB_PROFILE_URL=https://github.com/StefanoBelli
+#GITHUB_PROFILE_URL=""
 
 # You may need to manually set your language environment
 export EDITOR="vim" 
@@ -35,11 +38,12 @@ export CONFIG_PROTECT_MASK="${CONFIG_PROTECT_MASK}"
 export TERM="xterm-256color"
 export MANPATH="/usr/local/man:$MANPATH"
 export GDK_BACKEND=wayland
+export PYTHON=/usr/bin/python
+export MYGITHUB=$GITHUB_PROFILE_URL
 
+#Keybindings
 [[ -n "${key[PageUp]}"   ]]  && bindkey  "${key[PageUp]}"    history-beginning-search-backward
 [[ -n "${key[PageDown]}" ]]  && bindkey  "${key[PageDown]}"  history-beginning-search-forward
-
-
 
 ##Prompt Configuration##
 #autoload -U promptinit
