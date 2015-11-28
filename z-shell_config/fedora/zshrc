@@ -76,7 +76,7 @@ else
 				USING_DE=$XDG_SESSION_DESKTOP
 fi
 TERMTYPE=$TERM
-DISK_USAGE_ROOTFS="$(df -h / | grep % | grep /dev/sd | awk '{ print $3 }')/$(df -h / | grep % | grep /dev/sd | awk '{ print $2}')"
+DISK_USAGE_ROOTFS="$(df -h / | grep % | grep /dev/mapper | awk '{ print $3 }')/$(df -h / | grep % | grep /dev/mapper | awk '{ print $2}')"
 CPU_INFO=$(lscpu | grep 'Model name:' | sed 's/Model name://')
 CPU_ARCH=$(lscpu | grep 'Architecture:' | sed 's/Architecture://')
 #CPU_MHZ=$(lscpu | grep 'CPU MHz:' | sed 's/CPU MHz//')
@@ -121,12 +121,12 @@ alias sdinitrestart="sudo systemctl daemon-reload"
 alias hostnset="hostnamectl set-hostname "
 alias localeset="localectl set-locale "
 #dnf
-alias dnfget="sudo dnf install --color true "
-alias dnfupg="sudo dnf update --color true "
-alias dnfrm="sudo dnf remove --color true "
-alias dnfsearch="dnf search --color true "
-alias dnfccache="sudo dnf clean --color true "
-alias dnfinfo="dnf info "
+alias dnfget="sudo dnf install --color always "
+alias dnfupg="sudo dnf update --color always "
+alias dnfrm="sudo dnf remove --color always "
+alias dnfsearch="dnf search --color always "
+alias dnfccache="sudo dnf clean --color always "
+alias dnfinfo="dnf info --color always "
 alias dnfupgpkg="sudo dnf upgrade "
 #Check External IP 
 alias wanip="curl ipecho.net/plain"
