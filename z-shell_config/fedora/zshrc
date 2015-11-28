@@ -1,0 +1,180 @@
+#Begin of ZSH Configuration
+export ZSH="/home/stefano/.oh-my-zsh"
+export TERM="xterm-256color"
+
+source $ZSH/oh-my-zsh.sh #a plugin...
+
+GITHUB_PROFILE_URL=https://github.com/StefanoBelli
+#GITHUB_PROFILE_URL=""
+
+# You may need to manually set your language environment
+export EDITOR="vim" 
+export ARCHFLAGS="-O3 -pipe -march=native -mtune=native -Wall "
+
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=50
+SAVEHIST=50
+setopt appendhistory autocd beep nomatch
+unsetopt extendedglob
+bindkey -e
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename '/home/stefanozzz123/.zshrc'
+zstyle ':completion:*' menu select
+setopt completealiases
+
+autoload -U compinit
+compinit
+# End of lines added by compinstall
+export EDITOR="vim"
+export PATH="/home/stefanozzz123/.bin:/opt/theharvester-git:$HOME/.gem/ruby/2.2.0/bin:/opt/maltego/bin:$HOME/.bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/lib/ccache/bin:/opt/bin:/usr/bin/eclipse:/usr/bin/sublime_text_2:/bin:/usr/bin:${PATH}"
+export LDPATH="${LDPATH}"
+export MANPATH="${MANPATH}"
+export INFODIR="${INFODIR}"
+export PAGER="less"
+export CONFIG_PROTECT="${CONFIG_PROTECT}"
+export CONFIG_PROTECT_MASK="${CONFIG_PROTECT_MASK}"
+export TERM="xterm-256color"
+export MANPATH="/usr/local/man:$MANPATH"
+export GDK_BACKEND=wayland
+export PYTHON=/usr/bin/python
+export MYGITHUB=$GITHUB_PROFILE_URL
+
+#Keybindings
+[[ -n "${key[PageUp]}"   ]]  && bindkey  "${key[PageUp]}"    history-beginning-search-backward
+[[ -n "${key[PageDown]}" ]]  && bindkey  "${key[PageDown]}"  history-beginning-search-forward
+
+##Prompt Configuration##
+#autoload -U promptinit
+#promptinit
+
+##Syntax Hightlighting
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+PROMPT="%{$fg[yellow]%}[%T] %{$reset_color%}%{$fg_bold[red]%}(%m)%{$reset_color%} %{$fg_bold[green]%}%n%{$reset_color%} on %{$fg_bold[blue]%}%~%{$reset_color%} 
+%{$fg[green]%}%#%{$reset_color%} %{$fg_bold[cyan]%}->%{$reset_color%} "
+
+RPROMPT="%{$bg[green]%}%{$fg_bold[blue]%}Jobs: %j%{$reset_color%}%{$reset_color%}%{$bg[yellow]%}%{$fg_bold[black]%}return: %?%{$reset_color%}%{$bg[blue]%}%{$fg_bold[yellow]%}%l%{$reset_color%}"
+
+##Small banner
+START_DATE=$(date +%H:%M:%S)
+USERN=$(whoami)
+HOSTN_ZSH=$(cat /etc/hostname)
+HOSTN_OTHER=$HOSTNAME
+OS_INFO=$(uname -o -s -r)
+IP4=$(ifconfig | grep inet | grep 192 | awk '{ print $2 }')
+USING_SHELL=$SHELL
+RAM_USAGE="$(free -m | grep Mem | awk '{ print $3 }')MB/$(free -m | grep Mem | awk '{ print $2 }')MB"
+SWAP_USAGE="$(free -m | grep Swap | awk '{ print $3 }')MB/$(free -m | grep Swap | awk '{ print $2 }')MB"
+if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]];
+then
+				X_MSG_DISPLAY="Not running"
+				USING_DE="Not running"
+else
+				X_MSG_DISPLAY="Working & Running"
+				USING_DE=$XDG_SESSION_DESKTOP
+fi
+TERMTYPE=$TERM
+DISK_USAGE_ROOTFS="$(df -h / | grep % | grep /dev/sd | awk '{ print $3 }')/$(df -h / | grep % | grep /dev/sd | awk '{ print $2}')"
+CPU_INFO=$(lscpu | grep 'Model name:' | sed 's/Model name://')
+CPU_ARCH=$(lscpu | grep 'Architecture:' | sed 's/Architecture://')
+#CPU_MHZ=$(lscpu | grep 'CPU MHz:' | sed 's/CPU MHz//')
+
+banner()
+{
+   printf "Hi, \033[33m$USERN\033[0m\n"
+	 printf "Hostname, \033[32m$HOSTN_ZSH\033[0m\n"
+   printf "OS: \033[31m$OS_INFO\033[0m\n"
+   printf "IPv4: \033[34m$IP4\033[0m\n"
+   printf "Shell: \033[35m$USING_SHELL\033[0m\n"
+   printf "RAM Usage: \033[31m$RAM_USAGE\033[0m\n"
+	 printf "Swap Usage: \033[31m$SWAP_USAGE\033[0m\n"
+	 printf "Disk Usage (/ fs): \033[31m$DISK_USAGE_ROOTFS\033[0m\n"
+	 printf "CPU: \033[32m$CPU_INFO\033[0m \n" 
+	 printf	"Architecture: \033[32m$CPU_ARCH\033[0m \n"
+	 printf "X: \033[36m$X_MSG_DISPLAY\033[0m\n"
+	 printf "Using DE: \033[33m$USING_DE\033[0m\n"
+	 printf "Terminal type: \033[35m$TERMTYPE\033[0m\n\n"
+   printf "New shell started on: \033[36m$START_DATE\033[0m\n\n"
+}
+
+export OS_INFO IP4 HOSTN_ZSH RAM_USAGE SWAP_USAGE DISK_USAGE_ROOTFS CPU_INFO CPU_ARCH X_MSG_DISPLAY USING_DE TERMTYPE STARTDATE
+
+##
+
+#Aliases
+##systemd
+alias sdctl="sudo systemctl"
+alias sdenable="sudo systemctl enable "
+alias sdrestart="sudo systemctl restart "
+alias sddisable="sudo systemctl disable "
+alias sdstart="sudo systemctl start "
+alias sdstop="sudo systemctl stop "
+alias sdstatus="sudo systemctl status "
+alias bootime="systemd-analyze time"
+alias bootblame="systemd-analyze blame"
+alias sdfailed="systemctl --failed"
+alias sdunitfiles="systemctl list-unit-files"
+alias sdreload="sudo systemctl reload "
+alias sdinitrestart="sudo systemctl daemon-reload"
+alias hostnset="hostnamectl set-hostname "
+alias localeset="localectl set-locale "
+#dnf
+alias dnfget="sudo dnf install --color true "
+alias dnfupg="sudo dnf update --color true "
+alias dnfrm="sudo dnf remove --color true "
+alias dnfsearch="dnf search --color true "
+alias dnfccache="sudo dnf clean --color true "
+alias dnfinfo="dnf info "
+alias dnfupgpkg="sudo dnf upgrade "
+#Check External IP 
+alias wanip="curl ipecho.net/plain"
+#i3
+alias i3cfg="vim /home/stefanozzz123/.i3/config"
+alias i3stcfg="sudo vim /etc/i3status_top.conf"
+alias i3sbcfg="sudo vim /etc/i3status_bottom.conf"
+#RaspPi
+alias pissh="ssh 192.168.2.100 -p 22 -l "
+alias piscan="ssh root@192.168.2.100 -p 22 scan "
+#OpenVPN to raspPi
+alias piovpnrem="sudo openvpn --config $HOME/Documenti/pivpnrem.ovpn --writepid /var/run/ovpn.pid"
+alias piovpnloc="sudo openvpn --config $HOME/Documenti/pivpn.ovpn --writepid /var/run/ovpn.pid"
+#NetworkManager GUI
+alias nmgui="nm-connection-editor"
+#TMux new
+alias tmuxnew="tmux new-session -c $HOME -n Main:Zsh -s "
+
+#banner
+
+scr()
+{
+		  if [[ $1 == "start" ]];
+		  then
+					 printf "\033[32m*\033[0m Starting auto mode.... HDMI1 should work now.\n"
+					 xrandr --auto
+					 if [[ $2 == "split" ]];
+					 then
+
+								xrandr --output HDMI1 --right-of LVDS1 & 
+					 elif [[ $2 == "" ]];
+					 then
+								echo ""
+					 fi
+		  fi
+		  if [[ $1 == "stop" ]];
+		  then
+					 printf "\033[31m*\033[0m Stopping output to HDMI1\n"
+					 xrandr --output HDMI1 --off
+		  fi
+}
+
+if [ $? -eq 0 ];
+then
+				banner
+else
+				printf "\033[31m*\033[0m Something went wrong!!!\n"
+fi
+
+#End of ZSH configuration
+
