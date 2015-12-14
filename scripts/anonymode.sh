@@ -18,6 +18,7 @@ HOSTNAME_BAK="/etc/hostname.bak.anonymode"
 HOSTNAME_NEW="/etc/hostname"
 SET_IPTABLES_OLDRULES=1
 SERVICES="systemd-hostnamed.service systemd-networkd.service NetworkManager.service wicd.service netctl.service iptables.service tor.service" #start,stop
+#AVOID_SERVICES="NetworkManager.service wicd.service"
 
 msg()
 {
@@ -142,6 +143,8 @@ shutting_down_services()
 								$SYSTEMCTL_STOP $i 2>/dev/null
 				done
 				killall tor
+				$SYSTEMCTL_STOP NetworkManager
+				$SYSTEMCTL_STOP wicd
 }
 
 starting_up_services()
@@ -152,6 +155,8 @@ starting_up_services()
 								info "Starting up: $i"
 								$SYSTEMCTL_START $i 2>/dev/null
 				done
+				$SYSTEMCTL_STOP NetworkManager
+				$SYSTEMCTL_STOP wicd
 }
 
 set_iptables_temporary_rules()
@@ -207,6 +212,28 @@ restore_hostname()
 				mv $HOSTNAME_BAK $HOSTNAME_NEW
 }
 
+change_macaddr()
+{
+				info "Changing MAC Address..."
+				ifconfig $1 down
+				macchanger -r $1
+}
+
+restore_macaddr()
+{
+				info "Restoring MAC Address..."
+				ifconfig $1 down
+				macchanger -p $1
+}
+
+restart_netctl_profile()
+{
+				info "Restoring netctl..."
+				netctl start wlp7s0-XSt3pNetW
+				netctl stop wlp7s0-XSt3pNetW
+				netctl start wlp7s0-XSt3pNetW
+}
+
 start_anonymode()
 {
 				info "Starting anonymode: $(date '+%y/%m/%d %H:%M') "
@@ -215,7 +242,14 @@ start_anonymode()
 				shutting_down_services
 				set_iptables_temporary_rules 
 				set_temporary_hostname
+				if [[ $2 == "spoofing" ]];
+				then
+								change_macaddr $1
+				else
+								echo ""
+				fi
 				starting_up_services
+				restart_netctl_profile
 				msg "Done"
 }
 
@@ -227,18 +261,24 @@ stop_anonymode()
 				shutting_down_services
 				restore_iptables_rules
 				restore_hostname
+				restore_macaddr $1
 				starting_up_services
 				info "Killing tor..."
 				killall tor
+				restart_netctl_profile
 				msg "Done"
 }
 
 argument_parser()
 {
-				if [ $# -eq 2 ];
+				if [[ $# < 3 ]] || [[ $# == 3 ]];
 				then
-								if [[ $1 == "start" ]];then start_anonymode
-								elif [[ $1 == "stop" ]]; then stop_anonymode
+								if [[ $1 == "start" ]];then 
+												[[ $3 == "macspoof" ]] && \
+																start_anonymode $2 "spoofing" || \
+																start_anonymode $2
+
+								elif [[ $1 == "stop" ]]; then stop_anonymode $2
 								else 
 												info "Usage: <$0> [start|stop] {INTERFACE}"
 												exit 5
