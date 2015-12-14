@@ -191,6 +191,22 @@ restore_iptables_rules()
 				fi
 }
 
+set_temporary_hostname()
+{
+				info "Setting new hostname"
+				cp $HOSTNAME_NEW $HOSTNAME_BAK
+				echo -n "Hostname: "
+				read HOSTNAME
+				touch $HOSTNAME_NEW
+				echo $HOSTNAME > $HOSTNAME_NEW
+}
+
+restore_hostname()
+{
+				info "Restoring hostname"
+				mv $HOSTNAME_BAK $HOSTNAME_NEW
+}
+
 start_anonymode()
 {
 				info "Starting anonymode: $(date '+%y/%m/%d %H:%M') "
@@ -198,6 +214,7 @@ start_anonymode()
 				create_file
 				shutting_down_services
 				set_iptables_temporary_rules 
+				set_temporary_hostname
 				starting_up_services
 				msg "Done"
 }
@@ -209,6 +226,7 @@ stop_anonymode()
 				remove_file
 				shutting_down_services
 				restore_iptables_rules
+				restore_hostname
 				starting_up_services
 				info "Killing tor..."
 				killall tor
