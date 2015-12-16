@@ -19,6 +19,7 @@ HOSTNAME_NEW="/etc/hostname"
 SET_IPTABLES_OLDRULES=1
 SERVICES="systemd-hostnamed.service systemd-networkd.service NetworkManager.service wicd.service netctl.service iptables.service tor.service" #start,stop
 #AVOID_SERVICES="NetworkManager.service wicd.service"
+NETWORK_SERVICE="wicd"
 
 msg()
 {
@@ -143,8 +144,6 @@ shutting_down_services()
 								$SYSTEMCTL_STOP $i 2>/dev/null
 				done
 				killall tor
-				$SYSTEMCTL_STOP NetworkManager
-				$SYSTEMCTL_STOP wicd
 }
 
 starting_up_services()
@@ -155,8 +154,6 @@ starting_up_services()
 								info "Starting up: $i"
 								$SYSTEMCTL_START $i 2>/dev/null
 				done
-				$SYSTEMCTL_STOP NetworkManager
-				$SYSTEMCTL_STOP wicd
 }
 
 set_iptables_temporary_rules()
@@ -228,10 +225,28 @@ restore_macaddr()
 
 restart_netctl_profile()
 {
+				$SYSTEMCTL_STOP wicd
+				$SYSTEMCTL_STOP NetworkManager
 				info "Restoring netctl..."
 				netctl start wlp7s0-XSt3pNetW
 				netctl stop wlp7s0-XSt3pNetW
 				netctl start wlp7s0-XSt3pNetW
+}
+
+restart_wicd_profile()
+{
+				$SYSTEMCTL_STOP NetworkManager
+				$SYSTEMCTL_STOP netctl
+				info "Restoring wicd..."
+				$SYSTEMCTL_START wicd
+}
+
+restart_nm_profile()
+{
+				$SYSTEMCTL_STOP wicd
+				$SYSTEMCTL_STOP netctl
+				info "Restoring NetworkManager..."
+				$SYSTEMCTL_START NetworkManager
 }
 
 start_anonymode()
@@ -249,8 +264,16 @@ start_anonymode()
 								echo ""
 				fi
 				starting_up_services
-				restart_netctl_profile
+				check_network_service
 				msg "Done"
+}
+
+check_network_service()
+{
+				if [[ $NETWORK_SERVICE == "wicd" ]];then restart_wicd_profile
+				elif [[ $NETWORK_SERVICE == "NetworkManager" ]];then restart_nm_profile
+				elif [[ $NETWORK_SERVICE == "netctl" ]];then restart_netctl_profile
+				fi
 }
 
 stop_anonymode()
@@ -265,7 +288,7 @@ stop_anonymode()
 				starting_up_services
 				info "Killing tor..."
 				killall tor
-				restart_netctl_profile
+				check_network_service
 				msg "Done"
 }
 
