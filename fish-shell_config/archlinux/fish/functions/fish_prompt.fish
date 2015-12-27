@@ -18,5 +18,5 @@ function fish_prompt
 	set_color green
 	echo (prompt_pwd)
 	set_color blue
-	echo '➜ '
+	echo '> '
 end
