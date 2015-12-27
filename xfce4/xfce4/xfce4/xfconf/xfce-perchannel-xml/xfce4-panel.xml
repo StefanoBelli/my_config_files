@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<channel name="xfce4-panel" version="1.0">
+  <property name="configver" type="int" value="2"/>
+  <property name="panels" type="array">
+    <value type="int" value="1"/>
+    <value type="int" value="2"/>
+    <property name="panel-1" type="empty">
+      <property name="position" type="string" value="p=6;x=0;y=0"/>
+      <property name="length" type="uint" value="100"/>
+      <property name="position-locked" type="bool" value="true"/>
+      <property name="size" type="uint" value="24"/>
+      <property name="plugin-ids" type="array">
+        <value type="int" value="1"/>
+        <value type="int" value="3"/>
+        <value type="int" value="15"/>
+        <value type="int" value="27"/>
+        <value type="int" value="22"/>
+        <value type="int" value="19"/>
+        <value type="int" value="20"/>
+        <value type="int" value="21"/>
+        <value type="int" value="5"/>
+        <value type="int" value="6"/>
+        <value type="int" value="16"/>
+        <value type="int" value="18"/>
+        <value type="int" value="46"/>
+        <value type="int" value="2"/>
+      </property>
+      <property name="background-alpha" type="uint" value="0"/>
+      <property name="enter-opacity" type="uint" value="100"/>
+      <property name="leave-opacity" type="uint" value="100"/>
+      <property name="disable-struts" type="bool" value="false"/>
+    </property>
+    <property name="panel-2" type="empty">
+      <property name="position" type="string" value="p=10;x=0;y=0"/>
+      <property name="position-locked" type="bool" value="true"/>
+      <property name="plugin-ids" type="array">
+        <value type="int" value="7"/>
+        <value type="int" value="8"/>
+        <value type="int" value="9"/>
+        <value type="int" value="28"/>
+        <value type="int" value="44"/>
+        <value type="int" value="30"/>
+        <value type="int" value="45"/>
+        <value type="int" value="31"/>
+        <value type="int" value="29"/>
+        <value type="int" value="38"/>
+        <value type="int" value="39"/>
+        <value type="int" value="34"/>
+        <value type="int" value="32"/>
+        <value type="int" value="36"/>
+        <value type="int" value="37"/>
+        <value type="int" value="42"/>
+        <value type="int" value="43"/>
+        <value type="int" value="47"/>
+        <value type="int" value="13"/>
+        <value type="int" value="14"/>
+        <value type="int" value="40"/>
+        <value type="int" value="41"/>
+        <value type="int" value="33"/>
+      </property>
+      <property name="size" type="uint" value="43"/>
+      <property name="background-alpha" type="uint" value="0"/>
+    </property>
+  </property>
+  <property name="plugins" type="empty">
+    <property name="plugin-1" type="string" value="applicationsmenu"/>
+    <property name="plugin-2" type="string" value="actions"/>
+    <property name="plugin-3" type="string" value="tasklist">
+      <property name="flat-buttons" type="bool" value="true"/>
+      <property name="show-only-minimized" type="bool" value="true"/>
+      <property name="include-all-monitors" type="bool" value="false"/>
+    </property>
+    <property name="plugin-15" type="string" value="separator">
+      <property name="expand" type="bool" value="true"/>
+      <property name="style" type="uint" value="0"/>
+    </property>
+    <property name="plugin-5" type="string" value="clock"/>
+    <property name="plugin-6" type="string" value="systray">
+      <property name="names-visible" type="array">
+        <value type="string" value="telegram"/>
+        <value type="string" value="applet networkmanager"/>
+        <value type="string" value="xfce4-power-manager"/>
+        <value type="string" value="wicd-client.py"/>
+      </property>
+    </property>
+    <property name="plugin-7" type="string" value="showdesktop"/>
+    <property name="plugin-8" type="string" value="separator">
+      <property name="style" type="uint" value="1"/>
+    </property>
+    <property name="plugin-9" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="14512154791.desktop"/>
+      </property>
+    </property>
+    <property name="plugin-13" type="string" value="separator">
+      <property name="style" type="uint" value="1"/>
+      <property name="expand" type="bool" value="false"/>
+    </property>
+    <property name="plugin-14" type="string" value="directorymenu">
+      <property name="base-directory" type="string" value="/home/stefanozzz123"/>
+    </property>
+    <property name="plugin-16" type="string" value="xkb-plugin"/>
+    <property name="plugin-18" type="string" value="mixer">
+      <property name="sound-card" type="string" value="HDAIntelAlsamixer"/>
+      <property name="track" type="string" value="Principale"/>
+      <property name="command" type="string" value="xfce4-mixer"/>
+      <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
+    </property>
+    <property name="plugin-19" type="string" value="fsguard"/>
+    <property name="plugin-20" type="string" value="fsguard"/>
+    <property name="plugin-21" type="string" value="systemload"/>
+    <property name="plugin-22" type="string" value="weather"/>
+    <property name="plugin-27" type="string" value="xfce4-mount-plugin"/>
+    <property name="plugin-28" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="14512188481.desktop"/>
+      </property>
+    </property>
+    <property name="plugin-29" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="14512188963.desktop"/>
+      </property>
+    </property>
+    <property name="plugin-30" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="14512188642.desktop"/>
+      </property>
+    </property>
+    <property name="plugin-31" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="145121904011.desktop"/>
+      </property>
+    </property>
+    <property name="plugin-32" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="14512189869.desktop"/>
+      </property>
+    </property>
+    <property name="plugin-33" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="145121899910.desktop"/>
+      </property>
+    </property>
+    <property name="plugin-34" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="14512189768.desktop"/>
+      </property>
+    </property>
+    <property name="plugin-36" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="145121908413.desktop"/>
+      </property>
+    </property>
+    <property name="plugin-37" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="145121911514.desktop"/>
+      </property>
+    </property>
+    <property name="plugin-38" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="14512189345.desktop"/>
+      </property>
+    </property>
+    <property name="plugin-39" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="14512189617.desktop"/>
+      </property>
+    </property>
+    <property name="plugin-40" type="string" value="thunar-tpa"/>
+    <property name="plugin-41" type="string" value="windowmenu"/>
+    <property name="plugin-42" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="145121914715.desktop"/>
+      </property>
+    </property>
+    <property name="plugin-43" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="145121918516.desktop"/>
+      </property>
+    </property>
+    <property name="plugin-44" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="145121920317.desktop"/>
+      </property>
+    </property>
+    <property name="plugin-45" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="145121924818.desktop"/>
+      </property>
+    </property>
+    <property name="plugin-46" type="string" value="screenshooter"/>
+    <property name="plugin-47" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="145122066919.desktop"/>
+      </property>
+    </property>
+  </property>
+</channel>
