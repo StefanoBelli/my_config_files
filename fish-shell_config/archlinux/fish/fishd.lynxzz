@@ -23,7 +23,7 @@ SET fish_color_selection:\x2d\x2dbackground\x3dpurple
 SET fish_color_status:red
 SET fish_color_user:\x2do\x1egreen
 SET fish_color_valid_path:\x2d\x2dunderline
-SET fish_greeting:Welcome\x20back\x2c\x20stefanozzz123\x20\x21\x0aUsing\x20kernel\x3a\x204\x2e3\x2e0\x2dstefanozzz123_build\x0aFish\x20version\x3a\x202\x2e2\x2e0\x0a
+SET fish_greeting:Welcome\x20back\x2c\x20stefanozzz123\x20\x21\x0aUsing\x20kernel\x3a\x204\x2e3\x2e3\x2dstefanozzz123_build\x0aFish\x20version\x3a\x202\x2e2\x2e0\x0a
 SET fish_key_bindings:fish_default_key_bindings
 SET fish_pager_color_completion:normal
 SET fish_pager_color_description:555\x1eyellow
