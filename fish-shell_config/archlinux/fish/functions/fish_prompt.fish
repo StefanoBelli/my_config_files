@@ -9,7 +9,10 @@ function fish_prompt
 
 	set_color yellow
 	printf $USER
-	set_color normal
+	set_color red
+	printf "@"
+	set_color yellow
+	printf (cat /etc/hostname)
 	set_color red
 	printf ':'
 	set_color green
