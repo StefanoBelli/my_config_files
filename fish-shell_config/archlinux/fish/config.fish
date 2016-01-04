@@ -15,3 +15,10 @@ alias pienablecups "ssh 192.168.2.100 -p 22 -l root cupsd "
 alias tmuxnew "tmux new-session -c $HOME -n Main:fish -s "
 alias wanip "curl ipecho.net/plain"
 
+# tip from ArchWiki's fish shell page
+if status --is-login
+  if test -z "$DISPLAY" -a $XDG_VTNR -eq 1
+	  exec startx -- -keeptty
+	end
+end
+
