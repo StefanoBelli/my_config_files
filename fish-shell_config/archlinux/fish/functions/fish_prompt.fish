@@ -10,10 +10,7 @@ function fish_prompt
 	set_color yellow
 	printf $USER
 	set_color normal
-	printf '.'
 	set_color red
-	printf (cat /etc/hostname)
-	set_color normal
 	printf ':'
 	set_color green
 	echo (prompt_pwd)
