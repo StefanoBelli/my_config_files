@@ -73,7 +73,6 @@
 
 ;; lateral numbers
 (global-linum-mode 1)
-
 (custom-set-variables
 
  '(current-language-environment "UTF-8")
@@ -91,6 +90,31 @@
 (global-set-key (kbd "C-M-p") 'package-list-packages)
 (global-set-key (kbd "C-M-s") 'sr-speedbar-open)
 (global-set-key (kbd "C-M-c") 'sr-speedbar-close)
+
+;;modeline, to complete
+(setq-default
+ mode-line-format
+ (list
+  "%b:%I "
+  "| "
+  mode-line-mule-info
+  mode-line-modified
+  " |  "
+  "(%02l;%02c):"
+  mode-line-position
+  " | "
+  mode-line-modes
+  " | "
+  (format-time-string "%H:%M")
+  " | "
+  (getenv "USER")
+  ))
+
+;; colors of modeline
+(set-face-background 'mode-line "black") ;; Active 
+(set-face-background 'modeline-inactive "grey") ;; Inactive
+(set-face-foreground 'mode-line "green") ;; Active 
+(set-face-foreground 'modeline-inactive "blue") ;; Inactive
 
 ;;(global-ede-mode 1)
 (projectile-global-mode)
