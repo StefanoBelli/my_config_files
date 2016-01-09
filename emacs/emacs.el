@@ -19,7 +19,12 @@
 (require 'ggtags)
 (add-hook 'c-mode-common-hook
  (lambda ()
-  (when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'asm-mode)
+   (when (derived-mode-p
+	  'c-mode
+	  'c++-mode
+	  'java-mode
+	  'asm-mode
+	  'python-mode)
    (ggtags-mode 1))))
 
 (define-key ggtags-mode-map (kbd "C-c g s") 'ggtags-find-other-symbol)
@@ -59,6 +64,12 @@
 ;; C/C++ hooks/mode
 (add-hook 'c-mode-common-hook 'my:semantic_to_ac)
 (add-hook 'c-mode-common-hook 'flycheck-mode)
+(add-hook 'c-mode-common-hook 'flymake-mode)
+(add-hook 'c-mode 'flymake-cppcheck-load)
+(add-hook 'c++-mode 'flymake-cppcheck-load)
+(add-hook 'c-mode 'company-mode)
+(add-hook 'c++-mode 'company-mode)
+
 (global-set-key (kbd "C-M-c") 'company-complete)
 (add-to-list 'company-backends 'company-c-headers)
 (semantic-add-system-include "/usr/include")
@@ -67,10 +78,6 @@
                                (interactive)
                                (setq-local compilation-read-command nil)
                                (call-interactively 'compile)))
-
-;; Define C/C++ Project using clang completions
-;;((nil . ((company-clang-arguments . ("-I/pro/je/ct/d"
-;;                                     "-I/pro/je/ct/d1")))))
 
 ;; Python hooks
 (add-to-list 'company-backends 'company-jedi)
@@ -125,3 +132,5 @@
 
 ;;(global-ede-mode 1)
 (projectile-global-mode)
+(setq projectile-enable-caching t)
+
