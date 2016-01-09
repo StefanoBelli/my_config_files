@@ -58,6 +58,7 @@
 
 ;; C/C++ hooks/mode
 (add-hook 'c-mode-common-hook 'my:semantic_to_ac)
+(add-hook 'c-mode-common-hook 'flycheck-mode)
 (global-set-key (kbd "C-M-c") 'company-complete)
 (add-to-list 'company-backends 'company-c-headers)
 (semantic-add-system-include "/usr/include")
@@ -70,6 +71,12 @@
 ;; Define C/C++ Project using clang completions
 ;;((nil . ((company-clang-arguments . ("-I/pro/je/ct/d"
 ;;                                     "-I/pro/je/ct/d1")))))
+
+;; Python hooks
+(add-to-list 'company-backends 'company-jedi)
+(add-hook 'python-mode 'elpy-mode)
+(add-hook 'python-mode 'jedi-mode)
+(add-hook 'python-mode 'flycheck-mode)
 
 ;; lateral numbers
 (global-linum-mode 1)
