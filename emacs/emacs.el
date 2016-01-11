@@ -104,12 +104,21 @@
 ;; lateral numbers
 (global-linum-mode 1)
 (custom-set-variables
-
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(current-language-environment "UTF-8")
  '(custom-enabled-themes (quote (wombat)))
+ '(ede-project-directories
+   (quote
+    ("/home/stefanozzz123/Devel/C/JASM" "/home/stefanozzz123")))
  '(line-number-mode nil))
 (custom-set-faces
-
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(default ((t (:family "Source Code Pro" :foundry "adobe" :slant normal :weight normal :height 90 :width normal)))))
 (global-set-key (kbd "C-M-u") 'memory-usage)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
@@ -146,7 +155,8 @@
 (set-face-foreground 'mode-line "green") ;; Active 
 (set-face-foreground 'modeline-inactive "blue") ;; Inactive
 
-(global-ede-mode 1)
+(require 'ede)
+(global-ede-mode)
 ;;(projectile-global-mode)
 (setq projectile-enable-caching t)
 (global-semantic-idle-summary-mode 1)
@@ -156,17 +166,3 @@
 (global-semantic-show-unmatched-syntax-mode 1)
 (add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
 (which-function-mode 1)
-
-(ede-cpp-root-project "JASM" :file "/home/stefanozzz123/Devel/C/JASM/src/main/jasm/core/jasm.c"
-		      :include-path '( "/home/stefanozzz123/Devel/C/JASM/src/main/jasm/modules"
-				      "/home/stefanozzz123/Devel/C/JASM/src/main/jasm/core"
-				      "/home/stefanozzz123/Devel/C/JASM/src/main/interfacing/cli"
-				      "/home/stefanozzz123/Devel/C/JASM/src/main/interfacing/gui"
-				      )
-		      :system-include-path '( "/usr/lib/gcc/x86_64-unknown-linux-gnu/5.3.0/include"
-					     "/usr/local/include"
-					     "/usr/lib/gcc/x86_64-unknown-linux-gnu/5.3.0/include-fixed"
-					     "/usr/include"
-					     )
-		      :compile-command "make debug"
-		      )
