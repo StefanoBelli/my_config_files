@@ -48,9 +48,6 @@
 (defun my:semantic_to_ac()
   (add-to-list 'ac-sources 'ac-source-semantic)
   )
-(global-semantic-idle-summary-mode 1)
-(global-semanticdb-minor-mode 1)
-(global-semantic-idle-scheduler-mode 1)
 
 ;; auto-complete
 (require 'auto-complete)
@@ -61,19 +58,39 @@
 (require 'yasnippet)
 (yas-global-mode 1)
 
-;; C/C++ hooks/mode
+(defun my:acc-c-header-init ()
+  (require 'auto-complete-c-headers)
+  (add-to-list 'ac-sources 'ac-source-c-headers)
+  (add-to-list 'achead:include-directories '" /usr/lib/gcc/x86_64-unknown-linux-gnu/5.3.0/../../../../include/c++/5.3.0
+ /usr/lib/gcc/x86_64-unknown-linux-gnu/5.3.0/../../../../include/c++/5.3.0/x86_64-unknown-linux-gnu
+ /usr/lib/gcc/x86_64-unknown-linux-gnu/5.3.0/../../../../include/c++/5.3.0/backward
+ /usr/lib/gcc/x86_64-unknown-linux-gnu/5.3.0/include
+ /usr/local/include
+ /usr/lib/gcc/x86_64-unknown-linux-gnu/5.3.0/include-fixed
+ /usr/include"
+     )
+  )
 (add-hook 'c-mode-common-hook 'my:semantic_to_ac)
-(add-hook 'c-mode-common-hook 'flycheck-mode)
-(add-hook 'c-mode-common-hook 'flymake-mode)
-(add-hook 'c-mode 'flymake-cppcheck-load)
-(add-hook 'c++-mode 'flymake-cppcheck-load)
 (add-hook 'c-mode 'company-mode)
 (add-hook 'c++-mode 'company-mode)
+(add-hook 'c-mode 'my:acc-c-header-init)
+(add-hook 'c++-mode 'my:acc-c-header-init)
+(add-hook 'c-mode-hook '(lambda () 
+													(setq ac-sources (append (ac-source-semantic) ac-sources))
+													(local-set-key (kbd "RET") 'newline-and-indent)
+													(linum-mode 1)
+													(semantic-mode t)))
+(add-hook 'c++-mode-hook '(lambda ()
+			    (setq ac-sources (append (ac-source-semantic) ac-sources))
+			    (local-set-key (kbd "RET") 'newline-and-indent)
+			    (linum-mode 1)
+			    (semantic-mode t)))
 
 (global-set-key (kbd "C-M-c") 'company-complete)
 (add-to-list 'company-backends 'company-c-headers)
+
 (semantic-add-system-include "/usr/include")
-;;(setq c-default-style "user")
+(setq c-default-style "user")
 (global-set-key (kbd "<f5>") (lambda ()
                                (interactive)
                                (setq-local compilation-read-command nil)
@@ -83,7 +100,6 @@
 (add-to-list 'company-backends 'company-jedi)
 (add-hook 'python-mode 'elpy-mode)
 (add-hook 'python-mode 'jedi-mode)
-(add-hook 'python-mode 'flycheck-mode)
 
 ;; lateral numbers
 (global-linum-mode 1)
@@ -130,7 +146,27 @@
 (set-face-foreground 'mode-line "green") ;; Active 
 (set-face-foreground 'modeline-inactive "blue") ;; Inactive
 
-;;(global-ede-mode 1)
-(projectile-global-mode)
+(global-ede-mode 1)
+;;(projectile-global-mode)
 (setq projectile-enable-caching t)
+(global-semantic-idle-summary-mode 1)
+(global-semanticdb-minor-mode 1)
+(global-semantic-idle-scheduler-mode 1)
+(global-semantic-decoration-mode 1)
+(global-semantic-show-unmatched-syntax-mode 1)
+(add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
+(which-function-mode 1)
 
+(ede-cpp-root-project "JASM" :file "/home/stefanozzz123/Devel/C/JASM/src/main/jasm/core/jasm.c"
+		      :include-path '( "/home/stefanozzz123/Devel/C/JASM/src/main/jasm/modules"
+				      "/home/stefanozzz123/Devel/C/JASM/src/main/jasm/core"
+				      "/home/stefanozzz123/Devel/C/JASM/src/main/interfacing/cli"
+				      "/home/stefanozzz123/Devel/C/JASM/src/main/interfacing/gui"
+				      )
+		      :system-include-path '( "/usr/lib/gcc/x86_64-unknown-linux-gnu/5.3.0/include"
+					     "/usr/local/include"
+					     "/usr/lib/gcc/x86_64-unknown-linux-gnu/5.3.0/include-fixed"
+					     "/usr/include"
+					     )
+		      :compile-command "make debug"
+		      )
