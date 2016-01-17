@@ -13,7 +13,7 @@ fi
 if which pacman 2>/dev/null >>/dev/null; 
 then
 				echo "=======PACMAN======"
-				pacman -Syyu --noconfirm && echo "* System upgrade done" || exit 2
+				pacman -Syu --noconfirm && echo "* System upgrade done" || exit 2
 				pacman -Scc --noconfirm && echo "* System clean done" || exit 2
 				pacman-db-upgrade && echo "* System database upgrade done" || exit 2
 				pacman-optimize && echo "* Complete pacman optimize done" || exit 2
@@ -22,6 +22,6 @@ fi
 if which yaourt 2>/dev/null >>/dev/null;
 then
 				echo "=====YAOURT====="
-				su - stefanozzz123 -c "yaourt -Syu --noconfirm" && echo "* AUR Packages upgraded" || exit 2
+				su - stefanozzz123 -c "yaourt -Syua --noconfirm" && echo "* AUR Packages upgraded" || exit 2
 fi
 
