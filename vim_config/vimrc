@@ -2,6 +2,7 @@
 set nocompatible "Not compatible with Vi settings
 
 """"""""""""""""""""""""""""""""
+set secure
 set backspace=indent,eol,start
 set nobackup "No backup
 set history=50		" keep 50 lines of command line history
@@ -11,8 +12,8 @@ set incsearch		" do incremental searching
 set autoindent " indenting
 set showcmd 
 set cursorline
-set tabstop=2
-set softtabstop=2
+set tabstop=4
+set softtabstop=4
 set noswapfile " No swapfile 
 set nowb
 set wildmenu 
@@ -20,10 +21,12 @@ set modeline
 set ls=2 
 set number " left-side line counter
 set t_Co=256color "Enable 256 colors terminal
+set hlsearch "highlight matched 
+set autowrite
 
 map Q gq
 syntax on "Enable syntax
-colorscheme pablo "pablo.vim color scheme
+colorscheme badwolf "badwolf 
 filetype plugin indent on 
 autocmd FileType text setlocal textwidth=78
 
@@ -33,11 +36,29 @@ autocmd FileType text setlocal textwidth=78
 "Ruby/ruby 
 "C++/G++/GCC-C++
 "Shell/sh
-autocmd FileType c map cc :!/usr/bin/gcc % -Wall -O2 -pipe -march=native -mtune=native && ./a.out 
+autocmd FileType c map cc :!/usr/bin/gcc % -Wall -O2 -o 
 autocmd FileType python map pyr :!/usr/bin/env python %
 autocmd FileType ruby map rbr :!/usr/bin/ruby %
-autocmd FileType cpp map cxx :!/usr/bin/g++ % -Wall -O2 -pipe -march=native -mtune=native && ./a.out 
+autocmd FileType cpp map cxx :!/usr/bin/g++ % -Wall -O2 -o 
 autocmd FileType sh map shr :!/bin/sh %
+
+"Shortcuts
+map <F2> :Tagbar
+map <F3> :NERDTree
+
+" C / C++
+let g:C_CCompiler = "gcc"
+let g:C_CFlags = "-O2 -pipe -Wall"
+let g:CplusCompiler = "g++"
+let g:C_CplusFlags = "-O2 -pipe -Wall"
+autocmd FileType c :Tagbar
+autocmd FileType c :NERDTree
+autocmd FileType cpp :Tagbar
+autocmd FileType cpp :NERDTree
+
+" Python
+autocmd FileType python :Tagbar
+autocmd FileType python :NERDTree
 
 if has('langmap') && exists('+langnoremap')
 				set langnoremap
@@ -47,4 +68,5 @@ endif
 if has('mouse')
 				set mouse=a
 endif
-"End of vim config file
+let g:airline#extensions#tabline#enabled = 1
+"End of vimrc
