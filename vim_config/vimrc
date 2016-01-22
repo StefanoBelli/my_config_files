@@ -23,6 +23,8 @@ set number " left-side line counter
 set t_Co=256color "Enable 256 colors terminal
 set hlsearch "highlight matched 
 set autowrite
+set shortmess=a
+set cmdheight=2
 
 map Q gq
 syntax on "Enable syntax
