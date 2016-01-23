@@ -109,10 +109,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(current-language-environment "UTF-8")
- '(custom-enabled-themes (quote (wombat)))
- '(ede-project-directories
+ '(custom-enabled-themes (quote (monokai)))
+ '(custom-safe-themes
    (quote
-    ("/home/stefanozzz123/Devel/C/JASM" "/home/stefanozzz123")))
+    ("38ba6a938d67a452aeb1dada9d7cdeca4d9f18114e9fc8ed2b972573138d4664" default)))
  '(line-number-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -124,12 +124,14 @@
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 
 ;; My keybindings
+
 (global-set-key (kbd "C-M-m") 'minimap-mode)
 (global-set-key (kbd "C-M-d") 'diff-hl-mode)
 (global-set-key (kbd "C-M-p") 'package-list-packages)
 (global-set-key (kbd "C-M-s") 'sr-speedbar-open)
 (global-set-key (kbd "C-M-c") 'sr-speedbar-close)
-
+(global-set-key (kbd "C-M-o") 'highlight-changes-mode)
+(global-set-key (kbd "C-M-i") 'iedit-mode)
 ;;modeline, to complete
 (setq-default
  mode-line-format
@@ -155,10 +157,8 @@
 (set-face-foreground 'mode-line "green") ;; Active 
 (set-face-foreground 'modeline-inactive "blue") ;; Inactive
 
-(require 'ede)
-(global-ede-mode)
 ;;(projectile-global-mode)
-(setq projectile-enable-caching t)
+;;(setq projectile-enable-caching t)
 (global-semantic-idle-summary-mode 1)
 (global-semanticdb-minor-mode 1)
 (global-semantic-idle-scheduler-mode 1)
@@ -166,3 +166,5 @@
 (global-semantic-show-unmatched-syntax-mode 1)
 (add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
 (which-function-mode 1)
+(global-diff-hl-mode 1)
+(electric-pair-mode 1)
