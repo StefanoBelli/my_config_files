@@ -12,6 +12,7 @@
 ;; COMPlete ANYthing mode enabling @ emacs startup
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
+(add-to-list 'company-backend 'company-c-headers)
 (setq company-backends (delete 'company-semantic company-backends))
 
 ;; run ggtags-create-tags
@@ -37,6 +38,25 @@
 (setq-local imenu-create-index-function #'ggtags-build-imenu-index)
 (add-hook 'c-mode-common-hook 'hs-minor-mode)
 
+;; ecb
+(require 'ecb)
+(setq ecb-layout-name "leftright2")
+(setq ecb-compile-window-height 8)
+(setq ecb-create-layout-frame-width 10)
+;; Taken from: https://truongtx.me/2013/03/10/ecb-emacs-code-browser/
+;;; activate and deactivate ecb
+(global-set-key (kbd "C-x C-,") 'ecb-activate)
+(global-set-key (kbd "C-x C-'") 'ecb-deactivate)
+;;; show/hide ecb window
+(global-set-key (kbd "C-;") 'ecb-show-ecb-windows)
+(global-set-key (kbd "C-'") 'ecb-hide-ecb-windows)
+;;; quick navigation between ecb windows
+(global-set-key (kbd "C-)") 'ecb-goto-window-edit1)
+(global-set-key (kbd "C-!") 'ecb-goto-window-directories)
+(global-set-key (kbd "C-@") 'ecb-goto-window-sources)
+(global-set-key (kbd "C-#") 'ecb-goto-window-methods)
+(global-set-key (kbd "C-$") 'ecb-goto-window-compilation)
+
 ;; GDB Multi-window
 (setq
  gdb-many-windows t
@@ -58,38 +78,38 @@
 (require 'yasnippet)
 (yas-global-mode 1)
 
-(defun my:acc-c-header-init ()
-  (require 'auto-complete-c-headers)
-  (add-to-list 'ac-sources 'ac-source-c-headers)
-  (add-to-list 'achead:include-directories '" /usr/lib/gcc/x86_64-unknown-linux-gnu/5.3.0/../../../../include/c++/5.3.0
- /usr/lib/gcc/x86_64-unknown-linux-gnu/5.3.0/../../../../include/c++/5.3.0/x86_64-unknown-linux-gnu
- /usr/lib/gcc/x86_64-unknown-linux-gnu/5.3.0/../../../../include/c++/5.3.0/backward
- /usr/lib/gcc/x86_64-unknown-linux-gnu/5.3.0/include
- /usr/local/include
- /usr/lib/gcc/x86_64-unknown-linux-gnu/5.3.0/include-fixed
- /usr/include"
-     )
+;; Header completion
+(require 'semantic/bovine/gcc)
+(semantic-add-system-include "/usr/lib/gcc/x86_64-unknown-linux-gnu/5.3.0/include" 'c-mode)
+(semantic-add-system-include "/usr/lib/gcc/x86_64-unknown-linux-gnu/5.3.0/include-fixed" 'c-mode)
+(semantic-add-system-include "/usr/local/include" 'c-mode)
+(semantic-add-system-include "/usr/include" 'c-mode)
+(semantic-add-system-include "/usr/lib/gcc/x86_64-unknown-linux-gnu/5.3.0/../../../../include/c++/5.3.0" 'c++-mode)
+(semantic-add-system-include "/usr/lib/gcc/x86_64-unknown-linux-gnu/5.3.0/../../../../include/c++/5.3.0/x86_64-unknown-linux-gnu" 'c++-mode)
+
+;; More auto-completion
+(defun my-c-mode-cedet-hook()
+  (add-to-list 'ac-sources 'ac-source-gtags)
+  (add-to-list 'ac-sources 'ac-source-semantic)
   )
-(add-hook 'c-mode-common-hook 'my:semantic_to_ac)
+
+(add-hook 'c-mode-common-hook 'my-c-mode-cedet-hook)
 (add-hook 'c-mode 'company-mode)
 (add-hook 'c++-mode 'company-mode)
-(add-hook 'c-mode 'my:acc-c-header-init)
-(add-hook 'c++-mode 'my:acc-c-header-init)
 (add-hook 'c-mode-hook '(lambda () 
-													(setq ac-sources (append (ac-source-semantic) ac-sources))
-													(local-set-key (kbd "RET") 'newline-and-indent)
-													(linum-mode 1)
-													(semantic-mode t)))
+			  (setq ac-sources (append (ac-source-semantic) ac-sources))
+			  (local-set-key (kbd "RET") 'newline-and-indent)
+			  (linum-mode 1)
+			  (semantic-mode t)))
 (add-hook 'c++-mode-hook '(lambda ()
-			    (setq ac-sources (append (ac-source-semantic) ac-sources))
-			    (local-set-key (kbd "RET") 'newline-and-indent)
-			    (linum-mode 1)
-			    (semantic-mode t)))
+			  (setq ac-sources (append (ac-source-semantic) ac-sources))
+			  (local-set-key (kbd "RET") 'newline-and-indent)
+			  (linum-mode 1)
+			  (semantic-mode t)))
 
 (global-set-key (kbd "C-M-c") 'company-complete)
 (add-to-list 'company-backends 'company-c-headers)
 
-(semantic-add-system-include "/usr/include")
 (setq c-default-style "user")
 (global-set-key (kbd "<f5>") (lambda ()
                                (interactive)
@@ -113,6 +133,7 @@
  '(custom-safe-themes
    (quote
     ("38ba6a938d67a452aeb1dada9d7cdeca4d9f18114e9fc8ed2b972573138d4664" default)))
+ '(ecb-options-version "2.40")
  '(line-number-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -132,6 +153,7 @@
 (global-set-key (kbd "C-M-c") 'sr-speedbar-close)
 (global-set-key (kbd "C-M-o") 'highlight-changes-mode)
 (global-set-key (kbd "C-M-i") 'iedit-mode)
+(global-set-key (kbd "<f6>") 'company-c-headers)
 ;;modeline, to complete
 (setq-default
  mode-line-format
@@ -157,13 +179,13 @@
 (set-face-foreground 'mode-line "green") ;; Active 
 (set-face-foreground 'modeline-inactive "blue") ;; Inactive
 
-;;(projectile-global-mode)
-;;(setq projectile-enable-caching t)
 (global-semantic-idle-summary-mode 1)
 (global-semanticdb-minor-mode 1)
 (global-semantic-idle-scheduler-mode 1)
 (global-semantic-decoration-mode 1)
 (global-semantic-show-unmatched-syntax-mode 1)
+(global-semantic-highlight-func-mode 1)
+(global-semantic-idle-local-symbol-highlight-mode 1)
 (add-to-list 'semantic-default-submodes 'global-semantic-stickyfunc-mode)
 (which-function-mode 1)
 (global-diff-hl-mode 1)
