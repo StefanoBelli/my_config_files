@@ -78,6 +78,13 @@
 (require 'yasnippet)
 (yas-global-mode 1)
 
+;; More auto-completion
+(defun my-c-mode-cedet-hook()
+  (add-to-list 'ac-sources 'ac-source-gtags)
+  (add-to-list 'ac-sources 'ac-source-semantic)
+  )
+
+;; --------------------------------------------------[C/C++]-----------------------------------------------------
 ;; Header completion
 (require 'semantic/bovine/gcc)
 (semantic-add-system-include "/usr/lib/gcc/x86_64-unknown-linux-gnu/5.3.0/include" 'c-mode)
@@ -87,11 +94,7 @@
 (semantic-add-system-include "/usr/lib/gcc/x86_64-unknown-linux-gnu/5.3.0/../../../../include/c++/5.3.0" 'c++-mode)
 (semantic-add-system-include "/usr/lib/gcc/x86_64-unknown-linux-gnu/5.3.0/../../../../include/c++/5.3.0/x86_64-unknown-linux-gnu" 'c++-mode)
 
-;; More auto-completion
-(defun my-c-mode-cedet-hook()
-  (add-to-list 'ac-sources 'ac-source-gtags)
-  (add-to-list 'ac-sources 'ac-source-semantic)
-  )
+(setq c-default-style "user") ;; Defines which C editing style emacs should follow (check linux,gnu, ...)
 
 (add-hook 'c-mode-common-hook 'my-c-mode-cedet-hook)
 (add-hook 'c-mode 'company-mode)
@@ -110,13 +113,12 @@
 (global-set-key (kbd "C-M-c") 'company-complete)
 (add-to-list 'company-backends 'company-c-headers)
 
-(setq c-default-style "user")
 (global-set-key (kbd "<f5>") (lambda ()
                                (interactive)
                                (setq-local compilation-read-command nil)
                                (call-interactively 'compile)))
 
-;; Python hooks
+;; --------------------------------------------[Python]---------------------------------------------
 (add-to-list 'company-backends 'company-jedi)
 (add-hook 'python-mode 'elpy-mode)
 (add-hook 'python-mode 'jedi-mode)
@@ -129,7 +131,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(current-language-environment "UTF-8")
- '(custom-enabled-themes (quote (monokai)))
+ '(custom-enabled-themes (quote (monokai))) ;; Uses monokai as default theme
  '(custom-safe-themes
    (quote
     ("38ba6a938d67a452aeb1dada9d7cdeca4d9f18114e9fc8ed2b972573138d4664" default)))
@@ -146,14 +148,17 @@
 
 ;; My keybindings
 
-(global-set-key (kbd "C-M-m") 'minimap-mode)
-(global-set-key (kbd "C-M-d") 'diff-hl-mode)
-(global-set-key (kbd "C-M-p") 'package-list-packages)
-(global-set-key (kbd "C-M-s") 'sr-speedbar-open)
-(global-set-key (kbd "C-M-c") 'sr-speedbar-close)
-(global-set-key (kbd "C-M-o") 'highlight-changes-mode)
-(global-set-key (kbd "C-M-i") 'iedit-mode)
-(global-set-key (kbd "<f6>") 'company-c-headers)
+(global-set-key (kbd "C-M-m") 'minimap-mode) ;; Opens a window contain source's minimap
+(global-set-key (kbd "C-M-d") 'diff-hl-mode) ;; enables diff-hl-mode
+(global-set-key (kbd "C-M-p") 'package-list-packages) ;; Opens package manager
+(global-set-key (kbd "C-M-s") 'sr-speedbar-open) ;; Opens speedbar
+(global-set-key (kbd "C-M-c") 'sr-speedbar-close) ;; Closes speedbar
+(global-set-key (kbd "C-M-o") 'highlight-changes-mode) ;; Highlight changes since last edit
+(global-set-key (kbd "C-M-i") 'iedit-mode) ;; Starts iedit mode (great)
+(global-set-key (kbd "<f6>") 'company-c-headers) ;; completes headers under point
+(global-set-key (kbd "C-M-g") 'man-follow) ;; opens another window which contain under point string's man 
+(global-set-key (kbd "C-M-f") 'man) ;; Asks for man entry 
+
 ;;modeline, to complete
 (setq-default
  mode-line-format
@@ -179,7 +184,7 @@
 (set-face-foreground 'mode-line "green") ;; Active 
 (set-face-foreground 'modeline-inactive "blue") ;; Inactive
 
-(global-semantic-idle-summary-mode 1)
+(global-semantic-idle-summary-mode 1) 
 (global-semanticdb-minor-mode 1)
 (global-semantic-idle-scheduler-mode 1)
 (global-semantic-decoration-mode 1)
