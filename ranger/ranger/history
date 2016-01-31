@@ -1,0 +1,16 @@
+empty
+compress pkgname
+compress pkgname.zip
+compress file.tar
+compress config.tar.gz
+compress file.zip
+compress emacs_pocket.zip
+extracthere
+extracthere 
+oen_with 
+Q!
+gm
+
+open_with 
+delete
+zh
