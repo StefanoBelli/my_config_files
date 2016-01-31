@@ -16,3 +16,14 @@ alias tmuxnew "tmux new-session -c $HOME -n Main:fish -s "
 alias wanip "curl ipecho.net/plain"
 alias kbd "cat ~/.i3/config | grep "
 alias cemacs "emacs -nw "
+
+#startx when login
+if status --is-login and test -e /etc/systemd/system/display-manager.service  
+   # do nothing
+else
+   if test -z "$DISPLAY" -a $XDG_VTNR -eq 1
+      exec startx -- -keeptty
+   end
+end
+
+    
