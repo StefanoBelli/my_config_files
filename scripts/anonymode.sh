@@ -19,7 +19,7 @@ HOSTNAME_NEW="/etc/hostname"
 SET_IPTABLES_OLDRULES=1
 SERVICES="systemd-hostnamed.service systemd-networkd.service NetworkManager.service wicd.service netctl.service iptables.service tor.service" #start,stop
 #AVOID_SERVICES="NetworkManager.service wicd.service"
-NETWORK_SERVICE="wicd"
+NETWORK_SERVICE="NetworkManager"
 
 msg()
 {
@@ -247,6 +247,7 @@ restart_nm_profile()
 				$SYSTEMCTL_STOP netctl
 				info "Restoring NetworkManager..."
 				$SYSTEMCTL_START NetworkManager
+				$SYSTEMCTL_RESTART NetworkManager
 }
 
 start_anonymode()
