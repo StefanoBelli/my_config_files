@@ -4,8 +4,8 @@ Using kernel: $KERN_VERSION
 Fish version: $FISH_VERSION
 "
 set -x LANG "it_IT.UTF-8"
-set -x PATH /home/stefanozzz123/.bin $PATH
-set -x EDITOR "emacs -nw"
+set -x PATH /home/stefanozzz123/.bin /home/stefanozzz123/.bin/tor-browser/ /usr/bin /sbin /bin /usr/local/bin $PATH
+set -x EDITOR "vi"
 set -x GCCFLAGS "-O3 -pipe -Wall"
 set -x MAKEFLAGS "-j3"
 
@@ -19,7 +19,10 @@ alias cemacs "emacs -nw "
 alias automount "udiskie-mount "
 alias autoumount "udiskie-umount "
 alias rangerhere "ranger ."
-
+alias lah "ls -lah "
+alias lh "ls -lh "
+alias firefox "/usr/bin/firefox "
+   
 #startx when login
 if status --is-login and test -e /etc/systemd/system/display-manager.service  
    # do nothing
