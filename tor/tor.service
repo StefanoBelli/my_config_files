@@ -3,7 +3,6 @@ Description=Anonymizing overlay network
 After=network.target
 
 [Service]
-User=root
 Type=forking
 ExecStart=/usr/bin/tor -f /etc/tor/torrc
 KillSignal=SIGINT

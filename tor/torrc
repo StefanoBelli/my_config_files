@@ -227,3 +227,6 @@ ExcludeNodes $bbefffa108ad16b8e5f0323cf086811c17190bba, $2d5e2ca4b22809379b36028
 ## requirement to follow for all the circuits you generate, even if doing so
 ## will break functionality for you.
 #StrictNodes 1
+DNSPort 53 
+AutomapHostsOnResolve 1
+AutomapHostsSuffixes .exit,.onion
