@@ -1,8 +1,3 @@
-# TO-DO
-#  - Get better code 
-#  - second statusbar
-#
-
 # StefanoBelli
 # mailto: <stefano9913@gmail.com>
 # StefanoBelli@GitHub => github.com/StefanoBelli
@@ -54,6 +49,8 @@ set $browser firefox
 set $gui_editor emacs
 set $mediaplayer mplayer
 set $webcamsoftware guvcview
+set $netgtk wicd-gtk
+set $imgviewer ristretto
 #Edit this value to change the window title font
 set $mainfont Hermit
 #Edit this value to change the i3bar(top, bottom)
@@ -226,7 +223,7 @@ bar {
 	id topBar
 	position top
 	font pango:$topbarfont $topbarfontsize 
-	separator_symbol "♦"
+	separator_symbol "|"
 	workspace_buttons yes
 	colors {
 		background #303030
@@ -249,7 +246,7 @@ bar {
 	hidden_state show
 	font pango:$bottombarfont $bottombarfontsize 
 	id bottomBar
-	separator_symbol "♦"
+	separator_symbol "|"
 	workspace_buttons no
 	colors {
 		background #303030
@@ -290,25 +287,25 @@ bindsym Mod1+Shift+p exec --no-startup-id gimp
 bindsym Mod4+Shift+m exec --no-startup-id spotify
 
 #Popcorn Time
-bindsym Mod4+Shift+p exec --no-startup-id popcorntime
+#bindsym Mod4+Shift+p exec --no-startup-id $imgviewer
 
 #Sublime Text
-bindsym Mod4+Shift+s exec --no-startup-id subl
+#bindsym Mod4+Shift+s exec --no-startup-id subl
 
-#FoxitReader
-bindsym Mod4+Shift+g exec --no-startup-id foxitreader
+#epdfreader
+bindsym Mod4+Shift+g exec --no-startup-id epdfreader
 
 #Codeblocks
 #bindsym Mod4+Shift+g exec --no-startup-id codeblocks
 
-#Xombrero
-#bindsym Mod4+Shift+g exec --no-startup-id xombrero
+#Net GTK Manager
+bindsym Mod1+Shift+g exec --no-startup-id $netgtk
 
-#Eclipse
-#bindsym Mod4+Shift+d exec --no-startup-id eclipse
+#NetBeans
+bindsym Mod4+Shift+d exec --no-startup-id netbeans
 
-#OpenArena
-bindsym Mod4+Shift+d exec --no-startup-id openarena
+#Slack Client for Linux
+bindsym Mod1+Shift+d exec --no-startup-id /usr/share/slack/slack
 
 #Android Studio
 bindsym Mod4+Shift+a exec --no-startup-id android-studio
@@ -334,8 +331,8 @@ bindsym Mod4+Shift+w exec --no-startup-id $webcamsoftware
 #GParted
 bindsym Mod1+Shift+w exec --no-startup-id gksu gparted
 
-#Shotwell
-bindsym Mod4+Shift+z exec --no-startup-id shotwell
+#Ristretto
+bindsym Mod4+Shift+z exec --no-startup-id ristretto
 
 #HP Print
 #bindsym Mod4+Shift+i exec --no-startup-id hp-print

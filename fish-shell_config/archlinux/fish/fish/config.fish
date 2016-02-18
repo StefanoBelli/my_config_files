@@ -4,10 +4,10 @@ Using kernel: $KERN_VERSION
 Fish version: $FISH_VERSION
 "
 set -x LANG "it_IT.UTF-8"
-set -x PATH /home/stefanozzz123/.bin /home/stefanozzz123/.bin/tor-browser/ /usr/bin /sbin /bin /usr/local/bin $PATH
-set -x EDITOR "vi"
-set -x GCCFLAGS "-O3 -pipe -Wall"
-set -x MAKEFLAGS "-j3"
+set -x PATH /usr/share/slack /usr/lib/qt/bin /usr/lib/qt4/bin /home/stefanozzz123/.bin /home/stefanozzz123/.bin/tor-browser/ /usr/bin /sbin /bin /usr/local/bin $PATH
+set -x EDITOR "vim"
+set -x CFLAGS "-O3 -pipe -Wall -W -msse3 -mssse3 -m64 -mtune=generic"
+set -x MAKEFLAGS "-j4"
 
 alias pissh "ssh 192.168.2.100 -p 22 -l "
 alias piscan "ssh 192.168.2.100 -p 22 -l root scan "
