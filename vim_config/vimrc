@@ -28,7 +28,7 @@ set cmdheight=2
 
 map Q gq
 syntax on "Enable syntax
-colorscheme badwolf "badwolf 
+"colorscheme badwolf "badwolf 
 filetype plugin indent on 
 autocmd FileType text setlocal textwidth=78
 
@@ -53,14 +53,6 @@ let g:C_CCompiler = "gcc"
 let g:C_CFlags = "-O2 -pipe -Wall"
 let g:CplusCompiler = "g++"
 let g:C_CplusFlags = "-O2 -pipe -Wall"
-autocmd FileType c :Tagbar
-autocmd FileType c :NERDTree
-autocmd FileType cpp :Tagbar
-autocmd FileType cpp :NERDTree
-
-" Python
-autocmd FileType python :Tagbar
-autocmd FileType python :NERDTree
 
 if has('langmap') && exists('+langnoremap')
 				set langnoremap
