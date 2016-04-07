@@ -1,0 +1,15 @@
+// Place your settings in this file to overwrite the default settings
+{
+    "editor.fontSize": 13,
+    "editor.tabSize": 2,
+    "editor.formatOnType": true,
+    "git.path":"/usr/bin/git",
+    "git.autofetch": true,
+    "python.pythonPath": "/usr/bin/python3",
+    "python.pylintPath":"/usr/bin/pylint",
+    "clang.executable": "/usr/bin/clang",
+    "clang.cflags":["-O2","-mtune=native","-W","-Wall"],
+    "clang.cxxflags":["-O2","-mtune=native","-W","-Wall"],
+    "clang.completion.completeMacros": true,
+    "clang.completion.enable": true
+}
