@@ -1,6 +1,30 @@
 "Begin of vim config file
+set shell=/bin/bash
 set nocompatible "Not compatible with Vi settings
+filetype off                  " required
 
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'Markdown'
+Plugin 'c.vim'
+Plugin 'scrooloose/nerdTree'
+Plugin 'syntastic'
+Plugin 'Tagbar'
+Plugin 'fugitive.vim'
+" Plugin 'snipMate'
+Plugin 'snippets.vim'
+" Plugin 'git-diff'
+Plugin 'clang-complete'
+Plugin 'python-imports.vim'
+
+call vundle#end()            " required
+filetype plugin indent on    " required
 """"""""""""""""""""""""""""""""
 set secure
 set backspace=indent,eol,start
@@ -12,8 +36,9 @@ set incsearch		" do incremental searching
 set autoindent " indenting
 set showcmd 
 set cursorline
-set tabstop=4
-set softtabstop=4
+set tabstop=3
+set softtabstop=3
+set shiftwidth=3
 set noswapfile " No swapfile 
 set nowb
 set wildmenu 
@@ -27,6 +52,15 @@ set shortmess=a
 set cmdheight=2
 
 map Q gq
+" Plugins bind
+map pi :PluginInstall  
+map ps :PluginSearch 
+map pc :PluginClean 
+map pl :PluginList
+
+" Buffer delete map
+map bd :bdelete
+
 syntax on "Enable syntax
 "colorscheme badwolf "badwolf 
 filetype plugin indent on 
@@ -43,10 +77,16 @@ autocmd FileType python map pyr :!/usr/bin/env python %
 autocmd FileType ruby map rbr :!/usr/bin/ruby %
 autocmd FileType cpp map cxx :!/usr/bin/g++ % -Wall -O2 -o 
 autocmd FileType sh map shr :!/bin/sh %
+"autocmd FileType asm map gas :!/usr/bin/as %
+
+let g:PythonAutoAddImports = 1
+let &path.="/usr/include,/usr/local/include"
+set makeprg=/usr/bin/make\ -j\ 3
 
 "Shortcuts
 map <F2> :Tagbar
 map <F3> :NERDTree
+map <F5> :make 
 
 " C / C++
 let g:C_CCompiler = "gcc"
