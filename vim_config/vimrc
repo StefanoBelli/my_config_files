@@ -13,6 +13,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'Markdown'
 Plugin 'c.vim'
+Plugin 'a.vim'
 Plugin 'scrooloose/nerdTree'
 Plugin 'syntastic'
 Plugin 'Tagbar'
@@ -22,6 +23,7 @@ Plugin 'snippets.vim'
 " Plugin 'git-diff'
 Plugin 'clang-complete'
 Plugin 'python-imports.vim'
+Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -52,6 +54,7 @@ set shortmess=a
 set cmdheight=2
 
 map Q gq
+inoremap <F4> <C-x><C-o>
 " Plugins bind
 map pi :PluginInstall  
 map ps :PluginSearch 
@@ -62,7 +65,7 @@ map pl :PluginList
 map bd :bdelete
 
 syntax on "Enable syntax
-"colorscheme badwolf "badwolf 
+colorscheme brogrammer 
 filetype plugin indent on 
 autocmd FileType text setlocal textwidth=78
 
@@ -81,6 +84,12 @@ autocmd FileType sh map shr :!/bin/sh %
 
 let g:PythonAutoAddImports = 1
 let &path.="/usr/include,/usr/local/include"
+let g:ycm_global_ycm_extra_conf = '/home/stefanoz/.ycm_extra_conf.py'
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_python_binary_path = '/usr/bin/python3'
+let g:ycm_min_num_of_chars_for_completion = 3
+let g:ycm_auto_trigger = 1
+
 set makeprg=/usr/bin/make\ -j\ 3
 
 "Shortcuts
