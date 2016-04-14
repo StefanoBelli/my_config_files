@@ -1,13 +1,13 @@
 "Begin of vim config file
-set shell=/bin/bash
+
+set shell=/bin/sh "Use a compatible shell 
+
 set nocompatible "Not compatible with Vi settings
-filetype off                  " required
+filetype off   "Vundle-required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
@@ -17,13 +17,16 @@ Plugin 'a.vim'
 Plugin 'scrooloose/nerdTree'
 Plugin 'syntastic'
 Plugin 'Tagbar'
-Plugin 'fugitive.vim'
-" Plugin 'snipMate'
 Plugin 'snippets.vim'
-" Plugin 'git-diff'
 Plugin 'clang-complete'
 Plugin 'python-imports.vim'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'jaxbot/semantic-highlight.vim'
+Plugin 'gregsexton/MatchTag'
+Plugin 'klen/Python-mode'
+Plugin 'go.vim'
+Plugin 'Go-Syntax'
+Plugin 'airblade/vim-gitgutter'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -66,7 +69,6 @@ map bd :bdelete
 
 syntax on "Enable syntax
 colorscheme brogrammer 
-filetype plugin indent on 
 autocmd FileType text setlocal textwidth=78
 
 "Language interpreter/compiler execution
@@ -80,22 +82,38 @@ autocmd FileType python map pyr :!/usr/bin/env python %
 autocmd FileType ruby map rbr :!/usr/bin/ruby %
 autocmd FileType cpp map cxx :!/usr/bin/g++ % -Wall -O2 -o 
 autocmd FileType sh map shr :!/bin/sh %
+
+autocmd FileType c map <C-h> :A<cr>
+autocmd FileType cpp map <C-h> :A<cr>
+set makeprg=/usr/bin/make\ -j\ 3
+
 "autocmd FileType asm map gas :!/usr/bin/as %
 
 let g:PythonAutoAddImports = 1
 let &path.="/usr/include,/usr/local/include"
+
+"YCM
 let g:ycm_global_ycm_extra_conf = '/home/stefanoz/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_python_binary_path = '/usr/bin/python3'
 let g:ycm_min_num_of_chars_for_completion = 3
 let g:ycm_auto_trigger = 1
 
-set makeprg=/usr/bin/make\ -j\ 3
+"Syntastic 
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+let g:syntastic_python_python_exec = '/usr/bin/python'
+let g:syntastic_python_checkers = ['pylint','python']
 
 "Shortcuts
-map <F2> :Tagbar
-map <F3> :NERDTree
+map <F2> :Tagbar<cr>
+map <F3> :NERDTree<cr>
 map <F5> :make 
+map <C-s> :SemanticHighlight<cr>
+map <C-x> :SemanticHighlightRevert<cr>
+map <S-e> :GitGutterEnable<cr>
 
 " C / C++
 let g:C_CCompiler = "gcc"
