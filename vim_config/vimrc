@@ -33,6 +33,7 @@ Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
 Plugin 'fatih/vim-go'
+Plugin 'jalcine/cmake.vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -66,33 +67,16 @@ set autowrite
 set shortmess=a
 set cmdheight=2
 
-map Q gq
-inoremap <F4> <C-x><C-o>
-" Plugins bind
-map pi :PluginInstall  
-map ps :PluginSearch 
-map pc :PluginClean 
-map pl :PluginList
-
-" Buffer delete map
-map bd :bdelete
-
 syntax on "Enable syntax
 colorscheme brogrammer 
 autocmd FileType text setlocal textwidth=78
 
 "Language interpreter/compiler execution
-"C/GCC
-"Python/python - env 
-"Ruby/ruby 
-"C++/G++/GCC-C++
-"Shell/sh
-autocmd FileType c map cc :!/usr/bin/gcc % -Wall -O2 -o 
 autocmd FileType python map pyr :!/usr/bin/env python %
 autocmd FileType ruby map rbr :!/usr/bin/ruby %
-autocmd FileType cpp map cxx :!/usr/bin/g++ % -Wall -O2 -o 
 autocmd FileType sh map shr :!/bin/sh %
 
+"Language-specific options
 autocmd FileType c map <F5> :make 
 autocmd FileType cpp map <F5> :make 
 autocmd FileType c map <C-h> :A<cr>
@@ -100,9 +84,9 @@ autocmd FileType cpp map <C-h> :A<cr>
 
 set makeprg=/usr/bin/make\ -j\ 3
 
-"autocmd FileType asm map gas :!/usr/bin/as %
-
+"Python imports
 let g:PythonAutoAddImports = 1
+
 let &path.="/usr/include,/usr/local/include"
 
 "YCM
@@ -119,9 +103,24 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_python_exec = '/usr/bin/python'
 let g:syntastic_python_checkers = ['pylint','python']
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+
+"vim-go
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_interfaces = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_fmt_command = "goimports"
+let g:go_play_open_browser = 0
 
 "CtrlP
 let g:ctrlp_map = '<c-p>'
+
+"Airline 
+let g:airline#extensions#tabline#enabled = 1
 
 "Shortcuts
 map <F2> :Tagbar<cr>
@@ -130,14 +129,31 @@ map <C-s> :SemanticHighlight<cr>
 map <C-x> :SemanticHighlightRevert<cr>
 map <S-e> :GitGutterEnable<cr>
 map <S-d> :GitGutterDisable<cr>
+map clpe :set paste<cr>
+map clpd :set nopaste<cr>
+map ssp :setlocal spell! spelllang=en_us<cr>
+map sspd :setlocal nospell<cr>
+map Q gq
+map pi :PluginInstall   
+map ps :PluginSearch 
+map pc :PluginClean 
+map pl :PluginList<cr>
 
-"Window movement
+"Window movement / buffer ops.
 nnoremap <S-h> <C-w>h
 nnoremap <S-j> <C-w>j
 nnoremap <S-k> <C-w>k
 nnoremap <S-l> <C-w>l
+map osp :split 
+map vsp :vsplit 
+map bhd :hide<cr> 
+map bon :only<cr>
+map bls :ls<cr>
+map bsw :b 
+map bd :bdelete<cr> 
+inoremap <F4> <C-x><C-o> "remap omni-completion CTRL-x CTRL-o ===> F4 
 
-" C / C++
+" C / C++ compiling flags (if needed)
 let g:C_CCompiler = "gcc"
 let g:C_CFlags = "-O2 -pipe -Wall"
 let g:CplusCompiler = "g++"
@@ -147,9 +163,8 @@ if has('langmap') && exists('+langnoremap')
 				set langnoremap
 endif
 
-"If mouse is availible enable it
-if has('mouse')
+if has('mouse') && has('gui') "mouse+gui 
 				set mouse=a
 endif
-let g:airline#extensions#tabline#enabled = 1
+
 "End of vimrc
