@@ -17,7 +17,6 @@ Plugin 'a.vim'
 Plugin 'scrooloose/nerdTree'
 Plugin 'syntastic'
 Plugin 'Tagbar'
-Plugin 'snippets.vim'
 Plugin 'clang-complete'
 Plugin 'python-imports.vim'
 Plugin 'Valloric/YouCompleteMe'
@@ -27,18 +26,29 @@ Plugin 'klen/Python-mode'
 Plugin 'go.vim'
 Plugin 'Go-Syntax'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'ctrlp.vim'
+Plugin 'Arduino-syntax-file'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
+Plugin 'fatih/vim-go'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 """"""""""""""""""""""""""""""""
+"setlocal spell spelllang=en_en 
 set secure
 set backspace=indent,eol,start
 set nobackup "No backup
-set history=50		" keep 50 lines of command line history
+set history=150		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 set autoindent " indenting
+set smartindent 
+set showmatch
+set antialias 
 set showcmd 
 set cursorline
 set tabstop=3
@@ -83,8 +93,11 @@ autocmd FileType ruby map rbr :!/usr/bin/ruby %
 autocmd FileType cpp map cxx :!/usr/bin/g++ % -Wall -O2 -o 
 autocmd FileType sh map shr :!/bin/sh %
 
+autocmd FileType c map <F5> :make 
+autocmd FileType cpp map <F5> :make 
 autocmd FileType c map <C-h> :A<cr>
 autocmd FileType cpp map <C-h> :A<cr>
+
 set makeprg=/usr/bin/make\ -j\ 3
 
 "autocmd FileType asm map gas :!/usr/bin/as %
@@ -107,13 +120,22 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_python_python_exec = '/usr/bin/python'
 let g:syntastic_python_checkers = ['pylint','python']
 
+"CtrlP
+let g:ctrlp_map = '<c-p>'
+
 "Shortcuts
 map <F2> :Tagbar<cr>
 map <F3> :NERDTree<cr>
-map <F5> :make 
 map <C-s> :SemanticHighlight<cr>
 map <C-x> :SemanticHighlightRevert<cr>
 map <S-e> :GitGutterEnable<cr>
+map <S-d> :GitGutterDisable<cr>
+
+"Window movement
+nnoremap <S-h> <C-w>h
+nnoremap <S-j> <C-w>j
+nnoremap <S-k> <C-w>k
+nnoremap <S-l> <C-w>l
 
 " C / C++
 let g:C_CCompiler = "gcc"
