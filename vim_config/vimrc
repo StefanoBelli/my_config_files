@@ -22,7 +22,6 @@ Plugin 'python-imports.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'jaxbot/semantic-highlight.vim'
 Plugin 'gregsexton/MatchTag'
-Plugin 'klen/Python-mode'
 Plugin 'go.vim'
 Plugin 'Go-Syntax'
 Plugin 'airblade/vim-gitgutter'
@@ -30,15 +29,13 @@ Plugin 'ctrlp.vim'
 Plugin 'Arduino-syntax-file'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
-Plugin 'garbas/vim-snipmate'
-Plugin 'honza/vim-snippets'
 Plugin 'fatih/vim-go'
 Plugin 'jalcine/cmake.vim'
+Plugin 'SirVer/ultisnips'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 """"""""""""""""""""""""""""""""
-"setlocal spell spelllang=en_en 
 set secure
 set backspace=indent,eol,start
 set nobackup "No backup
@@ -82,11 +79,13 @@ autocmd FileType cpp map <F5> :make
 autocmd FileType c map <C-h> :A<cr>
 autocmd FileType cpp map <C-h> :A<cr>
 
+"Make command 
 set makeprg=/usr/bin/make\ -j\ 3
 
 "Python imports
 let g:PythonAutoAddImports = 1
 
+"include paths
 let &path.="/usr/include,/usr/local/include"
 
 "YCM
@@ -102,9 +101,9 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_python_exec = '/usr/bin/python'
-let g:syntastic_python_checkers = ['pylint','python']
+let g:syntastic_python_checkers = ['pylint']
 let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
-let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': [] }
 
 "vim-go
 let g:go_highlight_functions = 1
@@ -122,13 +121,18 @@ let g:ctrlp_map = '<c-p>'
 "Airline 
 let g:airline#extensions#tabline#enabled = 1
 
-"Shortcuts
+"UltiSnips 
+let g:UltiSnipsExpandTrigger = "<C-u>"
+let g:UltiSnipsJumpForwardTrigger = "<C-f>"
+let g:UltiSnipsJumpBackwardTrigger = "<C-b>"
+
+"Various mapping
 map <F2> :Tagbar<cr>
 map <F3> :NERDTree<cr>
 map <C-s> :SemanticHighlight<cr>
 map <C-x> :SemanticHighlightRevert<cr>
-map <S-e> :GitGutterEnable<cr>
-map <S-d> :GitGutterDisable<cr>
+map <C-e> :GitGutterEnable<cr>
+map <C-d> :GitGutterDisable<cr>
 map clpe :set paste<cr>
 map clpd :set nopaste<cr>
 map ssp :setlocal spell! spelllang=en_us<cr>
@@ -151,7 +155,7 @@ map bon :only<cr>
 map bls :ls<cr>
 map bsw :b 
 map bd :bdelete<cr> 
-inoremap <F4> <C-x><C-o> 
+inoremap <C-r> <C-x><C-o> 
 
 " C / C++ compiling flags (if needed)
 let g:C_CCompiler = "gcc"
@@ -159,6 +163,7 @@ let g:C_CFlags = "-O2 -pipe -Wall"
 let g:CplusCompiler = "g++"
 let g:C_CplusFlags = "-O2 -pipe -Wall"
 
+""
 if has('langmap') && exists('+langnoremap')
 				set langnoremap
 endif
