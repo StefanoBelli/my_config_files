@@ -12,7 +12,7 @@ You need to have [VundleVim/Vundle.vim](https://github.com/VundleVim/Vundle.vim)
 
  * Install vundle
  ~~~
- # follow instruction to the amazing Vundle repository (linked above) 
+ # follow instructions from the amazing Vundle repository (linked above) 
  ~~~
 
  * Install plugins
