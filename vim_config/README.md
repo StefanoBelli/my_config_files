@@ -24,6 +24,6 @@ You need to have [VundleVim/Vundle.vim](https://github.com/VundleVim/Vundle.vim)
 
 ### Reading keymaps
 
- (all)map *New-Keybind* *Command*
+ (all)map  __<__ *New-Keybind* __>__  __[__ *Command* __]__
 
 
