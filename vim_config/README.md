@@ -1,9 +1,9 @@
 ## Vim config
 
 Here you are my vim configs
-You need to have ![Vundle][https://github.com/VundleVim/Vundle.vim] in order to install all plugins.
+You need to have [VundleVim/Vundle.vim](https://github.com/VundleVim/Vundle.vim) in order to install all plugins.
 
-# Install
+### Install
 
  * Copy vimrc to $HOME
  ~~~
@@ -22,8 +22,8 @@ You need to have ![Vundle][https://github.com/VundleVim/Vundle.vim] in order to 
 
  Very easy!
 
-# Reading keymaps
+### Reading keymaps
 
- (all)map *<New-Keybind>* *<Command>*
+ (all)map *New-Keybind* *Command*
 
 
