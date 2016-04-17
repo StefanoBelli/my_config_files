@@ -1,6 +1,9 @@
 #!/bin/bash
 
 #
+# Stefano Belli, 
+# Simple script to use zram devices
+#
 # Enable zRam 
 # This assumes module is already loaded
 # And devices created
@@ -24,14 +27,17 @@
 # on debian-based distros you will find an alias -> update-grub
 #
 
-NDEVICES=0 #by default this script checks for /dev/zram{0,1,2,3}
-LOGFILE=/var/log/zram_enable.log 
-KSYS_BLK_PATH=/sys/block/zram 
-DEV_BLK_PATH=/dev/zram 
-SWAP_ZRAM=0
-EXTF_ZRAM=0
-SWAP_SZ="512M"
-EXTF_SZ="1G"
+NDEVICES=0 #DON'T CHANGE THIS
+
+LOGFILE=/var/log/zram_enable.log # DON'T CHANGE THIS 
+KSYS_BLK_PATH=/sys/block/zram #DON'T CHANGE THIS
+DEV_BLK_PATH=/dev/zram #DON'T CHANGE THIS
+SWAP_ZRAM=0 # DON'T CHANGE THIS
+EXTF_ZRAM=0 # DON'T CHANGE THIS 
+
+SWAP_SZ="512M" #Change this value if you want
+EXTF_SZ="1G" #Change this value if you want
+MCOMP_STREAMS=4 #Change this value if you want
 
 pre_enable_checks() 
 {
@@ -115,7 +121,8 @@ enable_zram()
 		echo "--> zram${index} " >> $LOGFILE 
 		echo "--> swap " >> $LOGFILE 
 		echo "--> size: ${SWAP_SZ} " >> $LOGFILE 
-		
+
+		echo ${MCOMP_STREAMS} > $KSYS_BLK_PATH${index}/max_comp_streams 
 		echo ${SWAP_SZ} > $KSYS_BLK_PATH${index}/disksize 
 	   
 		/sbin/mkswap -L "swap_zram${index}" $DEV_BLK_PATH${index} 2>/dev/null >>/dev/null &&\
@@ -143,7 +150,8 @@ enable_zram()
 		echo "--> ext4_fs " >> $LOGFILE 
 		echo "--> size: ${EXTF_SZ} " >> $LOGFILE 
 
-		echo ${EXTF_SZ} >> $KSYS_BLK_PATH${index}/disksize 
+		echo ${MCOMP_STREAMS} > $KSYS_BLK_PATH${index}/max_comp_streams
+		echo ${EXTF_SZ} > $KSYS_BLK_PATH${index}/disksize 
 
 		/sbin/mkfs.ext4 -L "zram${index}" $DEV_BLK_PATH${index} 2>/dev/null >>/dev/null &&\
 			/bin/mount $DEV_BLK_PATH${index} /tmp 
@@ -151,7 +159,9 @@ enable_zram()
 		if [ $? -eq 0 ]; 
 		then
 				echo "--> zram${index} enabled as DEVICE! (/tmp) -- LABEL: zram${index}" >> $LOGFILE 
+				/bin/chmod 1777 /tmp # set default permissions
 		else
+
 			echo "--> zram${index} could not be enabled as device!" >> $LOGFILE
 			exit 2
 		fi
