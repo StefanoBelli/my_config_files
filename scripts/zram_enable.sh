@@ -160,14 +160,13 @@ enable_zram()
 	done
 }
 
-## 
-printf '' > $LOGFILE 
-
 # You must be root 
 if [ ! $UID -eq 0 ];
 then
 	exit 3
 fi
+
+printf '' > $LOGFILE 
 
 if [[ $# < 1 ]] || [[ $# > 1 ]]; 
 then
