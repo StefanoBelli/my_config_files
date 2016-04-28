@@ -122,7 +122,7 @@ let g:ctrlp_map = '<c-p>'
 let g:airline#extensions#tabline#enabled = 1
 
 "UltiSnips 
-let g:UltiSnipsExpandTrigger = "<C-u>"
+let g:UltiSnipsExpandTrigger = "<F8>"
 let g:UltiSnipsJumpForwardTrigger = "<C-f>"
 let g:UltiSnipsJumpBackwardTrigger = "<C-b>"
 
@@ -155,7 +155,6 @@ map bon :only<cr>
 map bls :ls<cr>
 map bsw :b 
 map bd :bdelete<cr> 
-inoremap <C-r> <C-x><C-o> 
 
 " C / C++ compiling flags (if needed)
 let g:C_CCompiler = "gcc"
@@ -172,4 +171,7 @@ if has('mouse') && has('gui') "mouse+gui
 				set mouse=a
 endif
 
+if has('gui_running') 
+	set guifont=InputMono
+endif
 "End of vimrc
