@@ -1,3 +1,4 @@
+(prefer-coding-system 'utf-8)
 ;; Adding other repositories here
 (when (>= emacs-major-version 24)
   (require 'package)
@@ -5,6 +6,8 @@
   (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/")) ;; Melpa
 	;;(add-to-list 'package-archives '("name" . "url")) ;; Name
 )
+
+(tool-bar-mode -1)
 
 ;; Auto indentation
 (define-key global-map (kbd "RET") 'newline-and-indent)
@@ -27,6 +30,13 @@
 (require 'auto-complete)
 (require 'auto-complete-config)
 (ac-config-default)
+
+;; flymake-ruby
+(require 'flymake-ruby)
+(add-hook 'ruby-mode-hook 'flymake-ruby-load)
+(add-hook 'ruby-mode-hook 'robe-mode)
+(add-hook 'ruby-mode-hook 'ruby-accurate-end-of-block)
+(add-hook 'ac-modes 'enh-ruby-mode)
 
 ;; Enabling semantic mode
 (semantic-mode 1)
@@ -57,12 +67,17 @@
 (add-to-list 'company-backends 'company-jedi)
 (add-hook 'python-mode 'elpy-mode)
 (add-hook 'python-mode 'jedi-mode)
+(add-hook 'python-mode 'anaconda-mode)
 
 ;; GDB Multi-window
 (setq
  gdb-many-windows t
  gdb-show-main t
  )
+
+;; go
+(require 'go-eldoc)
+(add-hook 'go-mode-hook 'go-eldoc-setup)
 
 ;; Enabling semantic mode
 (semantic-mode 1)
@@ -113,7 +128,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (deeper-blue)))
+ '(ansi-color-names-vector
+   ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
+ '(custom-enabled-themes (quote (suscolors)))
+ '(custom-safe-themes
+   (quote
+    ("97d039a52cfb190f4fd677f02f7d03cf7dbd353e08ac8a0cb991223b135ac4e6" default)))
  '(show-paren-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
