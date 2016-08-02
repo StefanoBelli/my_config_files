@@ -4,14 +4,20 @@ Using kernel: $KERN_VERSION
 Fish version: $FISH_VERSION
 "
 set -x LANG "it_IT.UTF-8"
-set -x PATH /usr/share/slack /usr/lib/qt/bin /usr/lib/qt4/bin /home/stefanozzz123/.bin /home/stefanozzz123/.bin/tor-browser/ /usr/bin /sbin /bin /usr/local/bin $PATH
+set -x PATH /usr/lib/qt/bin /usr/lib/qt4/bin \
+            /home/stefanoz/.bin /home/stefanoz/.bin/tor-browser_en-US/ \
+			/usr/bin /sbin /bin /usr/local/bin /usr/lib/go/bin $PATH
 set -x EDITOR "vim"
-set -x CFLAGS "-O3 -pipe -Wall -W -msse3 -mssse3 -m64 -mtune=generic"
+set -x CCFLAGS "-O3 -pipe -Wall -W -msse3 -mssse3 -m64 -mtune=generic"
+set -x CCXXFLAGS "$CCFLAGS"
 set -x MAKEFLAGS "-j4"
+set -x CC /usr/bin/gcc
+set -x CXX /usr/bin/g++
+set -x MCPATH $HOME/.jar/minecraft.jar
 
-alias pissh "ssh 192.168.2.100 -p 22 -l "
-alias piscan "ssh 192.168.2.100 -p 22 -l root scan "
-alias pienablecups "ssh 192.168.2.100 -p 22 -l root cupsd "
+alias pissh "ssh 192.168.2.100 -p 6895 -l "
+alias piscan "ssh 192.168.2.100 -p 6895 -l root scan "
+alias pienablecups "ssh 192.168.2.100 -p 6895 -l root cupsd "
 alias tmuxnew "tmux new-session -c $HOME -n Main:fish -s "
 alias wanip "curl ipecho.net/plain"
 alias kbd "cat ~/.i3/config | grep "
@@ -22,14 +28,17 @@ alias rangerhere "ranger ."
 alias lah "ls -lah "
 alias lh "ls -lh "
 alias firefox "/usr/bin/firefox "
-   
+alias minecraft "java -jar $MCPATH "
+alias pimntste "sshfs stefanozzz123@192.168.2.100:/home/stefanozzz123 ~/mntsshfs "
+
 #startx when login
-if status --is-login and test -e /etc/systemd/system/display-manager.service  
-   # do nothing
-else
-   if test -z "$DISPLAY" -a $XDG_VTNR -eq 1
-      exec startx -- -keeptty
-   end
-end
+#if status --is-login and test -e /etc/systemd/system/display-manager.service  
+#   # do nothing
+#else
+#   if test -z "$DISPLAY" -a $XDG_VTNR -eq 1
+#      exec startx -- -keeptty
+#   end
+#end
 
     
+
