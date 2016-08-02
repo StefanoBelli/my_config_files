@@ -10,7 +10,7 @@
 # possible, but leave them commented.  Uncommented options override the
 # default value.
 
-Port 7845
+Port 6895
 #AddressFamily any
 #ListenAddress 0.0.0.0
 #ListenAddress ::
@@ -35,23 +35,23 @@ Port 7845
 
 # Logging
 # obsoletes QuietMode and FascistLogging
-#SyslogFacility AUTH
+SyslogFacility AUTH
 LogLevel INFO
 
 # Authentication:
 
-#LoginGraceTime 2m
-PermitRootLogin yes
+LoginGraceTime 1m
+PermitRootLogin no
 #StrictModes yes
-MaxAuthTries 3
-MaxSessions 3
+MaxAuthTries 2
+MaxSessions 2
 
-RSAAuthentication no
-PubkeyAuthentication no
+#RSAAuthentication yes
+#PubkeyAuthentication yes
 
 # The default is to check both .ssh/authorized_keys and .ssh/authorized_keys2
 # but this is overridden so installations will only check .ssh/authorized_keys
-#AuthorizedKeysFile	.ssh/authorized_keys
+AuthorizedKeysFile	.ssh/authorized_keys
 
 #AuthorizedPrincipalsFile none
 
@@ -69,11 +69,11 @@ PubkeyAuthentication no
 #IgnoreRhosts yes
 
 # To disable tunneled clear text passwords, change to no here!
-PasswordAuthentication yes
-PermitEmptyPasswords no
+#PasswordAuthentication yes
+#PermitEmptyPasswords no
 
 # Change to no to disable s/key passwords
-#ChallengeResponseAuthentication yes
+ChallengeResponseAuthentication no
 
 # Kerberos options
 #KerberosAuthentication no
@@ -99,12 +99,12 @@ UsePAM yes
 #AllowAgentForwarding yes
 #AllowTcpForwarding yes
 #GatewayPorts no
-X11Forwarding yes
-X11DisplayOffset 10
-X11UseLocalhost yes
+X11Forwarding no
+#X11DisplayOffset 10
+#X11UseLocalhost yes
 #PermitTTY yes
-PrintMotd no
-PrintLastLog no
+PrintMotd no # pam does that
+#PrintLastLog yes
 #TCPKeepAlive yes
 #UseLogin no
 UsePrivilegeSeparation sandbox		# Default for new installations.
@@ -123,21 +123,7 @@ UsePrivilegeSeparation sandbox		# Default for new installations.
 #Banner none
 
 # override default of no subsystems
-Subsystem	sftp	/usr/lib64/misc/sftp-server
-
-# the following are HPN related configuration options
-# tcp receive buffer polling. disable in non autotuning kernels
-#TcpRcvBufPoll yes
-
-# disable hpn performance boosts
-#HPNDisabled no
-
-# buffer size for hpn to non-hpn connections
-#HPNBufferSize 2048
-
-
-# allow the use of the none cipher
-#NoneEnabled no
+Subsystem	sftp	/usr/lib/ssh/sftp-server
 
 # Example of overriding settings on a per-user basis
 #Match User anoncvs
@@ -145,6 +131,3 @@ Subsystem	sftp	/usr/lib64/misc/sftp-server
 #	AllowTcpForwarding no
 #	PermitTTY no
 #	ForceCommand cvs server
-
-# Allow client to pass locale environment variables #367017
-AcceptEnv LANG LC_*

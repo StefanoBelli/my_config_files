@@ -46,10 +46,4 @@ export ARCHFLAGS="-O2 -pipe -march=native -mtune=native"
 
 #Left prompt
 PROMPT="(%m) %n on %~ %# "
-
 RPROMPT="{return: %?} [%l]"
-
-#My GitHub repository
-mygithub="https://github.com/StefanoBelli"
-
-source /usr/share/zsh/plugins/zsh-syntax-highlighting.zsh
