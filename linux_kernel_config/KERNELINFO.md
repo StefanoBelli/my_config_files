@@ -16,18 +16,6 @@ First of all, decompress config.gz
 gzip -d config.gz
 ```
 
-```
-make mrproper #cleans all useless files
-cp ../my_config_files/linux_kernel_config/config .config
-make menuconfig #do your changes
-make -jX # where X is the number of CPUs to use (Suggested: 2)
-make modules_install # installs modules in /lib/modules, need to be root
-make headers_install #installs kernel headers
-cp arch/x86_64/boot/bzImage /boot/vmlinuz-kernel #copies the compressed kernel image in /boot, renaming it as vmlinux-kernel
-*bootloader update* #after that you need to update your bootloader [GRUB, LILO, SYSLINUX, etc...]
-```
-
-
  - 64 bit kernel config
  - LZ4 compression (fast decompress algorithm)
  - No ramdisk support (Bootup improvements) 
@@ -60,5 +48,6 @@ cp arch/x86_64/boot/bzImage /boot/vmlinuz-kernel #copies the compressed kernel i
 
 Other things... :)
 Tested with Linux 4.1.6
-Waiting for Linux 4.2.1 as Linux 4.2 doesn't work with my static IP address (other kernels works...)
 
+"linux-config" may not work (kernel panic) 
+"desktop-linux-config" is based on Arch configuration, but I personalized it

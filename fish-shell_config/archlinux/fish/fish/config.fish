@@ -5,14 +5,14 @@ Fish version: $FISH_VERSION
 "
 set -x LANG "it_IT.UTF-8"
 set -x PATH /usr/lib/qt/bin /usr/lib/qt4/bin \
-            /home/stefanoz/.bin /home/stefanoz/.bin/tor-browser_en-US/ \
+            /home/stefanoz/.bin \
 			/usr/bin /sbin /bin /usr/local/bin /usr/lib/go/bin $PATH
 set -x EDITOR "vim"
-set -x CCFLAGS "-O3 -pipe -Wall -W -msse3 -mssse3 -m64 -mtune=generic"
-set -x CCXXFLAGS "$CCFLAGS"
-set -x MAKEFLAGS "-j4"
+set -x MAKEFLAGS "-j10"
 set -x CC /usr/bin/gcc
 set -x CXX /usr/bin/g++
+set -x CFLAGS "-O2 -m64 -pipe -march=skylake -mtune=skylake"
+set -x CXXFLAGS "$CFLAGS"
 set -x MCPATH $HOME/.jar/minecraft.jar
 
 alias pissh "ssh 192.168.2.100 -p 6895 -l "
@@ -28,7 +28,6 @@ alias rangerhere "ranger ."
 alias lah "ls -lah "
 alias lh "ls -lh "
 alias firefox "/usr/bin/firefox "
-alias minecraft "java -jar $MCPATH "
 alias pimntste "sshfs stefanozzz123@192.168.2.100:/home/stefanozzz123 ~/mntsshfs "
 
 #startx when login
