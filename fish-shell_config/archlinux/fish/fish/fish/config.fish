@@ -29,12 +29,12 @@ set __fish_git_prompt_color_branch green
 set __fish_git_prompt_color_upstream_ahead green
 set __fish_git_prompt_color_upstream_behind red
 
-set __fish_git_prompt_char_dirtystate '!'
-set __fish_git_prompt_char_stagedstate '↑'
-set __fish_git_prompt_char_upstream_ahead '→'
-set __fish_git_prompt_char_upstream_behind '←'
+set __fish_git_prompt_char_dirtystate '/'
+set __fish_git_prompt_char_stagedstate '-'
+set __fish_git_prompt_char_upstream_ahead '+'
+set __fish_git_prompt_char_upstream_behind '-'
 set __fish_git_prompt_char_upstream_equal '='
-set __fish_git_prompt_char_invalidstate '‼'
+set __fish_git_prompt_char_invalidstate '!'
 
 # useful aliases
 alias pissh "ssh 192.168.2.100 -p 6895 -l "
