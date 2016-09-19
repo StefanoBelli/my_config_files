@@ -1,0 +1,14 @@
+.project
+build/
+.idea
+.kdev4/
+*.kdev4
+*.VC.db
+*.VC.db*
+.*.VC.db
+*.VC.db*
+.vscode/
+nbproject/
+compile_commands.json
+CMakeLists.txt.user
+*.user
