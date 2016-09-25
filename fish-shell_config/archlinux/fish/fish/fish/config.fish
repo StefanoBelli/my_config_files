@@ -1,4 +1,5 @@
 set KERN_VERSION (uname -r)
+
 set fish_greeting "Welcome back, $USER !
 Using kernel: $KERN_VERSION
 Fish version: $FISH_VERSION
@@ -15,7 +16,7 @@ set -x CC /usr/bin/gcc
 set -x CXX /usr/bin/g++
 set -x CFLAGS "-O2 -m64 -pipe -march=skylake -mtune=skylake"
 set -x CXXFLAGS "$CFLAGS"
-set -x MCPATH $HOME/.jar/minecraft.jar
+#set -x MCPATH $HOME/.jar/minecraft.jar
 
 ## Show git status if there is git local repo
 set __fish_git_prompt_showdirtystate 'yes'
@@ -50,7 +51,23 @@ alias rangerhere "ranger ."
 alias lah "ls -lah "
 alias lh "ls -lh "
 #alias firefox "/usr/bin/firefox "
-alias pimntste "sshfs stefanozzz123@192.168.2.100:/home/stefanozzz123 ~/mntsshfs "
+alias pimntste "sshfs -p 6895 stefanozzz123@192.168.2.100:/home/stefanozzz123 ~/mntsshfs "
+alias pki "/usr/bin/sudo /usr/bin/pacman -S "
+alias pksi "/usr/bin/sudo /usr/bin/pacman -Sy "
+alias pku "/usr/bin/sudo /usr/bin/pacman -Syu"
+alias pkmi "/usr/bin/sudo /usr/bin/pacman -U "
+alias pkfsi "/usr/bin/sudo /usr/bin/pacman -Syy "
+alias pkr "/usr/bin/sudo /usr/bin/pacman -R "
+alias pkrd "/usr/bin/sudo /usr/bin/pacman -Rdd "
+alias pkrcl "/usr/bin/sudo /usr/bin/pacman -Rsn "
+alias pkfnd "/usr/bin/pacman -Ss "
+alias pklfnd "/usr/bin/pacman -Qs "
+alias pklfndd "/usr/bin/pacman -Qi "
+alias pkclr "/usr/bin/sudo /usr/bin/pacman -Scc"
+alias pkfu "/usr/bin/sudo /usr/bin/pacman -Syu ;and /usr/bin/sudo /usr/bin/pacman -Scc ;and /usr/bin/sudo /usr/bin/pacman-db-upgrade ;and /usr/bin/sudo /usr/bin/pacman-optimize"
+alias cpki "/usr/bin/yaourt -S --noconfirm "
+alias cpku "/usr/bin/yaourt -Syua --noconfirm "
+alias cpkfnd "/usr/bin/yaourt -Ss "
 
 #startx when login
 #if status --is-login and test -e /etc/systemd/system/display-manager.service  
