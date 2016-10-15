@@ -18,7 +18,6 @@ Plugin 'scrooloose/nerdTree'
 Plugin 'syntastic'
 Plugin 'Tagbar'
 Plugin 'python-imports.vim'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'jaxbot/semantic-highlight.vim'
 Plugin 'gregsexton/MatchTag'
 Plugin 'go.vim'
@@ -29,11 +28,13 @@ Plugin 'Arduino-syntax-file'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'fatih/vim-go'
-"Plugin 'jalcine/cmake.vim'
+Plugin 'jalcine/cmake.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'vim-airline/vim-airline'
 Plugin 'marciomazza/vim-brogrammer-theme'
 Plugin 'vim-ruby/vim-ruby'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'vim-airline/vim-airline-themes'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -93,7 +94,7 @@ let &path.="/usr/include,/usr/local/include"
 "YCM
 let g:ycm_global_ycm_extra_conf = '/home/stefanoz/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = 0
-let g:ycm_python_binary_path = '/usr/bin/python3'
+let g:ycm_python_binary_path = '/usr/bin/python2'
 let g:ycm_min_num_of_chars_for_completion = 3
 let g:ycm_auto_trigger = 1
 
@@ -122,11 +123,15 @@ let g:ctrlp_map = '<c-p>'
 
 "Airline 
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
 
 "UltiSnips 
 let g:UltiSnipsExpandTrigger = "<F8>"
 let g:UltiSnipsJumpForwardTrigger = "<C-f>"
 let g:UltiSnipsJumpBackwardTrigger = "<C-b>"
+
+"Enable deoplete 
+let g:deoplete#enable_at_startup = 1
 
 "Various mapping
 map <F2> :Tagbar<cr>
@@ -140,6 +145,7 @@ map clpd :set nopaste<cr>
 map ssp :setlocal spell! spelllang=en_us<cr>
 map sspd :setlocal nospell<cr>
 map Q gq
+map >> $ 
 map pi :PluginInstall   
 map ps :PluginSearch 
 map pc :PluginClean 
@@ -178,6 +184,6 @@ if has('mouse') && has('gui') "mouse+gui
 endif
 
 if has('gui_running') 
-	set guifont=InputMono
+	set guifont=Ubuntu\ Mono
 endif
 "End of vimrc
