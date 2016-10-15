@@ -39,24 +39,31 @@ __CONFIG_LANGUAGE__ = 'c++'
 #Languages standard (-std=STANDARD)
 __CONFIG_LANGUAGE_STANDARD_CXX__ = '-std=c++14'
 __CONFIG_LANGUAGE_STANDARD_C__ = '-std=c11'
- 
+
+#GCC and Clang version
+__CONFIG_GCC_VERSION__ = "6.2.1"
+__CONFIG_CLANG_VERSION__ = "3.8.1"
+
+#Toolchain naming
+#on modern x86_64 GNU/Linux operating system
+#this is usually good
+__TOOLCHAIN_NAME__ = "x86_64-pc-linux-gnu" 
+
 flags = [
         __CONFIG_LANGUAGE__,
         '-Wall',
         '-x',
-        '-I/usr/lib/gcc/x86_64-pc-linux-gnu/6.2.1/include',
         '-I/usr/local/include',
-        '-I/usr/lib/gcc/x86_64-pc-linux-gnu/6.2.1/include-fixed',
+        '-I/usr/bin/../lib/clang/{}/include'.format(__CONFIG_CLANG_VERSION__),
         '-I/usr/include',
 ]
 
-if flags[0] == 'c++':
+if __CONFIG_LANGUAGE__ == 'c++':
     flags.append(__CONFIG_LANGUAGE_STANDARD_CXX__)
-    flags.append('-I/usr/lib/gcc/x86_64-pc-linux-gnu/6.2.1/../../../../include/c++/6.2.1')
-    flags.append('-I/usr/lib/gcc/x86_64-pc-linux-gnu/6.2.1/../../../../include/c++/6.2.1/x86_64-pc-linux-gnu')
-    flags.append('-I/usr/lib/gcc/x86_64-pc-linux-gnu/6.2.1/../../../../include/c++/6.2.1/backward')
-
-if flags[0] == 'c':
+    flags.append('-I/usr/lib/gcc/{}/{}/../../../../include/c++/{}'.format(__TOOLCHAIN_NAME__,__CONFIG_GCC_VERSION__,__CONFIG_GCC_VERSION__))
+    flags.append('-I/usr/lib/gcc/{}/{}/../../../../include/c++/{}/{}'.format(__TOOLCHAIN_NAME__,__CONFIG_GCC_VERSION__, __CONFIG_GCC_VERSION__,__TOOLCHAIN_NAME__))
+    flags.append('-I/usr/lib/gcc/{}/{}/../../../../include/c++/{}/backward'.format(__TOOLCHAIN_NAME__, __CONFIG_GCC_VERSION__,__CONFIG_GCC_VERSION__))
+elif __CONFIG_LANGUAGE__ == 'c':
     flags.append(__CONFIG_LANGUAGE_STANDARD_C__)
 
 
