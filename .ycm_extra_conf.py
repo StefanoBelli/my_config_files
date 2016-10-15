@@ -33,12 +33,31 @@
 import os
 import ycm_core
 
+#For example: 'c' or 'c++'
+__CONFIG_LANGUAGE__ = 'c++'
+
+#Languages standard (-std=STANDARD)
+__CONFIG_LANGUAGE_STANDARD_CXX__ = '-std=c++14'
+__CONFIG_LANGUAGE_STANDARD_C__ = '-std=c11'
+ 
 flags = [
+        __CONFIG_LANGUAGE__,
         '-Wall',
         '-x',
-        'c++',
-        '-std=c++14',
+        '-I/usr/lib/gcc/x86_64-pc-linux-gnu/6.2.1/include',
+        '-I/usr/local/include',
+        '-I/usr/lib/gcc/x86_64-pc-linux-gnu/6.2.1/include-fixed',
+        '-I/usr/include',
 ]
+
+if flags[0] == 'c++':
+    flags.append(__CONFIG_LANGUAGE_STANDARD_CXX__)
+    flags.append('-I/usr/lib/gcc/x86_64-pc-linux-gnu/6.2.1/../../../../include/c++/6.2.1')
+    flags.append('-I/usr/lib/gcc/x86_64-pc-linux-gnu/6.2.1/../../../../include/c++/6.2.1/x86_64-pc-linux-gnu')
+    flags.append('-I/usr/lib/gcc/x86_64-pc-linux-gnu/6.2.1/../../../../include/c++/6.2.1/backward')
+
+if flags[0] == 'c':
+    flags.append(__CONFIG_LANGUAGE_STANDARD_C__)
 
 
 # Set this to the absolute path to the folder (NOT the file!) containing the
