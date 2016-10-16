@@ -30,6 +30,12 @@
 #
 # For more information, please refer to <http://unlicense.org/>
 
+#
+# Customized by: Stefano Belli (github.com/StefanoBelli)
+# Based on my own clang and GCC configuration
+# Should work on mostly availible GNU/Linux x86_64 distribution 
+#
+
 import os
 import ycm_core
 
@@ -44,18 +50,19 @@ __CONFIG_LANGUAGE_STANDARD_C__ = '-std=c11'
 __CONFIG_GCC_VERSION__ = "6.2.1"
 __CONFIG_CLANG_VERSION__ = "3.8.1"
 
-#Toolchain naming
+#Toolchain name
 #on modern x86_64 GNU/Linux operating system
 #this is usually good
 __TOOLCHAIN_NAME__ = "x86_64-pc-linux-gnu" 
 
 flags = [
-        __CONFIG_LANGUAGE__,
         '-Wall',
-        '-x',
+        '-W',
+        '-Wextra',
+        '-x{}'.format(__CONFIG_LANGUAGE__),
         '-I/usr/local/include',
         '-I/usr/bin/../lib/clang/{}/include'.format(__CONFIG_CLANG_VERSION__),
-        '-I/usr/include',
+        '-I/usr/include'
 ]
 
 if __CONFIG_LANGUAGE__ == 'c++':
@@ -65,7 +72,6 @@ if __CONFIG_LANGUAGE__ == 'c++':
     flags.append('-I/usr/lib/gcc/{}/{}/../../../../include/c++/{}/backward'.format(__TOOLCHAIN_NAME__, __CONFIG_GCC_VERSION__,__CONFIG_GCC_VERSION__))
 elif __CONFIG_LANGUAGE__ == 'c':
     flags.append(__CONFIG_LANGUAGE_STANDARD_C__)
-
 
 # Set this to the absolute path to the folder (NOT the file!) containing the
 # compile_commands.json file to use that instead of 'flags'. See here for
@@ -84,7 +90,6 @@ if os.path.exists( compilation_database_folder ):
 else:
   database = None
 
-SOURCE_EXTENSIONS = [ '.C', '.cpp', '.cxx', '.cc', '.c', '.m', '.mm' ]
 
 def DirectoryOfThisScript():
   return os.path.dirname( os.path.abspath( __file__ ) )
@@ -121,7 +126,7 @@ def MakeRelativePathsInFlagsAbsolute( flags, working_directory ):
 
 def IsHeaderFile( filename ):
   extension = os.path.splitext( filename )[ 1 ]
-  return extension in [ '.H', '.h', '.hxx', '.hpp', '.hh' ]
+  return extension in [ '.h','.hpp','.hh','.H','.hxx' ]
 
 
 def GetCompilationInfoForFile( filename ):
@@ -131,7 +136,7 @@ def GetCompilationInfoForFile( filename ):
   # should be good enough.
   if IsHeaderFile( filename ):
     basename = os.path.splitext( filename )[ 0 ]
-    for extension in SOURCE_EXTENSIONS:
+    for extension in [ '.c','.cpp','.cc','.cxx','.m','.mm','.C' ]:
       replacement_file = basename + extension
       if os.path.exists( replacement_file ):
         compilation_info = database.GetCompilationInfoForFile(
