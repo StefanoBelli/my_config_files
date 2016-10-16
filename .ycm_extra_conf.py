@@ -85,6 +85,33 @@ elif __CONFIG_LANGUAGE__ == 'c':
 # 'flags' list of compilation flags. Notice that YCM itself uses that approach.
 compilation_database_folder = ''
 
+## 
+SOURCE_EXTENSIONS = [
+        '.c',
+        '.cpp',
+        '.cxx',
+        '.cc',
+        '.C',
+        '.m',
+        '.mm'
+]
+
+HEADER_EXTENSIONS = [
+        '.h',
+        '.hpp',
+        '.hxx',
+        '.H',
+        '.hh'
+]
+
+PATH_FLAGS = [
+        '-isystem',
+        '-I',
+        '-iquote',
+        '--sysroot='
+]
+##
+
 if os.path.exists( compilation_database_folder ):
   database = ycm_core.CompilationDatabase( compilation_database_folder )
 else:
@@ -100,7 +127,7 @@ def MakeRelativePathsInFlagsAbsolute( flags, working_directory ):
     return list( flags )
   new_flags = []
   make_next_absolute = False
-  path_flags = [ '-isystem', '-I', '-iquote', '--sysroot=' ]
+  path_flags = PATH_FLAGS
   for flag in flags:
     new_flag = flag
 
@@ -126,7 +153,7 @@ def MakeRelativePathsInFlagsAbsolute( flags, working_directory ):
 
 def IsHeaderFile( filename ):
   extension = os.path.splitext( filename )[ 1 ]
-  return extension in [ '.h','.hpp','.hh','.H','.hxx' ]
+  return extension in HEADER_EXTENSIONS
 
 
 def GetCompilationInfoForFile( filename ):
@@ -136,7 +163,7 @@ def GetCompilationInfoForFile( filename ):
   # should be good enough.
   if IsHeaderFile( filename ):
     basename = os.path.splitext( filename )[ 0 ]
-    for extension in [ '.c','.cpp','.cc','.cxx','.m','.mm','.C' ]:
+    for extension in SOURCE_EXTENSIONS:
       replacement_file = basename + extension
       if os.path.exists( replacement_file ):
         compilation_info = database.GetCompilationInfoForFile(
