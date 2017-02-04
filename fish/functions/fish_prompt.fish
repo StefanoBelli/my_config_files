@@ -7,8 +7,9 @@ function fish_prompt
 		printf "[ :( ]"
 	end
 
+	printf '%s' (__fish_git_prompt)
 	set_color yellow
-	printf $USER
+	printf ' %s' $USER
 	set_color red
 	printf "@"
 	set_color yellow
