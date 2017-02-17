@@ -36,6 +36,18 @@ alias lh "ls -lh "
 alias firefox "/usr/bin/firefox "
 alias pimntste "sshfs stefanozzz123@192.168.2.100:/home/stefanozzz123 ~/mntsshfs "
 alias editfishconf "$EDITOR ~/.config/fish/config.fish"
+alias c "clear"
+alias h "history"
+alias edit "$EDITOR "
+alias sedit "sudo $EDITOR "
+alias ping "ping -c5 "
+alias iptrules "sudo iptables -L -n --line-numbers"
+alias mkdir "mkdir -p "
+alias update "sudo emerge --sync 
+					;and sudo emerge --deep --with-bdeps=y --update --newuse @world 
+					;and sudo emerge --depclean --exclude sys-devel/gcc 
+					;and sudo emerge @preserved-rebuild 
+					;and sudo revdep-rebuild"
 
 set __fish_git_prompt_showdirtystate 'yes'
 set __fish_git_prompt_showstashstate 'yes'
