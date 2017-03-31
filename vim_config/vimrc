@@ -28,13 +28,14 @@ Plugin 'Arduino-syntax-file'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'fatih/vim-go'
-Plugin 'jalcine/cmake.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'vim-airline/vim-airline'
 Plugin 'marciomazza/vim-brogrammer-theme'
 Plugin 'vim-ruby/vim-ruby'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'dag/vim-fish'
+Plugin 'vhdirk/vim-cmake'
+"Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -52,22 +53,29 @@ set showmatch
 set antialias 
 set showcmd 
 set cursorline
-set tabstop=3
-set softtabstop=3
-set shiftwidth=3
+set tabstop=1
+set softtabstop=1
+set shiftwidth=2
 set noswapfile " No swapfile 
 set nowb
 set wildmenu 
 set modeline
 set ls=2 
 set number " left-side line counter
-set t_Co=256color "Enable 256 colors terminal
+set t_Co=256 "Enable 256 colors terminal
 set hlsearch "highlight matched 
 set autowrite
 set shortmess=a
 set cmdheight=2
+set autoread
+set magic
+set encoding=utf8
+set ffs=unix,dos,mac
 
-syntax on "Enable syntax
+let c_cpp_cppcheck = 1
+let make_jobs = 4
+
+syntax on "Enable syntax highlight
 colorscheme brogrammer 
 autocmd FileType text setlocal textwidth=78
 
@@ -76,25 +84,39 @@ autocmd FileType python map pyr :!/usr/bin/env python %
 autocmd FileType ruby map rbr :!/usr/bin/ruby %
 autocmd FileType sh map shr :!/bin/sh %
 
-"Language-specific options
-autocmd FileType c map <F5> :make 
-autocmd FileType cpp map <F5> :make 
-autocmd FileType c map <C-h> :A<cr>
-autocmd FileType cpp map <C-h> :A<cr>
+"CppCheck static analysis performed on post-write
+if exists("c_cpp_cppcheck") && c_cpp_cppcheck
+		autocmd BufWritePost *.cpp,*.h,*.hpp,*.cc,*.cxx :!/usr/bin/cppcheck %
+						\ --std=c++11 
+						\ --enable=warning,style,performance,information
+						\ --platform=unix64 
+						\ --language=c++ 
+						\ -j4
+      \ --includes-file=.
+
+		autocmd BufWritePost *.c,*.h :!/usr/bin/cppcheck %
+					 \ --std=c11 
+						\ --platform=unix64
+						\ --enable=warning,style,performance,information 
+						\ --language=c
+						\ -j4
+      \ --includes-file=.
+endif
 
 "Make command 
-set makeprg=/usr/bin/make\ -j\ 3
+set makeprg=/usr/bin/make\ -j\ make_jobs
 
 "Python imports
 let g:PythonAutoAddImports = 1
 
-"include paths
-let &path.="/usr/include,/usr/local/include"
+"Compilers -- generic
+let fav_c_compiler = $CC
+let fav_cpp_compiler = $CXX
 
 "YCM
-let g:ycm_global_ycm_extra_conf = '/home/stefanoz/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '/home/ssynx/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = 0
-let g:ycm_python_binary_path = '/usr/bin/python3'
+let g:ycm_python_binary_path = '/usr/bin/python3.4'
 let g:ycm_min_num_of_chars_for_completion = 3
 let g:ycm_auto_trigger = 1
 
@@ -102,11 +124,20 @@ let g:ycm_auto_trigger = 1
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_wq = 1
 let g:syntastic_python_python_exec = '/usr/bin/python'
 let g:syntastic_python_checkers = ['pylint']
 let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': [] }
+let g:syntastic_c_check_header = 1
+let g:syntastic_c_no_default_include_dirs = 1
+let g:syntastic_c_compiler_options = ' -std=c11 -Wall -Wextra -Wshadow -W -pedantic'
+let g:syntastic_c_compiler = fav_c_compiler
+let g:syntastic_cpp_check_header = 1
+let g:syntastic_cpp_no_default_include_dirs = 1
+let g:syntastic_cpp_compiler_options = ' -std=c++14 -Wall -Wextra -Wshadow -W -pedantic'
+let g:syntastic_cpp_compiler = fav_cpp_compiler
+"let g:syntastic_c_include_dirs = [ 'include', 'include1' ]
 
 "vim-go
 let g:go_highlight_functions = 1
@@ -123,7 +154,12 @@ let g:ctrlp_map = '<c-p>'
 
 "Airline 
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
+
+if has('gui_running')
+	let g:airline_powerline_fonts = 0
+else
+	let g:airline_powerline_fonts = 1
+endif
 
 "UltiSnips 
 let g:UltiSnipsExpandTrigger = "<F8>"
@@ -132,6 +168,12 @@ let g:UltiSnipsJumpBackwardTrigger = "<C-b>"
 
 "Enable deoplete 
 let g:deoplete#enable_at_startup = 1
+
+"vim-cmake
+let g:cmake_install_prefix = '/usr/bin'
+let g:cmake_build_type = 'Debug'
+let g:cmake_cxx_compiler = fav_cpp_compiler
+let g:cmake_c_compiler = fav_c_compiler
 
 "Various mapping
 map <F2> :Tagbar<cr>
@@ -167,23 +209,17 @@ map bd :bdelete<cr>
 
 " Text formatter
 map <F7> mzgg=G`z
-
-" C / C++ compiling flags (if needed)
-let g:C_CCompiler = "gcc"
-let g:C_CFlags = "-O2 -pipe -Wall"
-let g:CplusCompiler = "g++"
-let g:C_CplusFlags = "-O2 -pipe -Wall"
-
+"
 ""
 if has('langmap') && exists('+langnoremap')
-				set langnoremap
+		set langnoremap
 endif
 
 if has('mouse') && has('gui') "mouse+gui 
-				set mouse=a
+		set mouse=a
 endif
 
 if has('gui_running') 
-	set guifont=Ubuntu\ Mono
+	 set guifont=Source\ Code\ Pro
 endif
 "End of vimrc
