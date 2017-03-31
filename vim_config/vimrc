@@ -53,9 +53,12 @@ set showmatch
 set antialias 
 set showcmd 
 set cursorline
-set tabstop=1
-set softtabstop=1
-set shiftwidth=2
+set tabstop=3
+set softtabstop=0
+set shiftwidth=3
+set noexpandtab
+set copyindent
+set preserveindent
 set noswapfile " No swapfile 
 set nowb
 set wildmenu 
@@ -86,21 +89,22 @@ autocmd FileType sh map shr :!/bin/sh %
 
 "CppCheck static analysis performed on post-write
 if exists("c_cpp_cppcheck") && c_cpp_cppcheck
-		autocmd BufWritePost *.cpp,*.h,*.hpp,*.cc,*.cxx :!/usr/bin/cppcheck %
-						\ --std=c++11 
-						\ --enable=warning,style,performance,information
-						\ --platform=unix64 
-						\ --language=c++ 
-						\ -j4
-      \ --includes-file=.
+	autocmd BufWritePost *.cpp,*.h,*.hpp,*.cc,*.cxx :!/usr/bin/cppcheck %
+				\ --std=c++11 
+				\ --enable=warning,style,performance,information
+				\ --platform=unix64 
+				\ --language=c++ 
+				\ -j4
+				\ --includes-file=.
+	
+	autocmd BufWritePost *.c,*.h :!/usr/bin/cppcheck %
+				\ --std=c11 
+				\ --platform=unix64
+				\ --enable=warning,style,performance,information 
+				\ --language=c
+				\ -j4
+				\ --includes-file=.
 
-		autocmd BufWritePost *.c,*.h :!/usr/bin/cppcheck %
-					 \ --std=c11 
-						\ --platform=unix64
-						\ --enable=warning,style,performance,information 
-						\ --language=c
-						\ -j4
-      \ --includes-file=.
 endif
 
 "Make command 
@@ -212,14 +216,14 @@ map <F7> mzgg=G`z
 "
 ""
 if has('langmap') && exists('+langnoremap')
-		set langnoremap
+	set langnoremap
 endif
 
 if has('mouse') && has('gui') "mouse+gui 
-		set mouse=a
+	set mouse=a
 endif
 
 if has('gui_running') 
-	 set guifont=Source\ Code\ Pro
+	set guifont=Source\ Code\ Pro
 endif
 "End of vimrc
