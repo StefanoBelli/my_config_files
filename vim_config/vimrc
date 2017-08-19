@@ -158,12 +158,7 @@ let g:ctrlp_map = '<c-p>'
 
 "Airline 
 let g:airline#extensions#tabline#enabled = 1
-
-if has('gui_running')
-	let g:airline_powerline_fonts = 0
-else
-	let g:airline_powerline_fonts = 1
-endif
+let g:airline_powerline_fonts = 0
 
 "UltiSnips 
 let g:UltiSnipsExpandTrigger = "<F8>"
@@ -226,4 +221,14 @@ endif
 if has('gui_running') 
 	set guifont=Source\ Code\ Pro
 endif
+
+"Thanks to vimcasts.org for this snippet
+function! SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
+
+map <C-S-x> :call SynStack()<CR>
 "End of vimrc
