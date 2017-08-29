@@ -29,13 +29,16 @@ Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'fatih/vim-go'
 Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 Plugin 'vim-airline/vim-airline'
 Plugin 'marciomazza/vim-brogrammer-theme'
+Plugin 'colepeters/spacemacs-theme.vim'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'dag/vim-fish'
 Plugin 'vhdirk/vim-cmake'
-"Plugin 'Valloric/YouCompleteMe'
+Plugin 'vim-scripts/perl-support.vim'
+Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -75,11 +78,11 @@ set magic
 set encoding=utf8
 set ffs=unix,dos,mac
 
-let c_cpp_cppcheck = 1
+let c_cpp_cppcheck = 0
 let make_jobs = 4
 
 syntax on "Enable syntax highlight
-colorscheme brogrammer 
+colorscheme brogrammer
 autocmd FileType text setlocal textwidth=78
 
 "Language interpreter/compiler execution
@@ -120,7 +123,8 @@ let fav_cpp_compiler = $CXX
 "YCM
 let g:ycm_global_ycm_extra_conf = '/home/ssynx/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = 0
-let g:ycm_python_binary_path = '/usr/bin/python3.4'
+let g:ycm_python_binary_path = '/usr/bin/python'
+let g:ycm_server_python_interpreter = '/usr/bin/python'
 let g:ycm_min_num_of_chars_for_completion = 3
 let g:ycm_auto_trigger = 1
 
@@ -164,6 +168,7 @@ let g:airline_powerline_fonts = 0
 let g:UltiSnipsExpandTrigger = "<F8>"
 let g:UltiSnipsJumpForwardTrigger = "<C-f>"
 let g:UltiSnipsJumpBackwardTrigger = "<C-b>"
+let g:UltiSnipsEditSplit = "normal"
 
 "Enable deoplete 
 let g:deoplete#enable_at_startup = 1
@@ -217,18 +222,4 @@ endif
 if has('mouse') && has('gui') "mouse+gui 
 	set mouse=a
 endif
-
-if has('gui_running') 
-	set guifont=Source\ Code\ Pro
-endif
-
-"Thanks to vimcasts.org for this snippet
-function! SynStack()
-  if !exists("*synstack")
-    return
-  endif
-  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc
-
-map <C-S-x> :call SynStack()<CR>
 "End of vimrc
