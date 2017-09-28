@@ -56,9 +56,8 @@ set showmatch
 set antialias 
 set showcmd 
 set cursorline
-set tabstop=3
-set softtabstop=0
-set shiftwidth=3
+set tabstop=4
+set shiftwidth=4
 set noexpandtab
 set copyindent
 set preserveindent
@@ -77,6 +76,7 @@ set autoread
 set magic
 set encoding=utf8
 set ffs=unix,dos,mac
+set foldmethod=manual
 
 let c_cpp_cppcheck = 0
 let make_jobs = 4
@@ -98,7 +98,7 @@ if exists("c_cpp_cppcheck") && c_cpp_cppcheck
 				\ --platform=unix64 
 				\ --language=c++ 
 				\ -j4
-				\ --includes-file=.
+				\ --includes-file.
 	
 	autocmd BufWritePost *.c,*.h :!/usr/bin/cppcheck %
 				\ --std=c11 
@@ -107,7 +107,6 @@ if exists("c_cpp_cppcheck") && c_cpp_cppcheck
 				\ --language=c
 				\ -j4
 				\ --includes-file=.
-
 endif
 
 "Make command 
@@ -222,4 +221,5 @@ endif
 if has('mouse') && has('gui') "mouse+gui 
 	set mouse=a
 endif
+
 "End of vimrc
