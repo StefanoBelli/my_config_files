@@ -193,4 +193,5 @@ bindsym $mod+Shift+r exec /usr/bin/reboot
 
 # Other...
 for_window [class="gimp"] floating enable
+bindsym Mod1+l exec /usr/bin/i3lock
 exec feh --bg-scale $bgfile
