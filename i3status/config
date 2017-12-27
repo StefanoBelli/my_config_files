@@ -6,11 +6,17 @@
 # ß
 # If the above line is not correctly displayed, fix your editor first!
 
+#
+# memory and swap: https://github.com/StefanoBelli/i3status
+#
+
 general {
         colors = true
         interval = 1
 }
 
+order += "memory"
+order += "swap"
 order += "path_exists pacman"
 order += "load"
 order += "cpu_temperature 0"
@@ -22,6 +28,14 @@ order += "ethernet _first_"
 order += "volume master"
 order += "battery all"
 order += "tztime local"
+
+memory {
+	format = "mem %avail GB"
+}
+
+swap {
+	format = "swp %avail GB"
+}
 
 path_exists pacman {
 		path = "/var/lib/pacman/db.lck"
@@ -36,7 +50,7 @@ cpu_usage {
 }
 
 cpu_temperature 0 {
-		format = "cputemp: %degrees °C"
+		format = "cput: %degrees °C"
 		max_threshold = 50
 		format_above_threshold = "WARNING cputemp: %degrees °C"
 }
