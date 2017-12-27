@@ -1,11 +1,10 @@
 ! rxvt-unicode
 urxvt*loginShell:true
 urxvt*inheritPixmap: true
-urxvt*tintColor: Aquamarine
 urxvt*transparent:true
 urxvt*shading:40
 URxvt.depth: 5
-urxvt*background:#002b36
+urxvt*background:#393c42
 urxvt*foreground:White
 urxvt*scrollBar:false
 urxvt*scrollBar_right:false
@@ -13,7 +12,7 @@ urxvt*transpscrollbar:false
 urxvt*saveLines:1000
 URxvt.perl-ext-common: default,matcher,clipboard,url-select
 URxvt.matcher.button: 1
-URxvt*font: xft:Monospace:size=10:antialias=true:hinting=true
+URxvt*font: xft:Inconsolata:size=12:antialias=true:hinting=true
 #URxvt*font: xft:Monaco:size=9:antialias=true
 URxvt.iconFile: /home/stefanozzz123/Immagini/Terminal-icon.png
 URxvt.colorUL: #4682B4
