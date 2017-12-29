@@ -15,6 +15,8 @@ general {
         interval = 1
 }
 
+order += "procs"
+order += "uptime"
 order += "memory"
 order += "swap"
 order += "path_exists pacman"
@@ -28,6 +30,14 @@ order += "ethernet _first_"
 order += "volume master"
 order += "battery all"
 order += "tztime local"
+
+procs {
+	format = "p %procs"
+}
+
+uptime {
+	format = "u %hour:%minute:%second" #%day
+}
 
 memory {
 	format = "m %avail GB"
