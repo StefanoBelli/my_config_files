@@ -30,11 +30,11 @@ order += "battery all"
 order += "tztime local"
 
 memory {
-	format = "mem %avail GB"
+	format = "m %avail GB"
 }
 
 swap {
-	format = "swp %avail GB"
+	format = "s %avail GB"
 }
 
 path_exists pacman {
@@ -42,54 +42,55 @@ path_exists pacman {
 }
 
 load {
-		format = "lo: %1min"
+		format = "%1min"
 }
 
 cpu_usage {
-		format = "cpu: %usage"
+		format = "%usage"
 }
 
 cpu_temperature 0 {
-		format = "cput: %degrees °C"
-		max_threshold = 50
-		format_above_threshold = "WARNING cputemp: %degrees °C"
+		format = "%degrees °C"
+		max_threshold = 65
+		format_above_threshold = "WARNING CPU: %degrees °C"
+		path = "/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp1_input"
 }
 
 volume master {
-		format = "vol: %volume"
-		format_muted = "vol: mute"
+		format = "%volume"
+		format_muted = "mute"
 		device = "default"
 		mixer = "Master"
 		mixer_idx = 0
 }
 
 wireless _first_ {
-        format_up = "w: %ip ap %essid at%quality, %bitrate"
+        format_up = "%ip ap %essid q%quality at %bitrate"
         format_down = "w: nc"
 }
 
 ethernet _first_ {
         # if you use %speed, i3status requires root privileges
-        format_up = "e: %ip at %speed"
-        format_down = "e: nc"
+        format_up = "%ip at %speed"
+        format_down = ""
 }
 
 battery all {
-		status_bat = "using"
-		status_chr = "charge"
-		status_unk = "?unk?"
-		status_full = "full"
-        format = "bat: %status %percentage %remaining"
+		status_bat = "u"
+		status_chr = "c"
+		status_unk = "?"
+		status_full = "f"
+        format = "b%status %percentage %remaining"
 }
 
 tztime local {
-        format = "d: %Y-%m-%d %H:%M:%S"
+        format = "%Y-%m-%d %H:%M:%S"
 }
 
 disk "/" {
-        format = "fs: / %avail"
+        format = "/ %avail"
 }
 
 disk "/home" {
-		format = "fs: /home %avail"
+		format = "/home %avail"
 }
