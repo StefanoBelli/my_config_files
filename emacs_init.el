@@ -1,7 +1,10 @@
 (require 'package)
 (add-to-list 'package-archives
-	     '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+				 '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+(add-to-list 'load-path "~/.emacs.d/user-packages")
 (package-initialize)
+
+(load "arduino-mode")
 
 ;; TAKE A LOOK HERE!!
 ;; comment these lines if you need autosave and backup files
@@ -25,6 +28,8 @@
 (add-hook 'after-init-hook 'global-company-mode)
 (add-hook 'after-init-hook 'global-flycheck-mode)
 (global-git-gutter-mode)
+
+(setq x86-lookup-pdf "/home/ssynx/Documents/intel-isr-ia32-64.pdf")
 
 (defun enable-rainbow-delim-mode()
   (add-hook 'c-mode-hook 'rainbow-delimiters-mode)
@@ -55,6 +60,7 @@
 (global-set-key (kbd "C-M-0") 'comment-or-uncomment-region)
 (global-set-key (kbd "C-M-e") 'end-of-defun)
 (global-set-key (kbd "C-M-a") 'beginning-of-defun)
+(global-set-key (kbd "C-h x") 'x86-lookup)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -62,8 +68,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   (quote
-    (cmake-mode coverage comment-tags commenter fish-mode json-mode jvm-mode lua-mode markdown-mode nasm-mode nginx-mode nhexl-mode systemd google-this gist git-gutter magit anaconda-mode company-irony-c-headers flycheck flycheck-color-mode-line flycheck-gometalinter flycheck-pycheckers flycheck-status-emoji company yasnippet nyan-mode highlight-symbol rainbow-delimiters rainbow-identifiers rainbow-mode undo-tree visual-regexp neotree dashboard ace-popup-menu smex monokai-theme))))
+	(quote
+	 (x86-lookup cmake-mode coverage comment-tags commenter fish-mode json-mode jvm-mode lua-mode markdown-mode nasm-mode nginx-mode nhexl-mode systemd google-this gist git-gutter magit anaconda-mode company-irony-c-headers flycheck flycheck-color-mode-line flycheck-gometalinter flycheck-pycheckers flycheck-status-emoji company yasnippet nyan-mode highlight-symbol rainbow-delimiters rainbow-identifiers rainbow-mode undo-tree visual-regexp neotree dashboard ace-popup-menu smex monokai-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
