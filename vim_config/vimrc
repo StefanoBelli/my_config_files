@@ -1,5 +1,4 @@
 "Begin of vim config file
-
 set shell=/bin/sh "Use a compatible shell 
 
 set nocompatible "Not compatible with Vi settings
@@ -30,7 +29,7 @@ Plugin 'tomtom/tlib_vim'
 Plugin 'fatih/vim-go'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-Plugin 'vim-airline/vim-airline'
+"Plugin 'vim-airline/vim-airline'
 Plugin 'marciomazza/vim-brogrammer-theme'
 Plugin 'colepeters/spacemacs-theme.vim'
 Plugin 'vim-ruby/vim-ruby'
@@ -39,6 +38,7 @@ Plugin 'dag/vim-fish'
 Plugin 'vhdirk/vim-cmake'
 Plugin 'vim-scripts/perl-support.vim'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'Alvarocz/vim-fresh'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -57,16 +57,17 @@ set antialias
 set showcmd 
 set cursorline
 set tabstop=4
+set softtabstop=4
 set shiftwidth=4
-set noexpandtab
+set expandtab
 set copyindent
 set preserveindent
 set noswapfile " No swapfile 
 set nowb
 set wildmenu 
 set modeline
-set ls=2 
-set number " left-side line counter
+"set ls=2 
+"set number " left-side line counter
 set t_Co=256 "Enable 256 colors terminal
 set hlsearch "highlight matched 
 set autowrite
