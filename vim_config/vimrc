@@ -29,7 +29,6 @@ Plugin 'tomtom/tlib_vim'
 Plugin 'fatih/vim-go'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-"Plugin 'vim-airline/vim-airline'
 Plugin 'marciomazza/vim-brogrammer-theme'
 Plugin 'colepeters/spacemacs-theme.vim'
 Plugin 'vim-ruby/vim-ruby'
@@ -37,8 +36,12 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'dag/vim-fish'
 Plugin 'vhdirk/vim-cmake'
 Plugin 'vim-scripts/perl-support.vim'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'Alvarocz/vim-fresh'
+Plugin 'wimstefan/vim-artesanal'
+Plugin 'StefanoBelli/cmakeproj.vim'
+Plugin 'stevearc/vim-arduino'
+Plugin 'sudar/vim-arduino-syntax'
+Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -56,18 +59,17 @@ set showmatch
 set antialias 
 set showcmd 
 set cursorline
-set tabstop=4
-set softtabstop=4
+set tabstop=8
+set softtabstop=0
 set shiftwidth=4
 set expandtab
+set smarttab
 set copyindent
 set preserveindent
 set noswapfile " No swapfile 
 set nowb
 set wildmenu 
 set modeline
-"set ls=2 
-"set number " left-side line counter
 set t_Co=256 "Enable 256 colors terminal
 set hlsearch "highlight matched 
 set autowrite
@@ -83,7 +85,7 @@ let c_cpp_cppcheck = 0
 let make_jobs = 4
 
 syntax on "Enable syntax highlight
-colorscheme brogrammer
+colorscheme artesanal
 autocmd FileType text setlocal textwidth=78
 
 "Language interpreter/compiler execution
@@ -123,7 +125,7 @@ let fav_cpp_compiler = $CXX
 "YCM
 let g:ycm_global_ycm_extra_conf = '/home/ssynx/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = 0
-let g:ycm_python_binary_path = '/usr/bin/python'
+let g:ycm_python_binary_path = '/usr/bin/python2'
 let g:ycm_server_python_interpreter = '/usr/bin/python'
 let g:ycm_min_num_of_chars_for_completion = 3
 let g:ycm_auto_trigger = 1
