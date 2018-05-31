@@ -1,17 +1,22 @@
-## TUI settings
 layout reg
 set tui active-border-mode bold
 set tui border-kind ascii
 tui disable
-
-# various options
-set print pretty on
 set confirm off
 set verbose off
 set follow-fork-mode child
 set print array on
 set history filename ~/.gdbhistory
 set history save
+set data-directory ~/.gdb_data
+set editing
+set width 0
+set height 0
+set print asm-demangle
+set print null-stop
+set print inferior-event
+set print type nested-type-limit unlimited
+set print pretty on
 
 # thanks to CocoaBean (github.com/CocoaBean)
 define flags
@@ -110,6 +115,31 @@ def hook_prompt(_):
     full_string += "\033[1;32m>>> \033[0m"
     return full_string
 
+def program_exits(event):
+    try:
+        if event.exit_code is 0:
+            print("\033[1;32mProgram exited successfully\033[0m")
+        else:
+            print("\033[1;33mProgram exited with code: {}\033[0m".format(event.exit_code))
+    except:
+        pass
+
+def breakpoint_event(event):
+    breakps = gdb.breakpoints()
+
+    try:
+        reachedBreakp = event.breakpoint
+        for i, breakp in enumerate(breakps):
+            if reachedBreakp is breakp:
+                if breakps[i+1].is_valid() and breakps[i+1].enabled and breakps[i+1].location is not None:
+                    print("\033[1;31mNext breakpoint\033[0m")
+                    print("\033[31mN\033[0m:{} \033[31mL\033[0m:{}".format(breakps[i+1].number, breakps[i+1].location))
+                    break
+    except:
+        pass
+
+gdb.events.stop.connect(breakpoint_event)
+gdb.events.exited.connect(program_exits)
 gdb.prompt_hook = hook_prompt
 
 end
