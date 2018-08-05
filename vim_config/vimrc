@@ -42,6 +42,7 @@ Plugin 'StefanoBelli/cmakeproj.vim'
 Plugin 'stevearc/vim-arduino'
 Plugin 'sudar/vim-arduino-syntax'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'liuchengxu/space-vim-dark'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -85,7 +86,10 @@ let c_cpp_cppcheck = 0
 let make_jobs = 4
 
 syntax on "Enable syntax highlight
-colorscheme artesanal
+let g:space_vim_dark_background = 233
+color space-vim-dark
+hi Comment cterm=italic guifg=#5C6370 ctermfg=59
+
 autocmd FileType text setlocal textwidth=78
 
 "Language interpreter/compiler execution
@@ -125,7 +129,7 @@ let fav_cpp_compiler = $CXX
 "YCM
 let g:ycm_global_ycm_extra_conf = '/home/ssynx/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = 0
-let g:ycm_python_binary_path = '/usr/bin/python2'
+let g:ycm_python_binary_path = '/usr/bin/python'
 let g:ycm_server_python_interpreter = '/usr/bin/python'
 let g:ycm_min_num_of_chars_for_completion = 3
 let g:ycm_auto_trigger = 1
@@ -141,11 +145,11 @@ let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': [] }
 let g:syntastic_c_check_header = 1
 let g:syntastic_c_no_default_include_dirs = 1
-let g:syntastic_c_compiler_options = ' -std=c11 -Wall -Wextra -Wshadow -W -pedantic'
+let g:syntastic_c_compiler_options = ' -std=c99 -Wall -Wextra -Wshadow -W -pedantic'
 let g:syntastic_c_compiler = fav_c_compiler
 let g:syntastic_cpp_check_header = 1
 let g:syntastic_cpp_no_default_include_dirs = 1
-let g:syntastic_cpp_compiler_options = ' -std=c++14 -Wall -Wextra -Wshadow -W -pedantic'
+let g:syntastic_cpp_compiler_options = ' -std=c++11 -Wall -Wextra -Wshadow -W -pedantic'
 let g:syntastic_cpp_compiler = fav_cpp_compiler
 "let g:syntastic_c_include_dirs = [ 'include', 'include1' ]
 
