@@ -1,15 +1,45 @@
-// Place your settings in this file to overwrite the default settings
 {
-    "editor.fontSize": 13,
-    "editor.tabSize": 2,
-    "editor.formatOnType": true,
-    "git.path":"/usr/bin/git",
-    "git.autofetch": true,
-    "python.pythonPath": "/usr/bin/python3",
-    "python.pylintPath":"/usr/bin/pylint",
-    "clang.executable": "/usr/bin/clang",
-    "clang.cflags":["-O2","-mtune=native","-W","-Wall"],
-    "clang.cxxflags":["-O2","-mtune=native","-W","-Wall"],
-    "clang.completion.completeMacros": true,
-    "clang.completion.enable": true
+    "editor.fontSize": 12,
+    "editor.fontFamily": "'Fira Code','Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.accessibilitySupport": "off",
+    "editor.autoClosingBrackets": "always",
+    "editor.autoClosingQuotes": "always",
+    "editor.formatOnPaste": true,
+    "editor.tabCompletion": true,
+    "editor.insertSpaces": false,
+    "editor.quickSuggestions": {
+        "other": false,
+        "comments": false,
+        "strings": false
+    },
+    "workbench.settings.editor": "json",
+    "update.showReleaseNotes": false,
+    "vim.hlsearch": true,
+    "vim.statusBarColorControl": true,
+    "git.enableCommitSigning": true,
+    "git.showPushSuccessNotification": true,
+    "files.autoSave": "afterDelay",
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#005f5f",
+        "statusBar.noFolderBackground": "#005f5f",
+        "statusBar.debuggingBackground": "#005f5f"
+    },
+    "terminal.integrated.cursorBlinking": true,
+    "breadcrumbs.enabled": true,
+    "telemetry.enableTelemetry": false,
+    "[c]": {},
+    "[cpp]": {},
+    "[go]": {},
+    "[yaml]": {},
+    "rest-client.defaultHeaders": {
+        "User-Agent": "me-testing-something",
+        "Connection": "close"
+    },
+    "python.linting.pep8Enabled": true,
+    "C_Cpp.clang_format_fallbackStyle": "Google",
+    "C_Cpp.default.cppStandard": "c++11",
+    "C_Cpp.default.cStandard": "c99",
+    "C_Cpp.default.intelliSenseMode":"gcc-x64",
+    "C_Cpp.clang_format_path": "/usr/bin/clang-format",
+    "workbench.colorTheme": "FlatUI Dark"
 }
