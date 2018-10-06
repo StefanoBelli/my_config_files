@@ -92,20 +92,20 @@ python
 def hook_prompt(_):
     full_string = "\n"
     active_inferiors = gdb.inferiors()
-    if active_inferiors[0].pid is not 0:
+    if active_inferiors[0].pid != 0:
         full_string += "\033[31m("
         if active_inferiors[0].was_attached:
             full_string += "A:"
         full_string += "{})".format(active_inferiors[0].pid)
 
     chosen_thread = gdb.selected_thread()
-    if chosen_thread is not None:
+    if chosen_thread:
         full_string += "\033[34m[{}]".format(chosen_thread.num)
 
     try:
         current_frame = gdb.selected_frame()
         frame_name = current_frame.name()
-        if frame_name is None:
+        if not frame_name:
             frame_name = "??"
         full_string += "\033[33m|{}@\033[35m{}\033[33m|\n".format(frame_name, hex(current_frame.pc()))
     except gdb.error:
@@ -117,7 +117,7 @@ def hook_prompt(_):
 
 def program_exits(event):
     try:
-        if event.exit_code is 0:
+        if event.exit_code == 0:
             print("\033[1;32mProgram exited successfully\033[0m")
         else:
             print("\033[1;33mProgram exited with code: {}\033[0m".format(event.exit_code))
@@ -130,8 +130,8 @@ def breakpoint_event(event):
     try:
         reachedBreakp = event.breakpoint
         for i, breakp in enumerate(breakps):
-            if reachedBreakp is breakp:
-                if breakps[i+1].is_valid() and breakps[i+1].enabled and breakps[i+1].location is not None:
+            if reachedBreakp == breakp:
+                if breakps[i+1].is_valid() and breakps[i+1].enabled and breakps[i+1].location:
                     print("\033[1;31mNext breakpoint\033[0m")
                     print("\033[31mN\033[0m:{} \033[31mL\033[0m:{}".format(breakps[i+1].number, breakps[i+1].location))
                     break
