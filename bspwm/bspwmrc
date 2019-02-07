@@ -1,0 +1,36 @@
+#! /bin/sh
+
+bspc monitor -d term web chat edit multim file VII
+
+bspc config top_padding          0
+bspc config border_width         1
+bspc config window_gap           8
+bspc config split_ratio          0.50
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+bspc config focused_border_color "#ff00aa" 
+bspc config focus_follows_pointer true
+bspc config external_rules_command /home/ssynx/.config/bspwm/external_rules.sh
+
+bspc rule -a libreoffice-startcenter desktop=^4 follow=true
+bspc rule -a Firefox desktop=^2 follow=true
+bspc rule -a vlc desktop=^5 follow=true
+bspc rule -a TelegramDesktop desktop=^3 follow=true
+bspc rule -a Hexchat desktop=^3 follow=true
+bspc rule -a URxvt desktop=^1 follow=true
+bspc rule -a Shotwell desktop=^5 follow=true
+bspc rule -a Nautilus desktop=^6 follow=true
+bspc rule -a Gimp desktop=^4 follow=true state=floating
+bspc rule -a aft-linux-qt desktop=^6 follow=true
+bspc rule -a Gvim desktop=^4 follow=true
+bspc rule -a jetbrains-clion desktop=^4 follow=true
+bspc rule -a jetbrains-idea-ce desktop=^4 follow=true
+bspc rule -a QtCreator desktop=^4 follow=true
+bspc rule -a jetbrains-studio desktop=^4 follow=true
+
+xss-lock -- xlock &
+sxhkd &
+dunst &
+/home/ssynx/.config/bspwm/set_wallpaper.sh
+/home/ssynx/.config/bspwm/autolocker.sh
+/home/ssynx/.config/bspwm/lemonbar_launcher.sh
