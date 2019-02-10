@@ -28,7 +28,7 @@ bspc rule -a jetbrains-idea-ce desktop=^4 follow=true
 bspc rule -a QtCreator desktop=^4 follow=true
 bspc rule -a jetbrains-studio desktop=^4 follow=true
 
-xss-lock -- xlock &
+xss-lock -- i3lock -f -c cfcfcf &
 sxhkd &
 dunst &
 /home/ssynx/.config/bspwm/set_wallpaper.sh

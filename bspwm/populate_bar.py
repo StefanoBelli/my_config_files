@@ -221,7 +221,7 @@ def uptime():
     return (days, hours, minutes)
 
 def uptime_to_str(upttuple):
-    return "{} d {}h:{}m".format(upttuple[0], upttuple[1], upttuple[2])
+    return "{}d {}h:{}m".format(upttuple[0], upttuple[1], upttuple[2])
 
 if __name__ == '__main__':
     print(printable_active_connection())
