@@ -1,6 +1,6 @@
 #! /bin/sh
 
-bspc monitor -d term web chat edit multim file VII
+bspc monitor -d term web chat edit multim file virt VIII
 
 bspc config top_padding          0
 bspc config border_width         1
@@ -27,6 +27,13 @@ bspc rule -a jetbrains-clion desktop=^4 follow=true
 bspc rule -a jetbrains-idea-ce desktop=^4 follow=true
 bspc rule -a QtCreator desktop=^4 follow=true
 bspc rule -a jetbrains-studio desktop=^4 follow=true
+bspc rule -a Skype desktop=^3 follow=true
+bspc rule -a VirtualBox desktop=^7 follow=true
+bspc rule -a Qemu-system-aarch64 desktop=^7 follow=true
+bspc rule -a Qemu-system-i386 desktop=^7 follow=true
+bspc rule -a Qemu-system-x86_64 desktop=^7 follow=true
+bspc rule -a Qemu-system-arm desktop=^7 follow=true
+bspc rule -a Virt-manager desktop=^7 follow=true
 
 xss-lock -- i3lock -f -c cfcfcf &
 sxhkd &

@@ -250,17 +250,17 @@ if __name__ == '__main__':
         current_stats_str = "%{r}"
 
         # uptime
-        current_stats_str += "{} {} ".format(highlight("UPTIME"), uptime_to_str(uptime()))
+        current_stats_str += "{} {} ".format(highlight("UPTM"), uptime_to_str(uptime()))
 
         # cpu usage in percentage
         current_stats_str += "{} {}% ".format(highlight("CPU"), int(psutil.cpu_percent()))
 
         # swapping
-        current_stats_str += "{} {} ".format(highlight("SWAPPING"), yes_or_no(psutil.swap_memory().used))
+        current_stats_str += "{} {} ".format(highlight("SWPNG"), yes_or_no(psutil.swap_memory().used))
 
         # ram usage
         vmem = psutil.virtual_memory()
-        current_stats_str += "{} {:.2f}GB/{:.2f}GB ".format(highlight("RAM"), to_gb(vmem.used), to_gb(vmem.total))
+        current_stats_str += "{} {:.2f}/{:.2f}GB ".format(highlight("RAM"), to_gb(vmem.used), to_gb(vmem.total))
 
         # network
         try:
@@ -278,8 +278,6 @@ if __name__ == '__main__':
             (charging, perc) = get_battery_percentage(ac, full, cur)
             if charging:
                 current_stats_str += "CHR "
-            else:
-                current_stats_str += "DISC "
                 
             current_stats_str += "{}% ".format(perc)
 
@@ -288,7 +286,7 @@ if __name__ == '__main__':
         current_stats_str += printable_volume_percentage(pulseaudio.sink_list()[PULSE_SINK_IDX])
 
         # datetime
-        current_stats_str += "{} {}".format(highlight("TIME"), datetime.now().strftime(DATE_FORMAT))
+        current_stats_str += "{} {}".format(highlight("TM"), datetime.now().strftime(DATE_FORMAT))
         
         print_data()
         time.sleep(REFRESH_INTERVAL)
