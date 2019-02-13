@@ -15,6 +15,7 @@ import time
 import pulsectl
 import NetworkManager
 import psutil
+import signal
 
 ## user config
 PULSE_SINK_IDX=0
@@ -223,7 +224,16 @@ def uptime():
 def uptime_to_str(upttuple):
     return "{}d {}h:{}m".format(upttuple[0], upttuple[1], upttuple[2])
 
+def exit_on_brokenpipe(sign, _):
+    sys.stdout.flush()
+    sys.exit(321)
+
 if __name__ == '__main__':
+    # set signal handler to handle SIGPIPE
+    # if SIGPIPE is sent to this process,
+    # python will exit
+    signal.signal(signal.SIGPIPE, exit_on_brokenpipe)
+
     ## begin
 
     # bluetooth

@@ -34,10 +34,11 @@ bspc rule -a Qemu-system-i386 desktop=^7 follow=true
 bspc rule -a Qemu-system-x86_64 desktop=^7 follow=true
 bspc rule -a Qemu-system-arm desktop=^7 follow=true
 bspc rule -a Virt-manager desktop=^7 follow=true
+bspc rule -a kdenlive desktop=^4 follow=true
 
 xss-lock -- i3lock -f -c cfcfcf &
 sxhkd &
 dunst &
-/home/ssynx/.config/bspwm/set_wallpaper.sh
-/home/ssynx/.config/bspwm/autolocker.sh
+xidlehook --not-when-fullscreen --not-when-audio --timer normal 600 'i3lock -f -c cfcfcf' '' &
+xsetroot -solid "#424949"
 /home/ssynx/.config/bspwm/lemonbar_launcher.sh
