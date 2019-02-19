@@ -25,6 +25,7 @@ REFRESH_INTERVAL=0.25
 DATE_FORMAT="%Y/%m/%d %H:%M:%S"
 LEMONBAR_FGCOLOR_HIGHLIGHT="%{F#FF00AA}"
 LEMONBAR_FGCOLOR_RESTORE="%{F-}"
+LEMONBAR_FGCOLOR_HIGHLIGHT_OPENVPN="%{F#00FF00}"
 
 ## program reserved
 
@@ -177,6 +178,13 @@ def bluetooth_on():
 
     return None
 
+def is_process_running(procname):
+    for proc in psutil.process_iter():
+        if proc.name() == procname:
+            return True
+
+    return False
+
 def on_or_off(e):
     if e:
         return "on"
@@ -275,6 +283,8 @@ if __name__ == '__main__':
         # network
         try:
             current_stats_str += "{} {} ".format(highlight("NET"),printable_active_connection())
+            if is_process_running("openvpn"):
+                current_stats_str += "{}(ovpn){} ".format(LEMONBAR_FGCOLOR_HIGHLIGHT_OPENVPN, LEMONBAR_FGCOLOR_RESTORE)
         except:
             pass
 

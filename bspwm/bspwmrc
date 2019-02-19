@@ -40,5 +40,5 @@ xss-lock -- i3lock -f -c cfcfcf &
 sxhkd &
 dunst &
 xidlehook --not-when-fullscreen --not-when-audio --timer normal 600 'i3lock -f -c cfcfcf' '' &
-xsetroot -solid "#424949"
+feh --bg-fill /home/ssynx/.config/bspwm/toxic_f.jpg
 /home/ssynx/.config/bspwm/lemonbar_launcher.sh
