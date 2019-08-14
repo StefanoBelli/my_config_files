@@ -11,7 +11,6 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'Markdown'
-Plugin 'c.vim'
 Plugin 'a.vim'
 Plugin 'scrooloose/nerdTree'
 Plugin 'syntastic'
@@ -19,8 +18,6 @@ Plugin 'Tagbar'
 Plugin 'python-imports.vim'
 Plugin 'jaxbot/semantic-highlight.vim'
 Plugin 'gregsexton/MatchTag'
-Plugin 'go.vim'
-Plugin 'Go-Syntax'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'ctrlp.vim'
 Plugin 'Arduino-syntax-file'
@@ -28,25 +25,22 @@ Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'fatih/vim-go'
 Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'marciomazza/vim-brogrammer-theme'
-Plugin 'colepeters/spacemacs-theme.vim'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'dag/vim-fish'
 Plugin 'vhdirk/vim-cmake'
 Plugin 'vim-scripts/perl-support.vim'
-Plugin 'Alvarocz/vim-fresh'
-Plugin 'wimstefan/vim-artesanal'
 Plugin 'StefanoBelli/cmakeproj.vim'
 Plugin 'stevearc/vim-arduino'
 Plugin 'sudar/vim-arduino-syntax'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'liuchengxu/space-vim-dark'
+Plugin 'fxn/vim-monochrome'
+Plugin 'vim-airline/vim-airline'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 """"""""""""""""""""""""""""""""
+set termguicolors
 set secure
 set backspace=indent,eol,start
 set nobackup "No backup
@@ -60,11 +54,7 @@ set showmatch
 set antialias 
 set showcmd 
 set cursorline
-set tabstop=8
-set softtabstop=0
-set shiftwidth=4
-set expandtab
-set smarttab
+set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 set copyindent
 set preserveindent
 set noswapfile " No swapfile 
@@ -73,22 +63,23 @@ set wildmenu
 set modeline
 set t_Co=256 "Enable 256 colors terminal
 set hlsearch "highlight matched 
+set ignorecase
+set smartcase
 set autowrite
 set shortmess=a
-set cmdheight=2
 set autoread
 set magic
 set encoding=utf8
 set ffs=unix,dos,mac
 set foldmethod=manual
+set lazyredraw
 
 let c_cpp_cppcheck = 0
 let make_jobs = 4
 
 syntax on "Enable syntax highlight
 let g:space_vim_dark_background = 233
-color space-vim-dark
-hi Comment cterm=italic guifg=#5C6370 ctermfg=59
+colorscheme monochrome
 
 autocmd FileType text setlocal textwidth=78
 
@@ -129,8 +120,8 @@ let fav_cpp_compiler = $CXX
 "YCM
 let g:ycm_global_ycm_extra_conf = '/home/ssynx/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = 0
-let g:ycm_python_binary_path = '/usr/bin/python'
-let g:ycm_server_python_interpreter = '/usr/bin/python'
+let g:ycm_python_binary_path = '/usr/bin/python3'
+let g:ycm_server_python_interpreter = '/usr/bin/python3'
 let g:ycm_min_num_of_chars_for_completion = 3
 let g:ycm_auto_trigger = 1
 
@@ -138,7 +129,7 @@ let g:ycm_auto_trigger = 1
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 1
+let g:syntastic_check_on_wq = 0
 let g:syntastic_python_python_exec = '/usr/bin/python'
 let g:syntastic_python_checkers = ['pylint']
 let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
@@ -167,8 +158,7 @@ let g:go_play_open_browser = 0
 let g:ctrlp_map = '<c-p>'
 
 "Airline 
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 0
+let g:airline_powerline_fonts = 1
 
 "UltiSnips 
 let g:UltiSnipsExpandTrigger = "<F8>"
@@ -209,13 +199,18 @@ nnoremap <S-h> <C-w>h
 nnoremap <S-j> <C-w>j
 nnoremap <C-k> <C-w>k 
 nnoremap <S-l> <C-w>l
-map osp :split 
-map vsp :vsplit 
+map osp :split<cr> 
+map vsp :vsplit<cr>
 map bhd :hide<cr> 
 map bon :only<cr>
 map bls :ls<cr>
 map bsw :b 
 map bd :bdelete<cr> 
+
+nnoremap B ^
+nnoremap E $
+nnoremap $ <nop>
+nnoremap ^ <nop>
 
 " Text formatter
 map <F7> mzgg=G`z
