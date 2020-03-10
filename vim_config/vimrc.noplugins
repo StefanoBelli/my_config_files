@@ -1,0 +1,64 @@
+set nocompatible "Not compatible with Vi settings
+
+filetype plugin indent on    " required
+
+set termguicolors
+set secure
+set backspace=indent,eol,start
+set nobackup "No backup
+set history=150		" keep 50 lines of command line history
+set ruler		" show the cursor position all the time
+set showcmd		" display incomplete commands
+set incsearch		" do incremental searching
+set autoindent " indenting
+set smartindent 
+set showmatch
+set antialias 
+set showcmd 
+set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+set copyindent
+set preserveindent
+set noswapfile " No swapfile 
+set nowb
+set wildmenu 
+set modeline
+set t_Co=256 "Enable 256 colors terminal
+set hlsearch "highlight matched 
+set ignorecase
+set smartcase
+set autowrite
+set shortmess=a
+set autoread
+set magic
+set encoding=utf8
+set ffs=unix,dos,mac
+set foldmethod=manual
+set lazyredraw
+
+nnoremap <S-h> <C-w>h
+nnoremap <S-j> <C-w>j
+nnoremap <C-k> <C-w>k 
+nnoremap <S-l> <C-w>l
+map osp :split<cr> 
+map vsp :vsplit<cr>
+map bhd :hide<cr> 
+map bon :only<cr>
+map bls :ls<cr>
+map bsw :b 
+map bd :bdelete<cr> 
+
+nnoremap B ^
+nnoremap E $
+nnoremap $ <nop>
+nnoremap ^ <nop>
+
+" Text formatter
+if has('langmap') && exists('+langnoremap')
+	set langnoremap
+endif
+
+if has('mouse') && has('gui') "mouse+gui 
+	set mouse=a
+endif
+
+syntax on
