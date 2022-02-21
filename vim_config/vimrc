@@ -21,11 +21,11 @@ Plugin 'ctrlp.vim'
 Plugin 'Arduino-syntax-file'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 "Plugin 'tomtom/tlib_vim'
-Plugin 'fatih/vim-go'
+"Plugin 'fatih/vim-go'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'dag/vim-fish'
-Plugin 'vhdirk/vim-cmake'
+"Plugin 'vhdirk/vim-cmake'
 Plugin 'vim-scripts/perl-support.vim'
 Plugin 'StefanoBelli/cmakeproj.vim'
 Plugin 'stevearc/vim-arduino'
@@ -156,18 +156,11 @@ let g:cmake_cxx_compiler = fav_cpp_compiler
 let g:cmake_c_compiler = fav_c_compiler
 
 "Various mapping
-map <F2> :Tagbar<cr>
 map <F3> :NERDTree<cr>
-map <C-s> :SemanticHighlight<cr>
-map <C-x> :SemanticHighlightRevert<cr>
-map <C-e> :GitGutterEnable<cr>
-map <C-d> :GitGutterDisable<cr>
 map clpe :set paste<cr>
 map clpd :set nopaste<cr>
-map ssp :setlocal spell! spelllang=en_us<cr>
-map sspd :setlocal nospell<cr>
-map Q gq
 map >> $ 
+map << ^
 map pi :PluginInstall   
 map ps :PluginSearch 
 map pc :PluginClean 
@@ -177,7 +170,7 @@ map pl :PluginList<cr>
 " <C-k> : vim-go already uses <S-k>
 nnoremap <S-h> <C-w>h
 nnoremap <S-j> <C-w>j
-nnoremap <C-k> <C-w>k 
+nnoremap <S-k> <C-w>k 
 nnoremap <S-l> <C-w>l
 map osp :split<cr> 
 map vsp :vsplit<cr>
@@ -186,11 +179,6 @@ map bon :only<cr>
 map bls :ls<cr>
 map bsw :b 
 map bd :bdelete<cr> 
-
-nnoremap B ^
-nnoremap E $
-nnoremap $ <nop>
-nnoremap ^ <nop>
 
 nnoremap <leader>fa :FlutterRun<cr>
 nnoremap <leader>fq :FlutterQuit<cr>
