@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Eclipse
+Comment=Eclipse
+Exec=/usr/bin/eclipse
+Terminal=false
+Type=Application
+Category=Development;IDE;
+

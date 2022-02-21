@@ -16,13 +16,12 @@ Plugin 'syntastic'
 Plugin 'Tagbar'
 Plugin 'python-imports.vim'
 Plugin 'jaxbot/semantic-highlight.vim'
-Plugin 'airblade/vim-gitgutter'
+"Plugin 'airblade/vim-gitgutter'
 Plugin 'ctrlp.vim'
 Plugin 'Arduino-syntax-file'
 Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
+"Plugin 'tomtom/tlib_vim'
 Plugin 'fatih/vim-go'
-Plugin 'SirVer/ultisnips'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'dag/vim-fish'
@@ -31,9 +30,11 @@ Plugin 'vim-scripts/perl-support.vim'
 Plugin 'StefanoBelli/cmakeproj.vim'
 Plugin 'stevearc/vim-arduino'
 Plugin 'sudar/vim-arduino-syntax'
-Plugin 'ycm-core/YouCompleteMe'
-Plugin 'vim-airline/vim-airline'
-Plugin 'arzg/vim-colors-xcode'
+"Plugin 'ycm-core/YouCompleteMe'
+"Plugin 'vim-airline/vim-airline'
+Plugin 'morhetz/gruvbox'
+Plugin 'thosakwe/vim-flutter'
+Plugin 'zefei/simple-dark'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -52,7 +53,10 @@ set showmatch
 set antialias 
 set showcmd 
 set cursorline
-set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+set tabstop=4 
+set softtabstop=0 
+set shiftwidth=4 
+set noexpandtab
 set copyindent
 set preserveindent
 set noswapfile " No swapfile 
@@ -72,41 +76,11 @@ set ffs=unix,dos,mac
 set foldmethod=manual
 set lazyredraw
 
-let c_cpp_cppcheck = 0
-let make_jobs = 4
-
 syntax on "Enable syntax highlight
 let g:space_vim_dark_background = 233
-colorscheme xcodelighthc
+colorscheme simple-dark
 
 autocmd FileType text setlocal textwidth=78
-
-"Language interpreter/compiler execution
-autocmd FileType python map pyr :!/usr/bin/env python %
-autocmd FileType ruby map rbr :!/usr/bin/ruby %
-autocmd FileType sh map shr :!/bin/sh %
-
-"CppCheck static analysis performed on post-write
-if exists("c_cpp_cppcheck") && c_cpp_cppcheck
-	autocmd BufWritePost *.cpp,*.h,*.hpp,*.cc,*.cxx :!/usr/bin/cppcheck %
-				\ --std=c++11 
-				\ --enable=warning,style,performance,information
-				\ --platform=unix64 
-				\ --language=c++ 
-				\ -j4
-				\ --includes-file.
-	
-	autocmd BufWritePost *.c,*.h :!/usr/bin/cppcheck %
-				\ --std=c11 
-				\ --platform=unix64
-				\ --enable=warning,style,performance,information 
-				\ --language=c
-				\ -j4
-				\ --includes-file=.
-endif
-
-"Make command 
-set makeprg=/usr/bin/make\ -j\ make_jobs
 
 "Python imports
 let g:PythonAutoAddImports = 1
@@ -166,9 +140,6 @@ let g:ctrlp_map = '<c-p>'
 "Airline 
 let g:airline_powerline_fonts = 1
 
-"AirlineThemes
-let g:airline_theme = "light"
-
 "UltiSnips 
 let g:UltiSnipsExpandTrigger = "<F8>"
 let g:UltiSnipsJumpForwardTrigger = "<C-f>"
@@ -220,6 +191,12 @@ nnoremap B ^
 nnoremap E $
 nnoremap $ <nop>
 nnoremap ^ <nop>
+
+nnoremap <leader>fa :FlutterRun<cr>
+nnoremap <leader>fq :FlutterQuit<cr>
+nnoremap <leader>fr :FlutterHotReload<cr>
+nnoremap <leader>fR :FlutterHotRestart<cr>
+nnoremap <leader>fD :FlutterVisualDebug<cr>
 
 " Text formatter
 map <F7> mzgg=G`z
