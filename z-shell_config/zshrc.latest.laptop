@@ -92,6 +92,10 @@ alias mux="screen"
 alias ls="ls --color=auto -F"
 alias ll="ls -lah"
 alias h="history"
+alias rm="rm -v"
+alias rd="rm -rf"
+alias dir="ls"
+alias cls="c"
 
 # other
 alias ipe="curl ipecho.net/plain"
