@@ -92,6 +92,9 @@ alias mux="screen"
 alias ls="ls --color=auto -F"
 alias ll="ls -lah"
 alias h="history"
+
+# other
+alias ipe="curl ipecho.net/plain"
 alias pyc="python3 -c"
 
 # package management (pm -- package manager)
@@ -111,6 +114,10 @@ alias sdo="sudo systemctl stop"
 alias sdt="systemctl status"
 alias sys="systemctl"
 alias bst="systemd-analyze blame; systemd-analyze time"
+alias sdf="systemctl --failed"
+alias sdu="systemctl list-unit-files"
+alias sdr="sudo systemctl reload"
+alias sdd="sudo systemctl daemon-reload"
 
 # git
 alias gall="git add ."
