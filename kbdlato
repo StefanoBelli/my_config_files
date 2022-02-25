@@ -1,0 +1,10 @@
+#!/bin/bash
+
+DCONF_KEY="/org/mate/desktop/peripherals/keyboard/kbd/layouts"
+CURRENT=$(dconf read $DCONF_KEY)
+
+if [[ $CURRENT == "['us']" ]]; then
+	dconf write $DCONF_KEY "['it']"
+else
+	dconf write $DCONF_KEY "['us']"
+fi

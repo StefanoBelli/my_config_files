@@ -30,7 +30,7 @@ ZSH_THEME="robbyrussell"
 # DISABLE_UPDATE_PROMPT="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+export UPDATE_ZSH_DAYS=14
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -84,6 +84,39 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 export EDITOR="vim"
 
-alias md="mkdir -v"
+# misc
+alias md="mkdir -pv"
 alias c="clear"
 alias xopen="xdg-open"
+alias mux="screen"
+alias ls="ls -F"
+alias ll="ls -lah"
+alias h="history"
+alias pyc="python3 -c"
+
+# package management (pm -- package manager)
+alias pmi="sudo pacman --noconfirm -S"
+alias pms="pacman -Ss"
+alias pmq="pacman -Qs"
+alias pmu="sudo pacman -Syu && sudo pacman --noconfirm -Scc && sudo pacman-db-optimize"
+alias pmsync="sudo pacman -Syy"
+alias ami="yay --noconfirm -S"
+alias ams="yay -Ss"
+alias amu="pmu && yay -Syu --noconfirm"
+
+# systemd
+alias sde="sudo systemctl enable"
+alias sds="sudo systemctl start"
+alias sdo="sudo systemctl stop"
+alias sdt="systemctl status"
+alias sys="systemctl"
+alias bst="systemd-analyze blame; systemd-analyze time"
+
+# git
+alias gall="git add ."
+alias ga="git add"
+alias gac="git commit -am"
+alias gp="git push"
+alias gst="git status"
+alias glg="git log"
+alias gd="git diff"
