@@ -99,6 +99,7 @@ alias cls="c"
 # other
 alias ipe="curl ipecho.net/plain"
 alias pyc="python3 -c"
+alias mux="screen"
 
 # package management (pm -- package manager)
 alias pmi="sudo pacman --noconfirm -S"

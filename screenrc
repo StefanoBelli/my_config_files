@@ -1,0 +1,49 @@
+startup_message off
+vbell off
+defscrollback 10000
+hardstatus alwayslastline "%S on %H, load %l, %c %d/%m/%Y"
+caption splitonly "%n: %t"
+escape ^Xx
+unbindall
+bind : colon
+bind ? help
+bind - select -
+bind 1 select 1
+bind 2 select 2
+bind 3 select 3
+bind 4 select 4
+bind 5 select 5
+bind 6 select 6
+bind 7 select 7
+bind 8 select 8
+bind 9 select 9
+bind c copy
+bind p paste .
+bind d detach
+bind h focus left
+bind j focus down
+bind k focus up
+bind l focus right
+bind o focus next
+bind O focus prev
+bind sp next
+bind b prev
+bind v split -v
+bind z split
+bind t title
+bind s screen
+bind q quit
+bind x only
+bind a other
+bind u kill
+bind w windowlist -b
+bind g select
+bind r remove
+bind ^z reset
+bind ^r redisplay
+bind ^c clear
+bind ^b break
+bind ^l lockscreen
+bind ^s suspend
+bind ^q xon
+bind ^s xoff
