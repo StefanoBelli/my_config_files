@@ -8,6 +8,7 @@ unbindall
 bind : colon
 bind ? help
 bind - select -
+bind 0 select 0
 bind 1 select 1
 bind 2 select 2
 bind 3 select 3
@@ -26,13 +27,12 @@ bind k focus up
 bind l focus right
 bind o focus next
 bind O focus prev
-bind sp next
+bind n next
 bind b prev
 bind v split -v
 bind z split
 bind t title
 bind s screen
-bind q quit
 bind x only
 bind a other
 bind u kill
