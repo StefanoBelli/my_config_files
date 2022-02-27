@@ -1,5 +1,0 @@
-startup_message off
-scrollback 10000
-escape ^Xx
-caption splitonly "%n: %t"
-unbindall
