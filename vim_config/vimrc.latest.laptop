@@ -1,0 +1,59 @@
+set shell=/bin/sh
+
+set nocompatible
+set autoindent
+set tabstop=4
+set softtabstop=0
+set shiftwidth=4
+set hlsearch
+set ignorecase
+set incsearch
+set smartcase
+set encoding=utf-8
+set scrolloff=1
+set wrap
+set linebreak
+set ruler
+set noerrorbells
+set novisualbell
+set mouse=a
+set title
+set noswapfile
+set nomodeline
+set history=1000
+set confirm
+set backspace=indent,eol,start
+set autoread
+set autowrite
+set copyindent
+set preserveindent
+set lazyredraw
+set ffs=unix,dos,mac
+set magic
+set shortmess=a
+set nowb
+set secure
+set nobackup
+set showcmd
+set antialias
+set smartindent
+set cursorline
+set showmatch
+set t_Co=256
+set foldmethod=manual
+syntax on
+
+call plug#begin()
+Plug 'preservim/nerdtree'
+Plug 'frazrepo/vim-rainbow'
+Plug 'airblade/vim-gitgutter'
+Plug 'preservim/vim-markdown'
+call plug#end()
+
+let g:rainbow_active = 1
+
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+
