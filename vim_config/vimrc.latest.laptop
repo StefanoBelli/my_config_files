@@ -43,13 +43,35 @@ set t_Co=256
 set foldmethod=manual
 syntax on
 
+filetype plugin indent on
+
 call plug#begin()
 Plug 'preservim/nerdtree'
 Plug 'preservim/vim-markdown'
 call plug#end()
 
-nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap <C-f> :NERDTreeFind<CR>
+nnoremap <C-p> :NERDTreeFind<CR>
 
+nnoremap <C-f> zfa}
+nnoremap <C-o> zo
+
+nnoremap <S-h> <C-w>h
+nnoremap <S-j> <C-w>j
+nnoremap <S-k> <C-w>k
+nnoremap <S-l> <C-w>l
+nmap <C-s> :split<cr>
+nmap <C-v> :vsplit<cr>
+nmap <C-u> :hide<cr>
+nmap <C-x> :only<cr>
+nmap <C-q> :bdelete<cr>
+
+nmap <C-c> :set paste<cr>
+nmap <C-d> :set nopaste<cr>
+
+nmap <C-t> :tabedit<cr>
+nmap <C-y> :tabonly<cr>
+nmap <C-b> :tabfirst<cr>
+nmap <C-l> :tablast<cr>
+nmap <C-h> :tabfind 
+nmap <C-m> :tabmove 
