@@ -1,5 +1,4 @@
 set shell=/bin/sh
-
 set nocompatible
 set autoindent
 set tabstop=4
@@ -42,7 +41,6 @@ set showmatch
 set t_Co=256
 set foldmethod=manual
 syntax on
-
 filetype plugin indent on
 
 call plug#begin()
@@ -50,28 +48,27 @@ Plug 'preservim/nerdtree'
 Plug 'preservim/vim-markdown'
 call plug#end()
 
-nnoremap <C-n> :NERDTree<CR>
-nnoremap <C-p> :NERDTreeFind<CR>
+nnoremap <F8> :NERDTree<CR>
 
-nnoremap <C-f> zfa}
-nnoremap <C-o> zo
+nnoremap <F6> zfa}
+nnoremap <F7> zo
 
-nnoremap <S-h> <C-w>h
-nnoremap <S-j> <C-w>j
-nnoremap <S-k> <C-w>k
-nnoremap <S-l> <C-w>l
-nmap <C-s> :split<cr>
-nmap <C-v> :vsplit<cr>
-nmap <C-u> :hide<cr>
-nmap <C-x> :only<cr>
-nmap <C-q> :bdelete<cr>
+nnoremap <ESC>h <C-w>h
+nnoremap <ESC>j <C-w>j
+nnoremap <ESC>k <C-w>k
+nnoremap <ESC>l <C-w>l
+nmap <F2> :split<cr>
+nmap <F3> :vsplit<cr>
+nmap <leader>u :hide<cr>
+nmap <leader>x :only<cr>
+nmap <leader>q :bdelete<cr>
 
-nmap <C-c> :set paste<cr>
-nmap <C-d> :set nopaste<cr>
+nmap <leader>c :set paste<cr>
+nmap <leader>d :set nopaste<cr>
 
-nmap <C-t> :tabedit<cr>
-nmap <C-y> :tabonly<cr>
-nmap <C-b> :tabfirst<cr>
-nmap <C-l> :tablast<cr>
-nmap <C-h> :tabfind 
-nmap <C-m> :tabmove 
+nmap <F4> :tabedit<cr>
+nmap <leader>y :tabonly<cr>
+nmap <leader>b :tabfirst<cr>
+nmap <leader>i :tablast<cr>
+nmap <leader>r :tabfind 
+nmap <leader>m :tabmove 
