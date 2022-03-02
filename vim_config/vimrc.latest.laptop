@@ -48,7 +48,7 @@ Plug 'preservim/nerdtree'
 Plug 'preservim/vim-markdown'
 call plug#end()
 
-nnoremap <F8> :NERDTree<CR>
+nmap <F8> :NERDTree<CR>
 
 nnoremap <F6> zfa}
 nnoremap <F7> zo
