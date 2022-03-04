@@ -43,20 +43,27 @@ set foldmethod=manual
 syntax on
 filetype plugin indent on
 
+set termguicolors
+set background=dark
+
 call plug#begin()
 Plug 'preservim/nerdtree'
 Plug 'preservim/vim-markdown'
+Plug 'pineapplegiant/spaceduck'
 call plug#end()
+
+colorscheme spaceduck
 
 nmap <F8> :NERDTree<CR>
 
 nnoremap <F6> zfa}
 nnoremap <F7> zo
 
-nnoremap <ESC>h <C-w>h
-nnoremap <ESC>j <C-w>j
-nnoremap <ESC>k <C-w>k
-nnoremap <ESC>l <C-w>l
+nnoremap <TAB>h <C-w>h
+nnoremap <TAB>j <C-w>j
+nnoremap <TAB>k <C-w>k
+nnoremap <TAB>l <C-w>l
+nnoremap <TAB>w <C-w>w
 nmap <F2> :split<cr>
 nmap <F3> :vsplit<cr>
 nmap <leader>u :hide<cr>
