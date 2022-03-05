@@ -89,17 +89,19 @@ alias md="mkdir -pv"
 alias c="clear"
 alias xopen="xdg-open"
 alias ls="ls --color=auto -F"
-alias ll="ls -lah"
+alias ll="ls -lh"
 alias h="history"
 alias rm="rm -v"
 alias rd="rm -rf"
 alias dir="ls"
 alias cls="c"
+alias sudo="sudo "
 
 # other
 alias ipe="curl ipecho.net/plain"
 alias pyc="python3 -c"
 alias mux="screen"
+alias termbin="nc termbin.com 9999"
 
 # package management (pm -- package manager)
 alias pmi="sudo pacman --noconfirm -S"

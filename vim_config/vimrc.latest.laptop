@@ -50,9 +50,10 @@ call plug#begin()
 Plug 'preservim/nerdtree'
 Plug 'preservim/vim-markdown'
 Plug 'pineapplegiant/spaceduck'
+Plug 'ayu-theme/ayu-vim'
 call plug#end()
 
-colorscheme spaceduck
+colorscheme ayu
 
 nmap <F8> :NERDTree<CR>
 
