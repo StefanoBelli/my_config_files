@@ -1,0 +1,12 @@
+[Unit]
+Description=Schedule update-hosts script
+RefuseManualStart=no
+RefuseManualStop=no
+
+[Timer]
+Persistent=true
+OnCalendar=*-*-* 00:00:00
+Unit=update-hosts.service
+
+[Install]
+WantedBy=timers.target

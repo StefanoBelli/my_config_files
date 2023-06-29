@@ -1,0 +1,12 @@
+[Unit]
+Description=Run update-hosts script
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=exec
+Restart=on-failure
+ExecStart=/usr/bin/update-hosts
+
+[Install]
+WantedBy=multi-user.target
