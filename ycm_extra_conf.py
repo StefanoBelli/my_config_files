@@ -30,48 +30,52 @@
 #
 # For more information, please refer to <http://unlicense.org/>
 
-#
-# Customized by: Stefano Belli (github.com/StefanoBelli)
-# Based on my own clang and GCC configuration
-# Should work on mostly availible GNU/Linux x86_64 distribution 
-#
+# ---- change below ----
 
-import os
-import ycm_core
+KERNEL_SRC_BASE='/usr/lib/modules/6.10.10-arch1-1/build'
 
-#For example: 'c' or 'c++'
-__CONFIG_LANGUAGE__ = 'c++'
+EXTRA_INCLUDES = [
+        f"{KERNEL_SRC_BASE}/include",
+        f"{KERNEL_SRC_BASE}/arch/x86/include",
+        f"{KERNEL_SRC_BASE}/arch/x86/include/generated"
+]
 
-#Languages standard (-std=STANDARD)
-__CONFIG_LANGUAGE_STANDARD_CXX__ = '-std=c++14'
-__CONFIG_LANGUAGE_STANDARD_C__ = '-std=c11'
+EXTRA_DEFINES = [
+        "__KERNEL__",
+        "MODULE"
+]
 
-#GCC and Clang version
-__CONFIG_GCC_VERSION__ = "6.2.1"
-__CONFIG_CLANG_VERSION__ = "3.8.1"
+EXTRA_FLAGS = [
 
-#Toolchain name
-#on modern x86_64 GNU/Linux operating system
-#this is usually good
-__TOOLCHAIN_NAME__ = "x86_64-pc-linux-gnu" 
+]
+
+# ---- change above ----
 
 flags = [
         '-Wall',
         '-W',
         '-Wextra',
-        '-x{}'.format(__CONFIG_LANGUAGE__),
+        '-Wshadow',
+        '-xc',
+        '-std=gnu11',
+        '-I/usr/include',
         '-I/usr/local/include',
-        '-I/usr/bin/../lib/clang/{}/include'.format(__CONFIG_CLANG_VERSION__),
-        '-I/usr/include'
+        '-I/usr/lib/clang/18/include'
 ]
 
-if __CONFIG_LANGUAGE__ == 'c++':
-    flags.append(__CONFIG_LANGUAGE_STANDARD_CXX__)
-    flags.append('-I/usr/lib/gcc/{}/{}/../../../../include/c++/{}'.format(__TOOLCHAIN_NAME__,__CONFIG_GCC_VERSION__,__CONFIG_GCC_VERSION__))
-    flags.append('-I/usr/lib/gcc/{}/{}/../../../../include/c++/{}/{}'.format(__TOOLCHAIN_NAME__,__CONFIG_GCC_VERSION__, __CONFIG_GCC_VERSION__,__TOOLCHAIN_NAME__))
-    flags.append('-I/usr/lib/gcc/{}/{}/../../../../include/c++/{}/backward'.format(__TOOLCHAIN_NAME__, __CONFIG_GCC_VERSION__,__CONFIG_GCC_VERSION__))
-elif __CONFIG_LANGUAGE__ == 'c':
-    flags.append(__CONFIG_LANGUAGE_STANDARD_C__)
+flags += EXTRA_FLAGS
+
+for extra_include in EXTRA_INCLUDES:
+    flags.append(f"-I{extra_include}")
+
+for extra_define in EXTRA_DEFINES:
+    flags.append(f"-D{extra_define}")
+
+###
+
+import os
+import ycm_core
+
 
 # Set this to the absolute path to the folder (NOT the file!) containing the
 # compile_commands.json file to use that instead of 'flags'. See here for
