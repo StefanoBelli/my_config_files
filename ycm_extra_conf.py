@@ -32,12 +32,13 @@
 
 # ---- change below ----
 
-KERNEL_SRC_BASE='/usr/lib/modules/6.10.10-arch1-1/build'
+ARCH="x86"
+KERNEL_HEADERS_BASE='/usr/lib/modules/6.10.10-arch1-1/build'
 
 EXTRA_INCLUDES = [
-        f"{KERNEL_SRC_BASE}/include",
-        f"{KERNEL_SRC_BASE}/arch/x86/include",
-        f"{KERNEL_SRC_BASE}/arch/x86/include/generated"
+        f"{KERNEL_HEADERS_BASE}/include",
+        f"{KERNEL_HEADERS_BASE}/arch/{ARCH}/include",
+        f"{KERNEL_HEADERS_BASE}/arch/{ARCH}/include/generated"
 ]
 
 EXTRA_DEFINES = [
