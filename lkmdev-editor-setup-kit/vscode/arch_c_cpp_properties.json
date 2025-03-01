@@ -1,0 +1,34 @@
+{
+    "version": 4,
+    "configurations": [
+        {
+            "name": "Linux Kernel Development",
+            "intelliSenseMode": "linux-gcc-x64",
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "gnu11",
+            "cppStandard": "gnu++17",
+            "includePath": [
+                "${workspaceFolder}",
+                "/usr/lib/gcc/__template_GCC_TARGET/__template_GCC_DUMPVER/include",
+                "/usr/local/include/",
+                "/usr/lib/gcc/__template_GCC_TARGET/__template_GCC_DUMPVER/include-fixed",
+                "/usr/include",
+                "/usr/lib/modules/__template_LINUX_UNAMER/build/include",
+                "/usr/lib/modules/__template_LINUX_UNAMER/build/arch/x86/include/generated",
+                "/usr/lib/modules/__template_LINUX_UNAMER/build/arch/x86/include"
+            ],
+            "defines": [
+                "__KERNEL__",
+                "MODULE"
+            ],
+            "browse": {
+                "path": [
+                    "${workspaceFolder}/**",
+                    "${workspaceFolder}"
+                ],
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": ""
+            }
+        }
+    ]
+}
