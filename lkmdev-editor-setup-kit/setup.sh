@@ -15,7 +15,7 @@ VSCODE_DIR="../.vscode"
 TEMPLATED_VSCODE_C_CPP_PROPS="vscode/${DISTRO}_c_cpp_properties.json"
 VSCODE_C_CPP_PROPS="$VSCODE_DIR/c_cpp_properties.json"
 TEMPLATED_YCMEXCONF="${DISTRO}_ycm_extra_conf.py"
-YCMEXCONF="../.ycm_extra_conf.py"
+YCMEXCONF="$HOME/.ycm_extra_conf.py"
 
 mkdir -p $VSCODE_DIR
 copy $TEMPLATED_VSCODE_C_CPP_PROPS $VSCODE_C_CPP_PROPS

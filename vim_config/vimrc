@@ -49,6 +49,7 @@ set background=dark
 call plug#begin()
 Plug 'preservim/nerdtree'
 Plug 'ayu-theme/ayu-vim'
+Plug 'davidhalter/jedi-vim'
 call plug#end()
 
 colorscheme ayu
@@ -94,3 +95,5 @@ let g:ycm_add_preview_to_completeopt=1
 set completeopt=preview,menu,menuone
 set previewheight=1
 nmap <F9> :pclose<cr>
+
+let g:jedi#popup_on_dot = 0

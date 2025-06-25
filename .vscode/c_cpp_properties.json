@@ -13,9 +13,9 @@
                 "/usr/local/include/",
                 "/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include-fixed",
                 "/usr/include",
-                "/usr/lib/modules/6.12.6-arch1-1/build/include",
-                "/usr/lib/modules/6.12.6-arch1-1/build/arch/x86/include/generated",
-                "/usr/lib/modules/6.12.6-arch1-1/build/arch/x86/include"
+                "/usr/lib/modules/6.13.5-arch1-1/build/include",
+                "/usr/lib/modules/6.13.5-arch1-1/build/arch/x86/include/generated",
+                "/usr/lib/modules/6.13.5-arch1-1/build/arch/x86/include"
             ],
             "defines": [
                 "__KERNEL__",
