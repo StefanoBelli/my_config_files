@@ -9,13 +9,13 @@
             "cppStandard": "gnu++17",
             "includePath": [
                 "${workspaceFolder}",
-                "/usr/lib/gcc/x86_64-pc-linux-gnu/14/include",
+                "/usr/lib/gcc/__template_GCC_TARGET/__template_GCC_DUMPVER/include",
                 "/usr/local/include/",
-                "/usr/lib/gcc/x86_64-pc-linux-gnu/14/include-fixed",
+                "/usr/lib/gcc/__template_GCC_TARGET/__template_GCC_DUMPVER/include-fixed",
                 "/usr/include",
-                "/usr/lib/modules/6.12.41-gentoo-dist/build/include",
-                "/usr/lib/modules/6.12.41-gentoo-dist/build/arch/x86/include/generated",
-                "/usr/lib/modules/6.12.41-gentoo-dist/build/arch/x86/include"
+                "/usr/lib/modules/__template_LINUX_UNAMER/build/include",
+                "/usr/lib/modules/__template_LINUX_UNAMER/build/arch/x86/include/generated",
+                "/usr/lib/modules/__template_LINUX_UNAMER/build/arch/x86/include"
             ],
             "defines": [
                 "__KERNEL__",
