@@ -9,13 +9,9 @@
             "cppStandard": "gnu++17",
             "includePath": [
                 "${workspaceFolder}",
-                "/usr/lib/gcc/__template_GCC_TARGET/__template_GCC_DUMPVER/include",
-                "/usr/local/include/",
-                "/usr/lib/gcc/__template_GCC_TARGET/__template_GCC_DUMPVER/include-fixed",
-                "/usr/include",
-                "/usr/lib/modules/__template_LINUX_UNAMER/build/include",
-                "/usr/lib/modules/__template_LINUX_UNAMER/build/arch/x86/include/generated",
-                "/usr/lib/modules/__template_LINUX_UNAMER/build/arch/x86/include"
+                "/usr/src/kernels/__template_LINUX_UNAMER/include",
+                "/usr/src/kernels/__template_LINUX_UNAMER/arch/x86/include/generated",
+                "/usr/src/kernels/__template_LINUX_UNAMER/arch/x86/include"
             ],
             "defines": [
                 "__KERNEL__",

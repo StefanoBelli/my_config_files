@@ -30,27 +30,54 @@
 #
 # For more information, please refer to <http://unlicense.org/>
 
+### ATTENTION ###
+# this config works well with clangd
+# so, install YCM with
+#
+#  $ ./install.py --clangd-completer
+#
+#################
+
 # ---- change below ----
 
-ARCH="x86"
-KERNEL_HEADERS_BASE='/usr/lib/modules/__template_LINUX_UNAMER/build'
+#change this to allow remote development
+#you could set this to sshfs mountpoint
+REALROOT = "/"
 
-EXTRA_INCLUDES = [
-        f"{KERNEL_HEADERS_BASE}/include",
-        f"{KERNEL_HEADERS_BASE}/arch/{ARCH}/include",
-        f"{KERNEL_HEADERS_BASE}/arch/{ARCH}/include/generated"
+#change this to your dev arch
+ARCH = "x86"
+
+#change this to add whatever include path
+PROJECT_INCLUDES = [
+        
 ]
 
-EXTRA_DEFINES = [
-        "__KERNEL__",
-        "MODULE"
-]
-
+#change this to append compiler flags
 EXTRA_FLAGS = [
 
 ]
 
 # ---- change above ----
+
+
+########################
+
+# from now on, you should not change anything
+
+########################
+
+KERNEL_HEADERS_BASE = f"{REALROOT}usr/lib/modules/__template_LINUX_UNAMER/build"
+
+KERNEL_INCLUDES = [
+        f"{KERNEL_HEADERS_BASE}/include",
+        f"{KERNEL_HEADERS_BASE}/arch/{ARCH}/include",
+        f"{KERNEL_HEADERS_BASE}/arch/{ARCH}/include/generated",
+]
+
+KERNEL_DEFINES = [
+        "__KERNEL__",
+        "MODULE",
+]
 
 flags = [
         '-Wall',
@@ -59,20 +86,32 @@ flags = [
         '-Wshadow',
         '-xc',
         '-std=gnu11',
-        '-I/usr/include',
-        '-I/usr/local/include',
-        '-I/usr/lib/clang/18/include'
+        '-nostdinc',
+        '-nostdlib',
+        '-nobuiltininc',
+        '-ffreestanding',
+        '-fno-builtin',
 ]
 
-flags += EXTRA_FLAGS
+for kernel_define in KERNEL_DEFINES:
+    flags.append(f"-D{kernel_define}")
 
-for extra_include in EXTRA_INCLUDES:
-    flags.append(f"-I{extra_include}")
+for kernel_include in KERNEL_INCLUDES:
+    flags.append(f"-I{kernel_include}")
 
-for extra_define in EXTRA_DEFINES:
-    flags.append(f"-D{extra_define}")
+for project_include in PROJECT_INCLUDES:
+    flags.append(f"-I{project_include}")
 
-###
+for extra_flag in EXTRA_FLAGS:
+    flags.append(extra_flag)
+
+
+################################
+
+### YCM generator part below ###
+
+################################
+
 
 import os
 import ycm_core
@@ -110,10 +149,10 @@ HEADER_EXTENSIONS = [
 ]
 
 PATH_FLAGS = [
-        '-isystem',
-        '-I',
-        '-iquote',
-        '--sysroot='
+        #'-isystem',
+        #'-I',
+        #'-iquote',
+        #'--sysroot='
 ]
 ##
 
@@ -200,3 +239,8 @@ def FlagsForFile( filename, **kwargs ):
     'do_cache': True
   }
 
+def Settings(**kwargs):
+  language = kwargs['language']
+  if language == 'cfamily':
+    return { 'flags' : flags }
+  return {}

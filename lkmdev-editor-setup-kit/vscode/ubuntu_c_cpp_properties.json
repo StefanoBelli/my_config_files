@@ -9,10 +9,6 @@
             "cppStandard": "gnu++17",
             "includePath": [
                 "${workspaceFolder}",
-                "/usr/lib/gcc/__template_GCC_TARGET/__template_GCC_DUMPVER/include",
-                "/usr/local/include/",
-                "/usr/include/__template_GCC_TARGET",
-                "/usr/include",
                 "/usr/src/linux-headers-__template_LINUX_UNAMER/include",
                 "/usr/src/linux-headers-__template_LINUX_UNAMER/arch/x86/include/generated",
                 "/usr/src/linux-headers-__template_LINUX_UNAMER/arch/x86/include"
