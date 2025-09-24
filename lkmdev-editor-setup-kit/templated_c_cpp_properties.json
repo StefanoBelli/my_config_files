@@ -11,22 +11,22 @@
 				"-nostdlib"
 			],
 			"forcedInclude": [
-				"__template_KERNSRCBASE/build/include/linux/compiler-version.h",
-				"__template_KERNSRCBASE/build/include/linux/kconfig.h",
-				"__template_KERNSRCBASE/build/include/linux/compiler_types.h"
+				"__template_KERNSRCBASE/include/linux/compiler-version.h",
+				"__template_KERNSRCBASE/include/linux/kconfig.h",
+				"__template_KERNSRCBASE/include/linux/compiler_types.h"
 			],
 			"cStandard": "gnu11",
 			"includePath": [
-				"__template_KERNSRCBASE/build/arch/x86/include",
-				"__template_KERNSRCBASE/build/arch/x86/include/generated",
+				"__template_KERNSRCBASE/arch/x86/include",
+				"__template_KERNSRCBASE/arch/x86/include/generated",
 
-				"__template_KERNSRCBASE/build/include",
+				"__template_KERNSRCBASE/include",
 
-				"__template_KERNSRCBASE/build/arch/x86/include/uapi",
-				"__template_KERNSRCBASE/build/arch/x86/include/generated/uapi",
+				"__template_KERNSRCBASE/arch/x86/include/uapi",
+				"__template_KERNSRCBASE/arch/x86/include/generated/uapi",
 
-				"__template_KERNSRCBASE/build/include/uapi",
-				"__template_KERNSRCBASE/build/include/generated/uapi"
+				"__template_KERNSRCBASE/include/uapi",
+				"__template_KERNSRCBASE/include/generated/uapi"
 			],
 			"defines": [
 				"__KERNEL__",
