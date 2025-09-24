@@ -30,47 +30,12 @@
 #
 # For more information, please refer to <http://unlicense.org/>
 
-# ---- change below ----
-
-ARCH="x86"
-KERNEL_HEADERS_BASE='/usr/lib/modules/6.10.10-arch1-1/build'
-
-EXTRA_INCLUDES = [
-        f"{KERNEL_HEADERS_BASE}/include",
-        f"{KERNEL_HEADERS_BASE}/arch/{ARCH}/include",
-        f"{KERNEL_HEADERS_BASE}/arch/{ARCH}/include/generated"
-]
-
-EXTRA_DEFINES = [
-        "__KERNEL__",
-        "MODULE"
-]
-
-EXTRA_FLAGS = [
-
-]
-
-# ---- change above ----
-
 flags = [
         '-Wall',
         '-W',
         '-Wextra',
         '-Wshadow',
-        '-xc',
-        '-std=gnu11',
-        '-I/usr/include',
-        '-I/usr/local/include',
-        '-I/usr/lib/clang/18/include'
 ]
-
-flags += EXTRA_FLAGS
-
-for extra_include in EXTRA_INCLUDES:
-    flags.append(f"-I{extra_include}")
-
-for extra_define in EXTRA_DEFINES:
-    flags.append(f"-D{extra_define}")
 
 ###
 
