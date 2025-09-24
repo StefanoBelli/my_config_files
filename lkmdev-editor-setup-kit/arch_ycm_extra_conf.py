@@ -69,9 +69,22 @@ EXTRA_FLAGS = [
 KERNEL_HEADERS_BASE = f"{REALROOT}usr/lib/modules/__template_LINUX_UNAMER/build"
 
 KERNEL_INCLUDES = [
-        f"{KERNEL_HEADERS_BASE}/include",
         f"{KERNEL_HEADERS_BASE}/arch/{ARCH}/include",
         f"{KERNEL_HEADERS_BASE}/arch/{ARCH}/include/generated",
+
+        f"{KERNEL_HEADERS_BASE}/include",
+
+        f"{KERNEL_HEADERS_BASE}/arch/{ARCH}/include/uapi",
+        f"{KERNEL_HEADERS_BASE}/arch/{ARCH}/include/generated/uapi",
+
+        f"{KERNEL_HEADERS_BASE}/include/uapi",
+        f"{KERNEL_HEADERS_BASE}/include/generated/uapi",
+]
+
+KERNEL_SPECIFIC_INCLUDES = [
+        f"{KERNEL_HEADERS_BASE}/include/linux/compiler-version.h",
+        f"{KERNEL_HEADERS_BASE}/include/linux/kconfig.h",
+        f"{KERNEL_HEADERS_BASE}/include/linux/compiler_types.h",
 ]
 
 KERNEL_DEFINES = [
@@ -98,6 +111,9 @@ for kernel_define in KERNEL_DEFINES:
 
 for kernel_include in KERNEL_INCLUDES:
     flags.append(f"-I{kernel_include}")
+
+for kernel_specific_include in KERNEL_SPECIFIC_INCLUDES:
+    flags.append(f"-include {kernel_specific_include}")
 
 for project_include in PROJECT_INCLUDES:
     flags.append(f"-I{project_include}")

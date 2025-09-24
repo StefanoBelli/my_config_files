@@ -1,30 +1,45 @@
 {
-    "version": 4,
-    "configurations": [
-        {
-            "name": "Linux Kernel Development",
-            "intelliSenseMode": "linux-gcc-x64",
-            "compilerPath": "/usr/bin/gcc",
-            "cStandard": "gnu11",
-            "cppStandard": "gnu++17",
-            "includePath": [
-                "${workspaceFolder}",
-                "/usr/src/kernels/__template_LINUX_UNAMER/include",
-                "/usr/src/kernels/__template_LINUX_UNAMER/arch/x86/include/generated",
-                "/usr/src/kernels/__template_LINUX_UNAMER/arch/x86/include"
-            ],
-            "defines": [
-                "__KERNEL__",
-                "MODULE"
-            ],
-            "browse": {
-                "path": [
-                    "${workspaceFolder}/**",
-                    "${workspaceFolder}"
-                ],
-                "limitSymbolsToIncludedHeaders": true,
-                "databaseFilename": ""
-            }
-        }
-    ]
+	"version": 4,
+	"configurations": [
+		{
+			"name": "Linux Kernel Development",
+			"intelliSenseMode": "linux-gcc-x64",
+			"compilerPath": "/usr/bin/gcc",
+			"compilerArgs": [
+				"-ffreestanding",
+				"-nostdinc",
+				"-nostdlib"
+			],
+			"forcedInclude": [
+				"/usr/src/kernels/__template_LINUX_UNAMER/build/include/linux/compiler-version.h",
+				"/usr/src/kernels/__template_LINUX_UNAMER/build/include/linux/kconfig.h",
+				"/usr/src/kernels/__template_LINUX_UNAMER/build/include/linux/compiler_types.h"
+			],
+			"cStandard": "gnu11",
+			"includePath": [
+				"/usr/src/kernels/__template_LINUX_UNAMER/build/arch/x86/include",
+				"/usr/src/kernels/__template_LINUX_UNAMER/build/arch/x86/include/generated",
+
+				"/usr/src/kernels/__template_LINUX_UNAMER/build/include",
+
+				"/usr/src/kernels/__template_LINUX_UNAMER/build/arch/x86/include/uapi",
+				"/usr/src/kernels/__template_LINUX_UNAMER/build/arch/x86/include/generated/uapi",
+
+				"/usr/src/kernels/__template_LINUX_UNAMER/build/include/uapi",
+				"/usr/src/kernels/__template_LINUX_UNAMER/build/include/generated/uapi"
+			],
+			"defines": [
+				"__KERNEL__",
+				"MODULE"
+			],
+			"browse": {
+				"path": [
+					"${workspaceFolder}/**",
+					"${workspaceFolder}"
+				],
+				"limitSymbolsToIncludedHeaders": true,
+				"databaseFilename": ""
+			}
+		}
+	]
 }
