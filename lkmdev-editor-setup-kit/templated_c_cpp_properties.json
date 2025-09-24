@@ -1,0 +1,45 @@
+{
+	"version": 4,
+	"configurations": [
+		{
+			"name": "Linux Kernel Development",
+			"intelliSenseMode": "linux-gcc-x64",
+			"compilerPath": "/usr/bin/gcc",
+			"compilerArgs": [
+				"-ffreestanding",
+				"-nostdinc",
+				"-nostdlib"
+			],
+			"forcedInclude": [
+				"__template_KERNSRCBASE/build/include/linux/compiler-version.h",
+				"__template_KERNSRCBASE/build/include/linux/kconfig.h",
+				"__template_KERNSRCBASE/build/include/linux/compiler_types.h"
+			],
+			"cStandard": "gnu11",
+			"includePath": [
+				"__template_KERNSRCBASE/build/arch/x86/include",
+				"__template_KERNSRCBASE/build/arch/x86/include/generated",
+
+				"__template_KERNSRCBASE/build/include",
+
+				"__template_KERNSRCBASE/build/arch/x86/include/uapi",
+				"__template_KERNSRCBASE/build/arch/x86/include/generated/uapi",
+
+				"__template_KERNSRCBASE/build/include/uapi",
+				"__template_KERNSRCBASE/build/include/generated/uapi"
+			],
+			"defines": [
+				"__KERNEL__",
+				"MODULE"
+			],
+			"browse": {
+				"path": [
+					"${workspaceFolder}/**",
+					"${workspaceFolder}"
+				],
+				"limitSymbolsToIncludedHeaders": true,
+				"databaseFilename": ""
+			}
+		}
+	]
+}

@@ -1,34 +1,45 @@
 {
-    "version": 4,
-    "configurations": [
-        {
-            "name": "Linux Kernel Development",
-            "intelliSenseMode": "linux-gcc-x64",
-            "compilerPath": "/usr/bin/gcc",
-            "cStandard": "gnu11",
-            "cppStandard": "gnu++17",
-            "includePath": [
-                "${workspaceFolder}",
-                "/usr/lib/gcc/x86_64-pc-linux-gnu/14/include",
-                "/usr/local/include/",
-                "/usr/lib/gcc/x86_64-pc-linux-gnu/14/include-fixed",
-                "/usr/include",
-                "/usr/lib/modules/6.12.41-gentoo-dist/build/include",
-                "/usr/lib/modules/6.12.41-gentoo-dist/build/arch/x86/include/generated",
-                "/usr/lib/modules/6.12.41-gentoo-dist/build/arch/x86/include"
-            ],
-            "defines": [
-                "__KERNEL__",
-                "MODULE"
-            ],
-            "browse": {
-                "path": [
-                    "${workspaceFolder}/**",
-                    "${workspaceFolder}"
-                ],
-                "limitSymbolsToIncludedHeaders": true,
-                "databaseFilename": ""
-            }
-        }
-    ]
+	"version": 4,
+	"configurations": [
+		{
+			"name": "Linux Kernel Development",
+			"intelliSenseMode": "linux-gcc-x64",
+			"compilerPath": "/usr/bin/gcc",
+			"compilerArgs": [
+				"-ffreestanding",
+				"-nostdinc",
+				"-nostdlib"
+			],
+			"forcedInclude": [
+				"/usr/src/linux-6.12.41-gentoo-dist/build/include/linux/compiler-version.h",
+				"/usr/src/linux-6.12.41-gentoo-dist/build/include/linux/kconfig.h",
+				"/usr/src/linux-6.12.41-gentoo-dist/build/include/linux/compiler_types.h"
+			],
+			"cStandard": "gnu11",
+			"includePath": [
+				"/usr/src/linux-6.12.41-gentoo-dist/build/arch/x86/include",
+				"/usr/src/linux-6.12.41-gentoo-dist/build/arch/x86/include/generated",
+
+				"/usr/src/linux-6.12.41-gentoo-dist/build/include",
+
+				"/usr/src/linux-6.12.41-gentoo-dist/build/arch/x86/include/uapi",
+				"/usr/src/linux-6.12.41-gentoo-dist/build/arch/x86/include/generated/uapi",
+
+				"/usr/src/linux-6.12.41-gentoo-dist/build/include/uapi",
+				"/usr/src/linux-6.12.41-gentoo-dist/build/include/generated/uapi"
+			],
+			"defines": [
+				"__KERNEL__",
+				"MODULE"
+			],
+			"browse": {
+				"path": [
+					"${workspaceFolder}/**",
+					"${workspaceFolder}"
+				],
+				"limitSymbolsToIncludedHeaders": true,
+				"databaseFilename": ""
+			}
+		}
+	]
 }

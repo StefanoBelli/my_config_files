@@ -66,7 +66,7 @@ EXTRA_FLAGS = [
 
 ########################
 
-KERNEL_HEADERS_BASE = f"{REALROOT}usr/src/kernels/__template_LINUX_UNAMER/build"
+KERNEL_HEADERS_BASE = f"{REALROOT}__template_KERNSRCBASE"
 
 KERNEL_INCLUDES = [
         f"{KERNEL_HEADERS_BASE}/arch/{ARCH}/include",
