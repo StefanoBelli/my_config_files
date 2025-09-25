@@ -11,22 +11,22 @@
 				"-nostdlib"
 			],
 			"forcedInclude": [
-				"/usr/src/linux-6.12.41-gentoo-dist/build/include/linux/compiler-version.h",
-				"/usr/src/linux-6.12.41-gentoo-dist/build/include/linux/kconfig.h",
-				"/usr/src/linux-6.12.41-gentoo-dist/build/include/linux/compiler_types.h"
+				"/usr/src/linux-6.12.41-gentoo-dist/include/linux/compiler-version.h",
+				"/usr/src/linux-6.12.41-gentoo-dist/include/linux/kconfig.h",
+				"/usr/src/linux-6.12.41-gentoo-dist/include/linux/compiler_types.h"
 			],
 			"cStandard": "gnu11",
 			"includePath": [
-				"/usr/src/linux-6.12.41-gentoo-dist/build/arch/x86/include",
-				"/usr/src/linux-6.12.41-gentoo-dist/build/arch/x86/include/generated",
+				"/usr/src/linux-6.12.41-gentoo-dist/arch/x86/include",
+				"/usr/src/linux-6.12.41-gentoo-dist/arch/x86/include/generated",
 
-				"/usr/src/linux-6.12.41-gentoo-dist/build/include",
+				"/usr/src/linux-6.12.41-gentoo-dist/include",
 
-				"/usr/src/linux-6.12.41-gentoo-dist/build/arch/x86/include/uapi",
-				"/usr/src/linux-6.12.41-gentoo-dist/build/arch/x86/include/generated/uapi",
+				"/usr/src/linux-6.12.41-gentoo-dist/arch/x86/include/uapi",
+				"/usr/src/linux-6.12.41-gentoo-dist/arch/x86/include/generated/uapi",
 
-				"/usr/src/linux-6.12.41-gentoo-dist/build/include/uapi",
-				"/usr/src/linux-6.12.41-gentoo-dist/build/include/generated/uapi"
+				"/usr/src/linux-6.12.41-gentoo-dist/include/uapi",
+				"/usr/src/linux-6.12.41-gentoo-dist/include/generated/uapi"
 			],
 			"defines": [
 				"__KERNEL__",

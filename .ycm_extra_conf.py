@@ -36,6 +36,10 @@
 #
 #  $ ./install.py --clangd-completer
 #
+# add the following line to your ~/.vimrc (or systemwide one)
+#
+#  let g:ycm_clangd_args = ['--query-driver=/usr/bin/gcc*,/usr/bin/*-linux-gnu-gcc*']
+#
 #################
 
 # ---- change below ----
@@ -49,7 +53,7 @@ ARCH = "x86"
 
 #change this to add whatever include path
 PROJECT_INCLUDES = [
-        
+
 ]
 
 #change this to append compiler flags
@@ -106,14 +110,15 @@ flags = [
         '-fno-builtin',
 ]
 
-for kernel_define in KERNEL_DEFINES:
-    flags.append(f"-D{kernel_define}")
-
 for kernel_include in KERNEL_INCLUDES:
     flags.append(f"-I{kernel_include}")
 
 for kernel_specific_include in KERNEL_SPECIFIC_INCLUDES:
-    flags.append(f"-include {kernel_specific_include}")
+    flags.append("-include")
+    flags.append(kernel_specific_include)
+
+for kernel_define in KERNEL_DEFINES:
+    flags.append(f"-D{kernel_define}")
 
 for project_include in PROJECT_INCLUDES:
     flags.append(f"-I{project_include}")
