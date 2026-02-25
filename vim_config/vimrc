@@ -50,6 +50,7 @@ call plug#begin()
 Plug 'preservim/nerdtree'
 Plug 'ayu-theme/ayu-vim'
 Plug 'davidhalter/jedi-vim'
+Plug 'ycm-core/YouCompleteMe'
 call plug#end()
 
 colorscheme ayu
@@ -84,7 +85,7 @@ nmap <leader>n :noh<cr>
 
 " ycm settings
 " installed manually
-packadd YouCompleteMe
+" packadd YouCompleteMe
 let g:ycm_enable_semantic_highlighting=1
 let g:ycm_confirm_extra_conf=0
 let g:ycm_max_diagnostics_to_display=0
@@ -92,6 +93,8 @@ let g:ycm_min_num_of_chars_for_completion = 1
 let g:ycm_semantic_triggers = {'c': ['->', '.', 're!.[a-zA-Z_]']}
 let g:ycm_max_num_candidates = 20
 let g:ycm_add_preview_to_completeopt=1
+let g:ycm_clangd_args = ['--query-driver=/usr/bin/gcc*,/usr/bin/*-linux-gnu-gcc*', '--header-insertion=never']
+
 set completeopt=preview,menu,menuone
 set previewheight=1
 nmap <F9> :pclose<cr>
