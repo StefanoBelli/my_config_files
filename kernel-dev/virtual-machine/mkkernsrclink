@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [ -d /kernsrcpath ]; then
+	rm /kernsrcpath
+fi
+
+ln -sv /usr/src/kernels/$(uname -r) /kernsrcpath

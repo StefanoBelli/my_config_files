@@ -1,0 +1,9 @@
+[Unit]
+Description=Create kernel source path link ("/kernsrcpath")
+
+[Service]
+Type=exec
+ExecStart=/usr/bin/mkkernsrclink
+
+[Install]
+WantedBy=multi-user.target

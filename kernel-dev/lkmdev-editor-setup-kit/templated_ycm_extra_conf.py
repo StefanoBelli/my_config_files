@@ -44,9 +44,13 @@
 
 # ---- change below ----
 
+import os
+
 #change this to allow remote development
 #you could set this to sshfs mountpoint
-REALROOT = "/"
+
+# change to whatever str you want
+REALROOT = os.environ["SSH_MNTP"]
 
 #change this to your dev arch
 ARCH = "x86"
@@ -134,7 +138,6 @@ for extra_flag in EXTRA_FLAGS:
 ################################
 
 
-import os
 import ycm_core
 
 
