@@ -6,7 +6,14 @@ DISTRO=$(cat /etc/os-release | grep ^ID= | tr '=' '\n' | tail -1)
 
 declare -A DISTRO_KERNSRCBASE
 
-DISTRO_KERNSRCBASE[gentoo]="/usr/src/linux-$LINUX_UNAMER"
+# check ID=value in /etc/os-release
+# value as key in DISTRO_KERNSRCBASE must contain
+# every char. 
+#
+# Example: if ID='gentoo' then DISTRO_KERNSRCBASE[gentoo]
+# won't work, instead DISTRO_KERNSRCBASE[\'gentoo\'] will work
+
+DISTRO_KERNSRCBASE[\'gentoo\']="/usr/src/linux-$LINUX_UNAMER"
 DISTRO_KERNSRCBASE[fedora]="/usr/src/kernels/$LINUX_UNAMER"
 
 echo " -- distro: $DISTRO"
@@ -37,6 +44,15 @@ VSCODE_C_CPP_PROPS="$VSCODE_DIR/c_cpp_properties.json"
 
 TEMPLATED_VSCODE_C_CPP_PROPS="templated_c_cpp_properties.json"
 TEMPLATED_YCMEXCONF="templated_ycm_extra_conf.py"
+
+if [ $# -ge 1 ]; then
+	echo " !! overriding kernsrcbase with the user-provided one: \"$1\""
+	kernsrcbase=$1
+	
+	if [ ! -d $kernsrcbase ]; then
+		echo " !! warning: $kernsrcbase does not exist, or, not a directory"
+	fi
+fi
 
 mkdir -p $VSCODE_DIR
 copy $TEMPLATED_VSCODE_C_CPP_PROPS $VSCODE_C_CPP_PROPS
