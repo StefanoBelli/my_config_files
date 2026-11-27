@@ -7,8 +7,6 @@ case $- in
       *) return;;
 esac
 
-export SSH_ASKPASS=/usr/bin/ksshaskpass
-
 # Update window size after each command
 shopt -s checkwinsize
 
