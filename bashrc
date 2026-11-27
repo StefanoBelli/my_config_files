@@ -90,7 +90,7 @@ __set_prompt() {
         prompt_char="#"
     else
         c_user=$c_bold_white
-        c_prompt_char=$c_green
+        c_prompt_char=$c_bold_white
         prompt_char="$"
     fi
 
