@@ -69,7 +69,7 @@ __set_prompt() {
     local c_green='\[\e[1;32m\]'
     local c_red='\[\e[1;31m\]'
     local c_blue='\[\e[1;34m\]'
-    local c_bold_white='\[\e[1;37m\]'
+    local c_white='\[\e[1;37m\]'
     local c_exit
     local c_user
     local c_prompt_char
@@ -89,8 +89,8 @@ __set_prompt() {
         c_prompt_char=$c_red
         prompt_char="#"
     else
-        c_user=$c_bold_white
-        c_prompt_char=$c_bold_white
+        c_user=$c_white
+        c_prompt_char=$c_white
         prompt_char="$"
     fi
 
