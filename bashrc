@@ -7,6 +7,8 @@ case $- in
       *) return;;
 esac
 
+export SSH_ASKPASS=/usr/bin/ksshaskpass
+
 # Update window size after each command
 shopt -s checkwinsize
 
@@ -26,7 +28,7 @@ __git_state_color() {
     local c_green='\[\e[1;32m\]'
     local c_red='\[\e[1;31m\]'
     local c_yellow='\[\e[1;33m\]'
-    local c_blue='\[\e[1;34m\]'
+    local c_magenta='\[\e[1;35m\]'
 
     # Verify we are inside a Git work tree
     if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
@@ -54,7 +56,7 @@ __git_state_color() {
     if [ -n "$upstream" ]; then
         ahead=$(git rev-list --count "${upstream}..HEAD" 2>/dev/null || echo 0)
         if [ "$ahead" -gt 0 ]; then
-            printf "%s" "$c_blue"
+            printf "%s" "$c_magenta"
             return 0
         fi
     fi
